@@ -43,6 +43,8 @@ const portfolioItems: PortfolioItem[] = [
   { id: 13, category: "full", carousel: [fullLook6, fullLook7, fullLook8], title: "Нежный образ", span: "col-span-1 row-span-1" },
   { id: 14, category: "full", video: "/videos/full-look-3.mp4", title: "Макияж — процесс", span: "col-span-1 row-span-1" },
   { id: 9, category: "brows-lashes", video: "/videos/brows-showcase.mp4", title: "Процесс работы — брови", span: "col-span-1 row-span-1" },
+  { id: 15, category: "brows-lashes", carousel: [brows1, brows2], title: "Оформление бровей", span: "col-span-1 row-span-1" },
+  { id: 16, category: "brows-lashes", image: brows3, title: "Коррекция бровей", span: "col-span-1 row-span-1" },
   { id: 10, category: "hair", video: "/videos/hair-showcase-1.mp4", title: "Процесс укладки", span: "col-span-1 row-span-1" },
   { id: 11, category: "hair", video: "/videos/hair-showcase-2.mp4", title: "Укладка — результат", span: "col-span-1 row-span-1" },
   { id: 12, category: "full", video: "/videos/full-look-2.mp4", title: "Макияж и укладка", span: "col-span-1 row-span-1" },
