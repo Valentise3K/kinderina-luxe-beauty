@@ -10,6 +10,12 @@ import hair2 from "@/assets/hair-2.jpg";
 import hair3 from "@/assets/hair-3.jpg";
 import fullLook1 from "@/assets/full-look-1.jpg";
 import fullLook2 from "@/assets/full-look-2.jpg";
+import fullLook3 from "@/assets/full-look-3.jpg";
+import fullLook4 from "@/assets/full-look-4.jpg";
+import fullLook5 from "@/assets/full-look-5.jpg";
+import fullLook6 from "@/assets/full-look-6.jpg";
+import fullLook7 from "@/assets/full-look-7.jpg";
+import fullLook8 from "@/assets/full-look-8.jpg";
 
 const categories = [
   { id: "all", label: "Все работы" },
