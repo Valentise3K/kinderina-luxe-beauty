@@ -58,39 +58,38 @@ const CarouselCard = ({ images, title, onClick }: { images: string[]; title: str
 
   return (
     <div className="relative group cursor-pointer break-inside-avoid rounded-[16px] overflow-hidden" onClick={() => onClick(images[current])}>
-      <div className="relative overflow-hidden">
-        <img
-          src={images[current]}
-          alt={title}
-          className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
-        {/* Nav arrows */}
-        <button
-          onClick={prev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/70 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-foreground"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </button>
-        <button
-          onClick={next}
-          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/70 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-foreground"
-        >
-          <ChevronRight className="w-4 h-4" />
-        </button>
-        {/* Dots */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-          {images.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={(e) => { e.stopPropagation(); setCurrent(idx); }}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === current ? "bg-background w-3" : "bg-background/50"}`}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="absolute inset-0 bg-foreground/0 hover:bg-foreground/10 transition-colors duration-500 flex items-end p-6 opacity-0 hover:opacity-100">
+      <img
+        src={images[current]}
+        alt={title}
+        className="w-full h-auto object-cover transition-all duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+      {/* Hover overlay - pointer-events-none so it doesn't block buttons */}
+      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-500 flex items-end p-6 opacity-0 group-hover:opacity-100 pointer-events-none">
         <p className="text-primary-foreground font-serif text-lg">{title}</p>
+      </div>
+      {/* Nav arrows - z-10 to stay above overlay */}
+      <button
+        onClick={prev}
+        className="absolute z-10 left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-foreground shadow-sm"
+      >
+        <ChevronLeft className="w-4 h-4" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute z-10 right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-foreground shadow-sm"
+      >
+        <ChevronRight className="w-4 h-4" />
+      </button>
+      {/* Dots */}
+      <div className="absolute z-10 bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+        {images.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={(e) => { e.stopPropagation(); setCurrent(idx); }}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === current ? "bg-background w-4" : "bg-background/60"}`}
+          />
+        ))}
       </div>
     </div>
   );
