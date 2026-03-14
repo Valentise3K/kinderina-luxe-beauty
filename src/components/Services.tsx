@@ -1,53 +1,42 @@
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
-import serviceMakeup from "@/assets/service-makeup.jpg";
-import serviceBrows from "@/assets/service-brows.jpg";
-import portfolioHair from "@/assets/portfolio-hair.jpg";
-import portfolioLashes from "@/assets/portfolio-lashes.jpg";
-import portfolioBridal from "@/assets/portfolio-bridal.jpg";
+import { Clock } from "lucide-react";
 
 const DIKIDI_URL = "https://dikidi.ru/1924129?p=0.pi&utm_source=ig&utm_medium=social&utm_content=link_in_bio";
 
+interface Service {
+  title: string;
+  price: string;
+  duration: string;
+}
+
 interface ServiceGroup {
   title: string;
-  services: {
-    image: string;
-    title: string;
-    description: string;
-    price: string;
-  }[];
+  services: Service[];
 }
 
 const serviceGroups: ServiceGroup[] = [
   {
-    title: "Брови и ресницы",
+    title: "Брови",
     services: [
-      { image: serviceBrows, title: "Коррекция бровей", description: "Идеальная форма с учётом типа лица", price: "от 1 500 ₽" },
-      { image: serviceBrows, title: "Ламинирование бровей", description: "Ухоженные и аккуратные брови", price: "от 2 500 ₽" },
-      { image: serviceBrows, title: "Окрашивание бровей", description: "Подбор идеального оттенка", price: "от 1 200 ₽" },
-      { image: portfolioLashes, title: "Наращивание ресниц", description: "Естественный или яркий объём", price: "от 3 000 ₽" },
-      { image: portfolioLashes, title: "Ламинирование ресниц", description: "Выразительный взгляд без наращивания", price: "от 2 500 ₽" },
+      { title: "Долговременная укладка и коррекция с окрашиванием бровей", price: "1 600 ₽", duration: "1 ч" },
+      { title: "Долговременная укладка и коррекция/окрашивание бровей", price: "1 400 ₽", duration: "1 ч" },
+      { title: "Коррекция и окрашивание бровей", price: "1 200 ₽", duration: "1 ч" },
+      { title: "Коррекция бровей", price: "800 ₽", duration: "30 мин" },
+      { title: "Окрашивание бровей", price: "800 ₽", duration: "30 мин" },
     ],
   },
   {
-    title: "Макияж",
+    title: "Ресницы",
     services: [
-      { image: serviceMakeup, title: "Дневной макияж", description: "Лёгкий и естественный образ", price: "от 3 000 ₽" },
-      { image: serviceMakeup, title: "Вечерний макияж", description: "Яркий и стойкий мейкап", price: "от 4 000 ₽" },
+      { title: "Ламинирование ресниц", price: "1 500 ₽", duration: "1 ч" },
     ],
   },
   {
-    title: "Укладки и волосы",
+    title: "Комплексы",
     services: [
-      { image: portfolioHair, title: "Укладка", description: "Объём, локоны или гладкость", price: "от 2 500 ₽" },
-      { image: portfolioHair, title: "Причёска", description: "Сложные причёски для торжеств", price: "от 4 000 ₽" },
-    ],
-  },
-  {
-    title: "Свадебные услуги",
-    services: [
-      { image: portfolioBridal, title: "Свадебный образ", description: "Макияж и причёска для невесты", price: "от 8 000 ₽" },
-      { image: portfolioBridal, title: "Пробный образ", description: "Подбор идеального свадебного стиля", price: "от 5 000 ₽" },
+      { title: "Комплекс №1 — ламинирование ресниц и коррекция с окрашиванием бровей", price: "2 300 ₽", duration: "2 ч" },
+      { title: "Комплекс №2 — ламинирование ресниц, ламинирование бровей с коррекцией и окрашиванием", price: "2 600 ₽", duration: "2 ч" },
     ],
   },
 ];
@@ -64,44 +53,37 @@ export const Services = () => {
           </div>
         </FadeIn>
 
-        <div className="space-y-20">
+        <div className="max-w-3xl mx-auto space-y-16">
           {serviceGroups.map((group, gi) => (
             <div key={group.title}>
               <FadeIn delay={gi * 60}>
-                <h3 className="font-serif text-2xl md:text-3xl font-light text-foreground mb-8 text-center">
+                <h3 className="font-serif text-2xl md:text-3xl font-light text-foreground mb-6 text-center">
                   {group.title}
                 </h3>
               </FadeIn>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="space-y-3">
                 {group.services.map((service, si) => (
-                  <FadeIn key={service.title} delay={gi * 60 + si * 80}>
-                    <div className="card-premium bg-card overflow-hidden group">
-                      <div className="aspect-[4/3] overflow-hidden">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="p-6">
-                        <h4 className="font-serif text-xl font-medium text-foreground mb-2">
+                  <FadeIn key={si} delay={gi * 60 + si * 80}>
+                    <div className="flex items-center justify-between gap-4 p-5 rounded-2xl bg-card border border-border/50 hover:border-primary/20 transition-colors duration-300">
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-medium text-foreground text-sm md:text-base leading-snug">
                           {service.title}
                         </h4>
-                        <p className="text-sm text-muted-foreground mb-4">
-                          {service.description}
-                        </p>
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm tabular-nums text-primary font-medium">
-                            {service.price}
-                          </span>
-                          <Button variant="link" size="sm" asChild className="text-foreground">
-                            <a href={DIKIDI_URL} target="_blank" rel="noopener noreferrer">
-                              Записаться
-                            </a>
-                          </Button>
+                        <div className="flex items-center gap-1.5 mt-1.5 text-muted-foreground">
+                          <Clock className="w-3.5 h-3.5" />
+                          <span className="text-xs">{service.duration}</span>
                         </div>
+                      </div>
+                      <div className="flex items-center gap-4 shrink-0">
+                        <span className="text-primary font-semibold tabular-nums text-sm md:text-base">
+                          {service.price}
+                        </span>
+                        <Button size="sm" variant="outline" asChild className="rounded-full text-xs px-4">
+                          <a href={DIKIDI_URL} target="_blank" rel="noopener noreferrer">
+                            Записаться
+                          </a>
+                        </Button>
                       </div>
                     </div>
                   </FadeIn>
