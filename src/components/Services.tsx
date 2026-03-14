@@ -68,20 +68,20 @@ export const Services = () => {
               <div className="space-y-3">
                 {group.services.map((service, si) => (
                   <FadeIn key={si} delay={gi * 60 + si * 80}>
-                    <div className="flex items-center justify-between gap-4 p-5 rounded-2xl bg-card border border-border/50 hover:border-primary/20 transition-colors duration-300">
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-medium text-foreground text-sm md:text-base leading-snug">
+                    <div className="p-4 md:p-5 rounded-2xl bg-card border border-border/50 hover:border-primary/20 transition-colors duration-300">
+                      <div className="flex items-start justify-between gap-3 md:items-center">
+                        <h4 className="font-medium text-foreground text-sm md:text-base leading-snug flex-1 min-w-0">
                           {service.title}
                         </h4>
-                        <div className="flex items-center gap-1.5 mt-1.5 text-muted-foreground">
+                        <span className="text-primary font-semibold tabular-nums text-sm md:text-base shrink-0">
+                          {service.price}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between mt-2.5">
+                        <div className="flex items-center gap-1.5 text-muted-foreground">
                           <Clock className="w-3.5 h-3.5" />
                           <span className="text-xs">{service.duration}</span>
                         </div>
-                      </div>
-                      <div className="flex items-center gap-4 shrink-0">
-                        <span className="text-primary font-semibold tabular-nums text-sm md:text-base">
-                          {service.price}
-                        </span>
                         <Button size="sm" variant="outline" asChild className="rounded-full text-xs px-4">
                           <a href={DIKIDI_URL} target="_blank" rel="noopener noreferrer">
                             Записаться
