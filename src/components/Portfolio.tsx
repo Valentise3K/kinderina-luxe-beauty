@@ -24,6 +24,7 @@ const portfolioItems = [
   { id: 6, category: "brows", image: portfolioBrows, title: "Ламинирование бровей", span: "col-span-1 row-span-1" },
   { id: 7, category: "full", image: portfolioFullLook, title: "Вечерний образ", span: "col-span-1 row-span-1" },
   { id: 8, category: "hair", image: portfolioHair, title: "Праздничная укладка", span: "col-span-1 row-span-1" },
+  { id: 9, category: "brows", video: "/videos/brows-showcase.mp4", title: "Процесс работы — брови", span: "col-span-1 row-span-1" },
 ];
 
 export const Portfolio = () => {
@@ -71,14 +72,25 @@ export const Portfolio = () => {
             <FadeIn key={item.id} delay={i * 60}>
               <div
                 className="image-hover-zoom cursor-pointer break-inside-avoid"
-                onClick={() => setLightboxImage(item.image)}
+                onClick={() => item.image && setLightboxImage(item.image)}
               >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-auto object-cover"
-                  loading="lazy"
-                />
+                {item.video ? (
+                  <video
+                    src={item.video}
+                    className="w-full h-auto object-cover rounded-[16px]"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-auto object-cover"
+                    loading="lazy"
+                  />
+                )}
                 <div className="absolute inset-0 bg-foreground/0 hover:bg-foreground/10 transition-colors duration-500 rounded-[16px] flex items-end p-6 opacity-0 hover:opacity-100">
                   <p className="text-primary-foreground font-serif text-lg">{item.title}</p>
                 </div>
