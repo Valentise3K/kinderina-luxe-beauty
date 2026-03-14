@@ -4,16 +4,16 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import portfolioBrows from "@/assets/portfolio-brows.jpg";
 import portfolioLashes from "@/assets/portfolio-lashes.jpg";
 import portfolioHair from "@/assets/portfolio-hair.jpg";
-import portfolioFullLook from "@/assets/portfolio-full-look.jpg";
 import portfolioBridal from "@/assets/portfolio-bridal.jpg";
 import hair1 from "@/assets/hair-1.jpg";
 import hair2 from "@/assets/hair-2.jpg";
 import hair3 from "@/assets/hair-3.jpg";
+import fullLook1 from "@/assets/full-look-1.jpg";
+import fullLook2 from "@/assets/full-look-2.jpg";
 
 const categories = [
   { id: "all", label: "Все работы" },
-  { id: "brows", label: "Брови" },
-  { id: "lashes", label: "Ресницы" },
+  { id: "brows-lashes", label: "Брови и ресницы" },
   { id: "hair", label: "Волосы" },
   { id: "full", label: "Полный образ" },
   { id: "bridal", label: "Свадебные образы" },
@@ -30,17 +30,18 @@ type PortfolioItem = {
 };
 
 const portfolioItems: PortfolioItem[] = [
-  { id: 1, category: "brows", image: portfolioBrows, title: "Коррекция и окрашивание бровей", span: "col-span-1 row-span-1" },
+  { id: 1, category: "brows-lashes", image: portfolioBrows, title: "Коррекция и окрашивание бровей", span: "col-span-1 row-span-1" },
   { id: 2, category: "hair", carousel: [hair1, hair2, hair3], title: "Элегантная укладка", span: "col-span-1 row-span-1" },
-  { id: 3, category: "full", image: portfolioFullLook, title: "Полный образ", span: "col-span-1 row-span-1" },
+  { id: 3, category: "full", carousel: [fullLook1, fullLook2], title: "Полный образ", span: "col-span-1 row-span-1" },
   { id: 4, category: "bridal", image: portfolioBridal, title: "Свадебный образ", span: "col-span-1 row-span-1" },
-  { id: 5, category: "lashes", image: portfolioLashes, title: "Наращивание ресниц", span: "col-span-1 row-span-1" },
-  { id: 6, category: "brows", image: portfolioBrows, title: "Ламинирование бровей", span: "col-span-1 row-span-1" },
-  { id: 7, category: "full", image: portfolioFullLook, title: "Вечерний образ", span: "col-span-1 row-span-1" },
+  { id: 5, category: "brows-lashes", image: portfolioLashes, title: "Наращивание ресниц", span: "col-span-1 row-span-1" },
+  { id: 6, category: "brows-lashes", image: portfolioBrows, title: "Ламинирование бровей", span: "col-span-1 row-span-1" },
+  { id: 7, category: "full", video: "/videos/full-look-1.mp4", title: "Вечерний образ", span: "col-span-1 row-span-1" },
   { id: 8, category: "hair", image: portfolioHair, title: "Праздничная укладка", span: "col-span-1 row-span-1" },
-  { id: 9, category: "brows", video: "/videos/brows-showcase.mp4", title: "Процесс работы — брови", span: "col-span-1 row-span-1" },
+  { id: 9, category: "brows-lashes", video: "/videos/brows-showcase.mp4", title: "Процесс работы — брови", span: "col-span-1 row-span-1" },
   { id: 10, category: "hair", video: "/videos/hair-showcase-1.mp4", title: "Процесс укладки", span: "col-span-1 row-span-1" },
   { id: 11, category: "hair", video: "/videos/hair-showcase-2.mp4", title: "Укладка — результат", span: "col-span-1 row-span-1" },
+  { id: 12, category: "full", video: "/videos/full-look-2.mp4", title: "Макияж и укладка", span: "col-span-1 row-span-1" },
 ];
 
 const CarouselCard = ({ images, title, onClick }: { images: string[]; title: string; onClick: (img: string) => void }) => {
