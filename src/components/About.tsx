@@ -40,22 +40,16 @@ export const About = () => {
           <div>
             <FadeIn>
               <p className="nav-link text-primary mb-4">О мастере</p>
-              <h2 className="section-heading mb-8 text-balance">
-                Искусство подчеркивать вашу уникальность
-              </h2>
+              <h2 className="section-heading mb-8 text-balance">Искусство подчеркивать вашу уникальность</h2>
             </FadeIn>
 
             <FadeIn delay={100}>
               <div className="space-y-5 text-muted-foreground leading-relaxed mb-12">
+                <p>Меня зовут Карина🤍.</p>
                 <p>
-                  Я — Kinderina, визажист, стилист по волосам и&nbsp;brow-мастер.
+                  Каждая из моих услуг подчеркнет индивидуальность и сделает взгляд более открытым и выразительным🫶🏻
                 </p>
-                <p>
-                  Моя цель — подчеркнуть естественную красоту, создать гармоничный образ и&nbsp;помочь каждой девушке почувствовать себя уверенно.
-                </p>
-                <p>
-                  В работе я ценю аккуратность, эстетику, комфорт клиента и&nbsp;внимание к деталям.
-                </p>
+                <p>В работе я ценю аккуратность, эстетику, комфорт клиента и&nbsp;внимание к деталям.</p>
               </div>
             </FadeIn>
 
@@ -64,9 +58,7 @@ export const About = () => {
                 <FadeIn key={point.title} delay={150 + i * 80}>
                   <div className="group">
                     <div className="w-8 h-[1px] bg-primary mb-4 transition-all duration-500 group-hover:w-12" />
-                    <h3 className="font-serif text-lg font-medium text-foreground mb-1">
-                      {point.title}
-                    </h3>
+                    <h3 className="font-serif text-lg font-medium text-foreground mb-1">{point.title}</h3>
                     <p className="text-sm text-muted-foreground">{point.description}</p>
                   </div>
                 </FadeIn>
