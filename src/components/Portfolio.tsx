@@ -10,6 +10,12 @@ import hair2 from "@/assets/hair-2.jpg";
 import hair3 from "@/assets/hair-3.jpg";
 import fullLook1 from "@/assets/full-look-1.jpg";
 import fullLook2 from "@/assets/full-look-2.jpg";
+import fullLook3 from "@/assets/full-look-3.jpg";
+import fullLook4 from "@/assets/full-look-4.jpg";
+import fullLook5 from "@/assets/full-look-5.jpg";
+import fullLook6 from "@/assets/full-look-6.jpg";
+import fullLook7 from "@/assets/full-look-7.jpg";
+import fullLook8 from "@/assets/full-look-8.jpg";
 
 const categories = [
   { id: "all", label: "Все работы" },
@@ -36,7 +42,9 @@ const portfolioItems: PortfolioItem[] = [
   { id: 4, category: "bridal", image: portfolioBridal, title: "Свадебный образ", span: "col-span-1 row-span-1" },
   { id: 5, category: "brows-lashes", image: portfolioLashes, title: "Наращивание ресниц", span: "col-span-1 row-span-1" },
   { id: 6, category: "brows-lashes", image: portfolioBrows, title: "Ламинирование бровей", span: "col-span-1 row-span-1" },
-  { id: 7, category: "full", video: "/videos/full-look-1.mp4", title: "Вечерний образ", span: "col-span-1 row-span-1" },
+  { id: 7, category: "full", carousel: [fullLook3, fullLook4, fullLook5], title: "Вечерний образ", span: "col-span-1 row-span-1" },
+  { id: 13, category: "full", carousel: [fullLook6, fullLook7, fullLook8], title: "Нежный образ", span: "col-span-1 row-span-1" },
+  { id: 14, category: "full", video: "/videos/full-look-3.mp4", title: "Макияж — процесс", span: "col-span-1 row-span-1" },
   { id: 8, category: "hair", image: portfolioHair, title: "Праздничная укладка", span: "col-span-1 row-span-1" },
   { id: 9, category: "brows-lashes", video: "/videos/brows-showcase.mp4", title: "Процесс работы — брови", span: "col-span-1 row-span-1" },
   { id: 10, category: "hair", video: "/videos/hair-showcase-1.mp4", title: "Процесс укладки", span: "col-span-1 row-span-1" },
