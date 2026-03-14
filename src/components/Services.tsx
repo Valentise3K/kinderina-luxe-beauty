@@ -20,16 +20,11 @@ interface ServiceGroup {
 
 const serviceGroups: ServiceGroup[] = [
   {
-    title: "Услуги для бровей",
+    title: "Брови и ресницы",
     services: [
       { image: serviceBrows, title: "Коррекция бровей", description: "Идеальная форма с учётом типа лица", price: "от 1 500 ₽" },
       { image: serviceBrows, title: "Ламинирование бровей", description: "Ухоженные и аккуратные брови", price: "от 2 500 ₽" },
       { image: serviceBrows, title: "Окрашивание бровей", description: "Подбор идеального оттенка", price: "от 1 200 ₽" },
-    ],
-  },
-  {
-    title: "Услуги для ресниц",
-    services: [
       { image: portfolioLashes, title: "Наращивание ресниц", description: "Естественный или яркий объём", price: "от 3 000 ₽" },
       { image: portfolioLashes, title: "Ламинирование ресниц", description: "Выразительный взгляд без наращивания", price: "от 2 500 ₽" },
     ],
