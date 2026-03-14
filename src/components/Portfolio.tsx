@@ -1,9 +1,6 @@
 import { useState, useCallback } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import portfolioBrows from "@/assets/portfolio-brows.jpg";
-import portfolioLashes from "@/assets/portfolio-lashes.jpg";
-import portfolioHair from "@/assets/portfolio-hair.jpg";
 import portfolioBridal from "@/assets/portfolio-bridal.jpg";
 import hair1 from "@/assets/hair-1.jpg";
 import hair2 from "@/assets/hair-2.jpg";
@@ -36,16 +33,12 @@ type PortfolioItem = {
 };
 
 const portfolioItems: PortfolioItem[] = [
-  { id: 1, category: "brows-lashes", image: portfolioBrows, title: "Коррекция и окрашивание бровей", span: "col-span-1 row-span-1" },
   { id: 2, category: "hair", carousel: [hair1, hair2, hair3], title: "Элегантная укладка", span: "col-span-1 row-span-1" },
   { id: 3, category: "full", carousel: [fullLook1, fullLook2], title: "Полный образ", span: "col-span-1 row-span-1" },
   { id: 4, category: "bridal", image: portfolioBridal, title: "Свадебный образ", span: "col-span-1 row-span-1" },
-  { id: 5, category: "brows-lashes", image: portfolioLashes, title: "Наращивание ресниц", span: "col-span-1 row-span-1" },
-  { id: 6, category: "brows-lashes", image: portfolioBrows, title: "Ламинирование бровей", span: "col-span-1 row-span-1" },
   { id: 7, category: "full", carousel: [fullLook3, fullLook4, fullLook5], title: "Вечерний образ", span: "col-span-1 row-span-1" },
   { id: 13, category: "full", carousel: [fullLook6, fullLook7, fullLook8], title: "Нежный образ", span: "col-span-1 row-span-1" },
   { id: 14, category: "full", video: "/videos/full-look-3.mp4", title: "Макияж — процесс", span: "col-span-1 row-span-1" },
-  { id: 8, category: "hair", image: portfolioHair, title: "Праздничная укладка", span: "col-span-1 row-span-1" },
   { id: 9, category: "brows-lashes", video: "/videos/brows-showcase.mp4", title: "Процесс работы — брови", span: "col-span-1 row-span-1" },
   { id: 10, category: "hair", video: "/videos/hair-showcase-1.mp4", title: "Процесс укладки", span: "col-span-1 row-span-1" },
   { id: 11, category: "hair", video: "/videos/hair-showcase-2.mp4", title: "Укладка — результат", span: "col-span-1 row-span-1" },
