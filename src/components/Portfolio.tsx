@@ -16,6 +16,8 @@ import fullLook5 from "@/assets/full-look-5.jpg";
 import fullLook6 from "@/assets/full-look-6.jpg";
 import fullLook7 from "@/assets/full-look-7.jpg";
 import fullLook8 from "@/assets/full-look-8.jpg";
+import fullLook9 from "@/assets/full-look-9.jpg";
+import fullLook10 from "@/assets/full-look-10.jpg";
 
 const categories = [
   { id: "all", label: "Все работы" },
