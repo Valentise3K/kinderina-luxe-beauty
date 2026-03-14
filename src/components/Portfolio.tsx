@@ -24,6 +24,7 @@ const portfolioItems = [
   { id: 6, category: "brows", image: portfolioBrows, title: "Ламинирование бровей", span: "col-span-1 row-span-1" },
   { id: 7, category: "full", image: portfolioFullLook, title: "Вечерний образ", span: "col-span-1 row-span-1" },
   { id: 8, category: "hair", image: portfolioHair, title: "Праздничная укладка", span: "col-span-1 row-span-1" },
+  { id: 9, category: "brows", video: "/videos/brows-showcase.mp4", title: "Процесс работы — брови", span: "col-span-1 row-span-1" },
 ];
 
 export const Portfolio = () => {
