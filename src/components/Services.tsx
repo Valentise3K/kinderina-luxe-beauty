@@ -107,11 +107,11 @@ export const Services = () => {
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-foreground text-sm md:text-base leading-snug">
+                          <h4 className="font-medium text-foreground text-base md:text-lg leading-snug">
                             {service.title}
                           </h4>
                           {service.description && (
-                            <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{service.description}</p>
+                            <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{service.description}</p>
                           )}
                         </div>
                         <span className="text-primary font-semibold tabular-nums text-sm md:text-base shrink-0 pt-0.5">
