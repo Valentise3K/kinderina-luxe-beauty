@@ -8,6 +8,7 @@ interface Service {
   title: string;
   description?: string;
   price: string;
+  duration: string;
 }
 
 interface ServiceGroup {
