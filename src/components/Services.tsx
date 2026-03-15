@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
-import { BookingDialog } from "@/components/BookingDialog";
 import { Clock } from "lucide-react";
 
 interface Service {
@@ -73,7 +71,9 @@ const serviceGroups: ServiceGroup[] = [
 ];
 
 export const Services = () => {
-  const [bookingOpen, setBookingOpen] = useState(false);
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section id="services" className="py-24 md:py-32">
@@ -103,7 +103,7 @@ export const Services = () => {
                   <FadeIn key={si} delay={gi * 60 + si * 60}>
                     <div
                       className="group p-4 md:p-5 rounded-2xl bg-card border border-border/50 hover:border-primary/20 transition-colors duration-300 cursor-pointer"
-                      onClick={() => setBookingOpen(true)}
+                      onClick={scrollToContact}
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1 min-w-0">
@@ -129,7 +129,7 @@ export const Services = () => {
                           className="rounded-full text-xs px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:opacity-100"
                           onClick={(e) => {
                             e.stopPropagation();
-                            setBookingOpen(true);
+                            scrollToContact();
                           }}
                         >
                           Записаться
@@ -160,14 +160,13 @@ export const Services = () => {
 
         <FadeIn delay={400}>
           <div className="text-center mt-14">
-            <Button variant="premium" size="lg" onClick={() => setBookingOpen(true)}>
+            <Button variant="premium" size="lg" onClick={scrollToContact}>
               Записаться
             </Button>
           </div>
         </FadeIn>
       </div>
 
-      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </section>
   );
 };
