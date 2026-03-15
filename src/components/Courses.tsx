@@ -214,14 +214,6 @@ export const Courses = () => {
               </div>
 
               <div className="overflow-y-auto flex-1">
-              {/* Hero image */}
-              <div className="aspect-[16/9] overflow-hidden rounded-t-3xl shrink-0">
-                <img
-                  src={detailsCourse.image}
-                  alt={detailsCourse.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
 
               <div className="px-6 pt-6 pb-2">
                 <DialogHeader className="text-left">
