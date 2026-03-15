@@ -1,3 +1,5 @@
+import { SecretInput } from "./SecretInput";
+
 const DIKIDI_URL = "https://dikidi.ru/1924129?p=0.pi&utm_source=ig&utm_medium=social&utm_content=link_in_bio";
 
 export const Footer = () => {
@@ -38,6 +40,9 @@ export const Footer = () => {
               DIKIDI
             </a>
           </div>
+        </div>
+        <div className="flex justify-center mt-8">
+          <SecretInput />
         </div>
       </div>
     </footer>
