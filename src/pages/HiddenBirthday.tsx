@@ -4,6 +4,10 @@ import { ArrowLeft } from "lucide-react";
 const HiddenBirthday = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <div className="container mx-auto px-6 py-12 max-w-2xl flex-1 flex flex-col justify-center">
