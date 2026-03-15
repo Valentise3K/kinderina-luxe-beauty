@@ -46,14 +46,12 @@ export const Header = () => {
               {item.label}
             </a>
           ))}
-          <a
-            href={DIKIDI_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => setBookingOpen(true)}
             className="nav-link bg-primary text-primary-foreground px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
           >
             Записаться
-          </a>
+          </button>
         </div>
 
         {/* Mobile menu button */}
