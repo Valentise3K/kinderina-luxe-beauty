@@ -25,7 +25,7 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
-      <MobileBookingCTA />
+      {/* <MobileBookingCTA /> */}
     </>
   );
 };
