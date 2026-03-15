@@ -1,16 +1,15 @@
+import { lazy, Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
-import { Portfolio } from "@/components/Portfolio";
-// import { BeforeAfter } from "@/components/BeforeAfter";
-import { Services } from "@/components/Services";
-import { Courses } from "@/components/Courses";
-import { Reviews } from "@/components/Reviews";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
-// import { MobileBookingCTA } from "@/components/MobileBookingCTA";
 
-// refreshed
+const Portfolio = lazy(() => import("@/components/Portfolio").then(m => ({ default: m.Portfolio })));
+const Services = lazy(() => import("@/components/Services").then(m => ({ default: m.Services })));
+const Courses = lazy(() => import("@/components/Courses").then(m => ({ default: m.Courses })));
+const Reviews = lazy(() => import("@/components/Reviews").then(m => ({ default: m.Reviews })));
+const Contact = lazy(() => import("@/components/Contact").then(m => ({ default: m.Contact })));
+const Footer = lazy(() => import("@/components/Footer").then(m => ({ default: m.Footer })));
+
 const Index = () => {
   return (
     <>
@@ -18,15 +17,17 @@ const Index = () => {
       <main>
         <Hero />
         <About />
-        <Portfolio />
-        {/* <BeforeAfter /> */}
-        <Services />
-        <Courses />
-        <Reviews />
-        <Contact />
+        <Suspense fallback={null}>
+          <Portfolio />
+          <Services />
+          <Courses />
+          <Reviews />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
-      {/* <MobileBookingCTA /> */}
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </>
   );
 };
