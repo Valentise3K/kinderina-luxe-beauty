@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
+import { ChevronDown, Clock, Sparkles } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -37,11 +38,34 @@ const contactOptions = [
   },
 ];
 
-const courses = [
+interface PricingOption {
+  label: string;
+  price: string;
+}
+
+interface CourseProgram {
+  title: string;
+  items: string[];
+  note?: string;
+}
+
+interface Course {
+  image: string;
+  title: string;
+  description: string;
+  forWhom: string;
+  topics: string[];
+  detailedDescription?: string;
+  programs?: CourseProgram[];
+  pricing?: PricingOption[];
+  includes?: string[];
+}
+
+const courses: Course[] = [
   {
     image: courseMakeup,
     title: "Макияж для себя",
-    description: "Научитесь создавать безупречный макияж в домашних условиях",
+    description: "Это про уверенность в себе каждый день",
     forWhom: "Для тех, кто хочет научиться подчёркивать свою красоту каждый день",
     topics: [
       "Подготовка и уход за кожей перед макияжем",
@@ -49,6 +73,37 @@ const courses = [
       "Техники дневного и вечернего макияжа",
       "Коррекция формы бровей",
       "Работа с тенями и растушёвка",
+    ],
+    detailedDescription:
+      "Идеальный нюд на каждый день, вечерний макияж на свидание, яркий макияж на вечеринку — это то, что сможет сделать каждая девушка самостоятельно после прохождения курса.",
+    includes: [
+      "Обсуждение макияжа, с которым комфортно и чему хочется научиться",
+      "Разбор личной косметички — решаем, какую косметику оставляем, а с какой придётся попрощаться",
+      "Анализ кожи, чтобы понимать как лучше подготовить кожу перед макияжем и какие тональные крема подойдут",
+      "Учимся делать лёгкий нюдовый макияж на каждый день, а далее делаем его более ярким",
+      "Собираем новую косметичку — решаем, чего не хватает и нужно докупить",
+    ],
+    programs: [
+      {
+        title: "Однодневный курс",
+        items: [
+          "Разбор косметички",
+          "Лёгкий повседневный макияж",
+          "Любой вечерний макияж: графичная стрелка / растушёванная стрелка / смоки",
+        ],
+      },
+      {
+        title: "Двухдневный курс",
+        items: [
+          "Всё, что в однодневном курсе",
+          "Ещё один вечерний макияж",
+        ],
+        note: "Например, в первый день делаем смоки, а во второй день учимся рисовать стрелочку",
+      },
+    ],
+    pricing: [
+      { label: "1 день", price: "5 000 ₽" },
+      { label: "2 дня", price: "7 000 ₽" },
     ],
   },
   {
@@ -66,6 +121,146 @@ const courses = [
   },
 ];
 
+const CourseCard = ({ course, index, onBook }: { course: Course; index: number; onBook: () => void }) => {
+  const [expanded, setExpanded] = useState(false);
+  const hasDetails = !!(course.detailedDescription || course.programs || course.pricing || course.includes);
+
+  return (
+    <FadeIn delay={index * 120}>
+      <div className="card-premium bg-card overflow-hidden h-full flex flex-col">
+        <div className="aspect-[16/10] overflow-hidden">
+          <img
+            src={course.image}
+            alt={course.title}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div className="p-8 flex-1 flex flex-col">
+          <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-3">
+            {course.title}
+          </h3>
+          <p className="text-muted-foreground mb-4">{course.description}</p>
+
+          <div className="bg-secondary rounded-[16px] p-4 mb-6">
+            <p className="text-sm font-medium text-foreground mb-1">Для кого</p>
+            <p className="text-sm text-muted-foreground">{course.forWhom}</p>
+          </div>
+
+          <div className="mb-6 flex-1">
+            <p className="text-sm font-medium text-foreground mb-3">Вы научитесь</p>
+            <ul className="space-y-2">
+              {course.topics.map((topic) => (
+                <li key={topic} className="text-sm text-muted-foreground flex gap-3 items-start">
+                  <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
+                  {topic}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Expandable details */}
+          {hasDetails && (
+            <>
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className="flex items-center justify-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-300 mb-6 group"
+              >
+                <span>{expanded ? "Свернуть" : "Подробнее о курсе"}</span>
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                  expanded ? "max-h-[2000px] opacity-100 mb-6" : "max-h-0 opacity-0"
+                }`}
+              >
+                <div className="space-y-6 border-t border-border/40 pt-6">
+                  {/* Detailed description */}
+                  {course.detailedDescription && (
+                    <p className="text-sm text-muted-foreground italic leading-relaxed">
+                      {course.detailedDescription}
+                    </p>
+                  )}
+
+                  {/* What's included */}
+                  {course.includes && (
+                    <div>
+                      <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-primary" />
+                        Из чего состоит
+                      </p>
+                      <ul className="space-y-2.5">
+                        {course.includes.map((item) => (
+                          <li key={item} className="text-sm text-muted-foreground flex gap-3 items-start">
+                            <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Programs */}
+                  {course.programs && (
+                    <div className="space-y-4">
+                      {course.programs.map((program) => (
+                        <div key={program.title} className="bg-secondary rounded-[16px] p-5">
+                          <p className="text-sm font-medium text-foreground mb-3">{program.title}</p>
+                          <ul className="space-y-2">
+                            {program.items.map((item) => (
+                              <li key={item} className="text-sm text-muted-foreground flex gap-3 items-start">
+                                <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                          {program.note && (
+                            <p className="text-xs text-muted-foreground/70 italic mt-3">
+                              {program.note}
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Pricing */}
+                  {course.pricing && (
+                    <div>
+                      <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-primary" />
+                        Стоимость
+                      </p>
+                      <div className="grid grid-cols-2 gap-3">
+                        {course.pricing.map((option) => (
+                          <div
+                            key={option.label}
+                            className="bg-secondary rounded-[16px] p-4 text-center"
+                          >
+                            <p className="text-xs text-muted-foreground mb-1">{option.label}</p>
+                            <p className="text-lg font-serif font-medium text-foreground">{option.price}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
+
+          <Button variant="premium" size="lg" className="w-full" onClick={onBook}>
+            Записаться на курс
+          </Button>
+        </div>
+      </div>
+    </FadeIn>
+  );
+};
+
 export const Courses = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
@@ -82,45 +277,12 @@ export const Courses = () => {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {courses.map((course, i) => (
-            <FadeIn key={course.title} delay={i * 120}>
-              <div className="card-premium bg-card overflow-hidden h-full flex flex-col">
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-8 flex-1 flex flex-col">
-                  <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-3">
-                    {course.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4">{course.description}</p>
-
-                  <div className="bg-secondary rounded-[16px] p-4 mb-6">
-                    <p className="text-sm font-medium text-foreground mb-1">Для кого</p>
-                    <p className="text-sm text-muted-foreground">{course.forWhom}</p>
-                  </div>
-
-                  <div className="mb-8 flex-1">
-                    <p className="text-sm font-medium text-foreground mb-3">Вы научитесь</p>
-                    <ul className="space-y-2">
-                      {course.topics.map((topic) => (
-                        <li key={topic} className="text-sm text-muted-foreground flex gap-3 items-start">
-                          <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
-                          {topic}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <Button variant="premium" size="lg" className="w-full" onClick={() => setDialogOpen(true)}>
-                    Записаться на курс
-                  </Button>
-                </div>
-              </div>
-            </FadeIn>
+            <CourseCard
+              key={course.title}
+              course={course}
+              index={i}
+              onBook={() => setDialogOpen(true)}
+            />
           ))}
         </div>
       </div>
