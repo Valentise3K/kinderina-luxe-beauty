@@ -22,7 +22,7 @@ const contactLinks = [
   {
     title: "Telegram",
     subtitle: "Написать в Telegram",
-    href: "t.me/karishkaa_16",
+    href: "https://t.me/karishkaa_16",
     primary: false,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.5">

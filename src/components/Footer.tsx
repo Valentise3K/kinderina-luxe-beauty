@@ -12,10 +12,10 @@ export const Footer = () => {
             © {new Date().getFullYear()} Kinderina. Все права защищены.
           </p>
           <div className="flex gap-6">
-            <a href="https://t.me/kinderina" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm">
+            <a href="https://t.me/karishkaa_16" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm">
               Telegram
             </a>
-            <a href="https://instagram.com/kinderina" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm">
+            <a href="https://www.instagram.com/karishkaa_16?igsh=MWs2cTNud2hhbzNzcg==" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm">
               Instagram
             </a>
             <a href={DIKIDI_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm">
