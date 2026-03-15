@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Clock, Sparkles } from "lucide-react";
+import { Clock, Sparkles, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -121,148 +121,9 @@ const courses: Course[] = [
   },
 ];
 
-const CourseCard = ({ course, index, onBook }: { course: Course; index: number; onBook: () => void }) => {
-  const [expanded, setExpanded] = useState(false);
-  const hasDetails = !!(course.detailedDescription || course.programs || course.pricing || course.includes);
-
-  return (
-    <FadeIn delay={index * 120}>
-      <div className="card-premium bg-card overflow-hidden h-full flex flex-col">
-        <div className="aspect-[16/10] overflow-hidden">
-          <img
-            src={course.image}
-            alt={course.title}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-        <div className="p-8 flex-1 flex flex-col">
-          <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-3">
-            {course.title}
-          </h3>
-          <p className="text-muted-foreground mb-4">{course.description}</p>
-
-          <div className="bg-secondary rounded-[16px] p-4 mb-6">
-            <p className="text-sm font-medium text-foreground mb-1">Для кого</p>
-            <p className="text-sm text-muted-foreground">{course.forWhom}</p>
-          </div>
-
-          <div className="mb-6 flex-1">
-            <p className="text-sm font-medium text-foreground mb-3">Вы научитесь</p>
-            <ul className="space-y-2">
-              {course.topics.map((topic) => (
-                <li key={topic} className="text-sm text-muted-foreground flex gap-3 items-start">
-                  <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
-                  {topic}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Expandable details */}
-          {hasDetails && (
-            <>
-              <button
-                onClick={() => setExpanded(!expanded)}
-                className="flex items-center justify-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-300 mb-6 group"
-              >
-                <span>{expanded ? "Свернуть" : "Подробнее о курсе"}</span>
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
-                />
-              </button>
-
-              <div
-                className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                  expanded ? "max-h-[2000px] opacity-100 mb-6" : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="space-y-6 border-t border-border/40 pt-6">
-                  {/* Detailed description */}
-                  {course.detailedDescription && (
-                    <p className="text-sm text-muted-foreground italic leading-relaxed">
-                      {course.detailedDescription}
-                    </p>
-                  )}
-
-                  {/* What's included */}
-                  {course.includes && (
-                    <div>
-                      <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
-                        <Sparkles className="w-4 h-4 text-primary" />
-                        Из чего состоит
-                      </p>
-                      <ul className="space-y-2.5">
-                        {course.includes.map((item) => (
-                          <li key={item} className="text-sm text-muted-foreground flex gap-3 items-start">
-                            <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Programs */}
-                  {course.programs && (
-                    <div className="space-y-4">
-                      {course.programs.map((program) => (
-                        <div key={program.title} className="bg-secondary rounded-[16px] p-5">
-                          <p className="text-sm font-medium text-foreground mb-3">{program.title}</p>
-                          <ul className="space-y-2">
-                            {program.items.map((item) => (
-                              <li key={item} className="text-sm text-muted-foreground flex gap-3 items-start">
-                                <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                          {program.note && (
-                            <p className="text-xs text-muted-foreground/70 italic mt-3">
-                              {program.note}
-                            </p>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Pricing */}
-                  {course.pricing && (
-                    <div>
-                      <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
-                        <Clock className="w-4 h-4 text-primary" />
-                        Стоимость
-                      </p>
-                      <div className="grid grid-cols-2 gap-3">
-                        {course.pricing.map((option) => (
-                          <div
-                            key={option.label}
-                            className="bg-secondary rounded-[16px] p-4 text-center"
-                          >
-                            <p className="text-xs text-muted-foreground mb-1">{option.label}</p>
-                            <p className="text-lg font-serif font-medium text-foreground">{option.price}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </>
-          )}
-
-          <Button variant="premium" size="lg" className="w-full" onClick={onBook}>
-            Записаться на курс
-          </Button>
-        </div>
-      </div>
-    </FadeIn>
-  );
-};
-
 export const Courses = () => {
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
+  const [detailsCourse, setDetailsCourse] = useState<Course | null>(null);
 
   return (
     <section id="courses" className="py-24 md:py-32 bg-secondary">
@@ -277,17 +138,176 @@ export const Courses = () => {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {courses.map((course, i) => (
-            <CourseCard
-              key={course.title}
-              course={course}
-              index={i}
-              onBook={() => setDialogOpen(true)}
-            />
+            <FadeIn key={course.title} delay={i * 120}>
+              <div className="card-premium bg-card overflow-hidden h-full flex flex-col">
+                <div className="aspect-[16/10] overflow-hidden">
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-8 flex-1 flex flex-col">
+                  <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-3">
+                    {course.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4">{course.description}</p>
+
+                  <div className="bg-secondary rounded-[16px] p-4 mb-6">
+                    <p className="text-sm font-medium text-foreground mb-1">Для кого</p>
+                    <p className="text-sm text-muted-foreground">{course.forWhom}</p>
+                  </div>
+
+                  <div className="mb-8 flex-1">
+                    <p className="text-sm font-medium text-foreground mb-3">Вы научитесь</p>
+                    <ul className="space-y-2">
+                      {course.topics.map((topic) => (
+                        <li key={topic} className="text-sm text-muted-foreground flex gap-3 items-start">
+                          <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
+                          {topic}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Two buttons: Details (if available) + Book */}
+                  <div className="flex flex-col gap-3">
+                    {(course.detailedDescription || course.programs || course.pricing || course.includes) && (
+                      <Button
+                        variant="premium-outline"
+                        size="lg"
+                        className="w-full"
+                        onClick={() => setDetailsCourse(course)}
+                      >
+                        Подробнее о курсе
+                      </Button>
+                    )}
+                    <Button
+                      variant="premium"
+                      size="lg"
+                      className="w-full"
+                      onClick={() => setBookingOpen(true)}
+                    >
+                      Записаться на курс
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
           ))}
         </div>
       </div>
 
-      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+      {/* ── Details popup ── */}
+      <Dialog open={!!detailsCourse} onOpenChange={(open) => !open && setDetailsCourse(null)}>
+        <DialogContent className="sm:max-w-md max-h-[85vh] overflow-y-auto rounded-3xl border-border/50 bg-background/95 backdrop-blur-xl p-0 gap-0 shadow-2xl">
+          {detailsCourse && (
+            <>
+              {/* Hero image */}
+              <div className="aspect-[16/9] overflow-hidden rounded-t-3xl">
+                <img
+                  src={detailsCourse.image}
+                  alt={detailsCourse.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <div className="px-6 pt-6 pb-2">
+                <DialogHeader className="text-left">
+                  <DialogTitle className="font-serif text-2xl font-medium tracking-[-0.02em] text-foreground">
+                    {detailsCourse.title}
+                  </DialogTitle>
+                  <DialogDescription className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                    {detailsCourse.detailedDescription || detailsCourse.description}
+                  </DialogDescription>
+                </DialogHeader>
+              </div>
+
+              <div className="px-6 pb-6 space-y-6">
+                {/* What's included */}
+                {detailsCourse.includes && (
+                  <div>
+                    <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-primary" />
+                      Из чего состоит
+                    </p>
+                    <ul className="space-y-2.5">
+                      {detailsCourse.includes.map((item) => (
+                        <li key={item} className="text-sm text-muted-foreground flex gap-3 items-start">
+                          <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Programs */}
+                {detailsCourse.programs && (
+                  <div className="space-y-3">
+                    {detailsCourse.programs.map((program) => (
+                      <div key={program.title} className="bg-secondary rounded-[16px] p-5">
+                        <p className="text-sm font-medium text-foreground mb-3">{program.title}</p>
+                        <ul className="space-y-2">
+                          {program.items.map((item) => (
+                            <li key={item} className="text-sm text-muted-foreground flex gap-3 items-start">
+                              <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                        {program.note && (
+                          <p className="text-xs text-muted-foreground/70 italic mt-3">
+                            {program.note}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Pricing */}
+                {detailsCourse.pricing && (
+                  <div>
+                    <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-primary" />
+                      Стоимость
+                    </p>
+                    <div className="grid grid-cols-2 gap-3">
+                      {detailsCourse.pricing.map((option) => (
+                        <div
+                          key={option.label}
+                          className="bg-secondary rounded-[16px] p-4 text-center"
+                        >
+                          <p className="text-xs text-muted-foreground mb-1">{option.label}</p>
+                          <p className="text-lg font-serif font-medium text-foreground">{option.price}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Book CTA inside details popup */}
+                <Button
+                  variant="premium"
+                  size="lg"
+                  className="w-full"
+                  onClick={() => {
+                    setDetailsCourse(null);
+                    setTimeout(() => setBookingOpen(true), 200);
+                  }}
+                >
+                  Записаться на курс
+                </Button>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* ── Booking popup (Telegram / Instagram) ── */}
+      <Dialog open={bookingOpen} onOpenChange={setBookingOpen}>
         <DialogContent className="sm:max-w-sm rounded-3xl border-border/50 bg-background/95 backdrop-blur-xl p-0 gap-0 shadow-2xl">
           <DialogHeader className="px-6 pt-7 pb-2 text-center">
             <DialogTitle className="font-serif text-2xl font-light tracking-[-0.02em] text-foreground">
@@ -306,7 +326,7 @@ export const Courses = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4 p-4 rounded-2xl border border-border/40 bg-card/50 hover:bg-primary/5 hover:border-primary/30 transition-all duration-300 active:scale-[0.98]"
-                onClick={() => setDialogOpen(false)}
+                onClick={() => setBookingOpen(false)}
               >
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary text-foreground/70 group-hover:text-primary group-hover:bg-primary/10 transition-colors duration-300">
                   {option.icon}
