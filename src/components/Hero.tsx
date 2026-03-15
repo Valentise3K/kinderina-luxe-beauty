@@ -1,10 +1,11 @@
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
+import { BookingDialog } from "@/components/BookingDialog";
 import heroImage from "@/assets/hero-portrait.jpg";
 
-const DIKIDI_URL = "https://dikidi.ru/1924129?p=0.pi&utm_source=ig&utm_medium=social&utm_content=link_in_bio";
-
 export const Hero = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
     <section id="hero" className="relative min-h-svh flex flex-col overflow-hidden">
       {/* Background image — editorial framing */}
@@ -46,18 +47,16 @@ export const Hero = () => {
             </p>
           </FadeIn>
 
-          {/* CTA Buttons — premium redesign */}
+          {/* CTA Buttons */}
           <FadeIn delay={360}>
             <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 sm:items-center">
               {/* Primary CTA */}
-              <a
-                href={DIKIDI_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => setBookingOpen(true)}
                 className="group relative inline-flex items-center justify-center h-[52px] sm:h-14 px-10 rounded-full bg-primary text-primary-foreground text-[14px] sm:text-[15px] font-medium tracking-[0.04em] transition-all duration-500 hover:shadow-[0_8px_30px_-4px_hsl(var(--primary)/0.45)] hover:scale-[1.02] active:scale-[0.98]"
               >
                 Записаться
-              </a>
+              </button>
 
               {/* Secondary CTAs */}
               <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-3">
@@ -80,8 +79,10 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Bottom fade for seamless transition to next section */}
+      {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+
+      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </section>
   );
 };

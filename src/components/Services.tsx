@@ -1,8 +1,8 @@
+import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
+import { BookingDialog } from "@/components/BookingDialog";
 import { Clock } from "lucide-react";
-
-const DIKIDI_URL = "https://dikidi.ru/1924129?p=0.pi&utm_source=ig&utm_medium=social&utm_content=link_in_bio";
 
 interface Service {
   title: string;
@@ -45,6 +45,8 @@ const serviceGroups: ServiceGroup[] = [
 ];
 
 export const Services = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
     <section id="services" className="py-24 md:py-32">
       <div className="container mx-auto px-6">
@@ -82,10 +84,13 @@ export const Services = () => {
                           <Clock className="w-3.5 h-3.5" />
                           <span className="text-xs">{service.duration}</span>
                         </div>
-                        <Button size="sm" variant="outline" asChild className="rounded-full text-xs px-4">
-                          <a href={DIKIDI_URL} target="_blank" rel="noopener noreferrer">
-                            Записаться
-                          </a>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="rounded-full text-xs px-4"
+                          onClick={() => setBookingOpen(true)}
+                        >
+                          Записаться
                         </Button>
                       </div>
                     </div>
@@ -96,6 +101,8 @@ export const Services = () => {
           ))}
         </div>
       </div>
+
+      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </section>
   );
 };
