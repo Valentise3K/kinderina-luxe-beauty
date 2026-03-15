@@ -3,33 +3,33 @@ import { Star } from "lucide-react";
 
 const reviews = [
   {
-    name: "Алина",
-    text: "Kinderina — настоящий профессионал! Мой свадебный образ был идеальным, все гости были в восторге.",
+    name: "Моделина Анастасия",
+    text: "Прекрасный мастер, перед началом обсудили все детали. Карина сделала идеальные бровки, все как обговаривали, все мои запросы были учтены, обязательно еще раз приду на брови и на другие процедуры🫶",
     stars: 5,
   },
   {
-    name: "Мария",
-    text: "Обожаю результат по бровям! Наконец-то нашла мастера, который понимает, что значит естественность.",
+    name: "Анастасия",
+    text: "Замечательный мастер не только по оформлению бровей, но и макияжа, укладок. К тому же, интересно поболтать во время процедуры и результат всегда супер🩷",
     stars: 5,
   },
   {
-    name: "Екатерина",
-    text: "Прошла курс «Макияж для себя» и теперь каждый день выгляжу потрясающе. Спасибо за терпение и индивидуальный подход!",
+    name: "Оксана Гладких",
+    text: "Очень понравился мастер, аккуратно делала коррекцию, все стерильно, принимает в уютном салоне, предложили вкусный кофе, приду еще!😍✨",
+    stars: 5,
+  },
+  {
+    name: "Uliks",
+    text: "Понравилось приветливость, аккуратность мастера. Мне все понравилось. Сделала хорошие бровки!Запишусь на другие процедуры. советую всем, отличный специалист!",
     stars: 5,
   },
   {
     name: "Дарья",
-    text: "Лучшая укладка, которую мне делали. Держалась весь день и вечер. Обязательно вернусь снова!",
-    stars: 5,
-  },
-  {
-    name: "Анна",
-    text: "Очень нежный и аккуратный макияж. Именно то, что я хотела — лёгкость и естественность.",
+    text: "Делала долговременную укладку бровей, действительно волосы стали более покладистыми, теперь нет с укладкой бровей проблем Окрашивание сделали, как я и просила, натуральное и не яркое Спасибо большое, все понравилось♥️",
     stars: 5,
   },
   {
     name: "Ольга",
-    text: "Ламинирование ресниц — просто чудо! Взгляд стал выразительнее, а процедура была комфортной.",
+    text: "Огромное спасибо за укладку💌 Продержалась весь вечер в отличном состоянии☺️",
     stars: 5,
   },
 ];
@@ -52,21 +52,13 @@ export const Reviews = () => {
               <div className="card-premium bg-card p-8 h-full flex flex-col">
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: review.stars }).map((_, j) => (
-                    <Star
-                      key={j}
-                      size={14}
-                      className="fill-primary text-primary"
-                    />
+                    <Star key={j} size={14} className="fill-primary text-primary" />
                   ))}
                 </div>
-                <p className="text-muted-foreground leading-relaxed mb-6 flex-1 text-sm">
-                  «{review.text}»
-                </p>
+                <p className="text-muted-foreground leading-relaxed mb-6 flex-1 text-sm">«{review.text}»</p>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
-                    <span className="text-xs font-medium text-foreground">
-                      {review.name[0]}
-                    </span>
+                    <span className="text-xs font-medium text-foreground">{review.name[0]}</span>
                   </div>
                   <span className="text-sm font-medium text-foreground">{review.name}</span>
                 </div>
