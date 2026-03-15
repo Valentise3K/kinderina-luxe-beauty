@@ -49,7 +49,8 @@ type PortfolioItem = {
 const portfolioItems: PortfolioItem[] = [
   { id: 2, category: "hair", carousel: [hair1, hair2, hair3], title: "Просто и нежно", span: "col-span-1 row-span-1" },
   { id: 20, category: "hair", carousel: [hair4, hair5, hair6, hair7], title: "Голливудские локоны", span: "col-span-1 row-span-1" },
-  { id: 21, category: "hair", carousel: [hair8, hair9], title: "Объёмные волны", span: "col-span-1 row-span-1" },
+  { id: 21, category: "hair", image: hair8, title: "Элегантные волны", span: "col-span-1 row-span-1" },
+  { id: 22, category: "hair", image: hair9, title: "Объёмные локоны", span: "col-span-1 row-span-1" },
   { id: 3, category: "full", carousel: [fullLook1, fullLook2], title: "Полный образ", span: "col-span-1 row-span-1" },
 
   {
