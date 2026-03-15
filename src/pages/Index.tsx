@@ -10,6 +10,7 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 // import { MobileBookingCTA } from "@/components/MobileBookingCTA";
 
+// refreshed
 const Index = () => {
   return (
     <>
