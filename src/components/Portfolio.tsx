@@ -24,7 +24,6 @@ const categories = [
   { id: "brows-lashes", label: "Брови и ресницы" },
   { id: "hair", label: "Волосы" },
   { id: "full", label: "Полный образ" },
-  
 ];
 
 type PortfolioItem = {
@@ -38,36 +37,98 @@ type PortfolioItem = {
 };
 
 const portfolioItems: PortfolioItem[] = [
-  { id: 2, category: "hair", carousel: [hair1, hair2, hair3], title: "Элегантная укладка", span: "col-span-1 row-span-1" },
+  { id: 2, category: "hair", carousel: [hair1, hair2, hair3], title: "Просто и нежно", span: "col-span-1 row-span-1" },
   { id: 3, category: "full", carousel: [fullLook1, fullLook2], title: "Полный образ", span: "col-span-1 row-span-1" },
-  
-  { id: 7, category: "full", carousel: [fullLook3, fullLook4, fullLook5], title: "Вечерний образ", span: "col-span-1 row-span-1" },
-  { id: 13, category: "full", carousel: [fullLook6, fullLook7, fullLook8], title: "Нежный образ", span: "col-span-1 row-span-1" },
-  { id: 14, category: "full", video: "/videos/full-look-3.mp4", title: "Макияж — процесс", span: "col-span-1 row-span-1" },
+
+  {
+    id: 7,
+    category: "full",
+    carousel: [fullLook3, fullLook4, fullLook5],
+    title: "Вечерний образ",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    id: 13,
+    category: "full",
+    carousel: [fullLook6, fullLook7, fullLook8],
+    title: "Нежный образ",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    id: 14,
+    category: "full",
+    video: "/videos/full-look-3.mp4",
+    title: "Макияж — процесс",
+    span: "col-span-1 row-span-1",
+  },
   { id: 17, category: "full", carousel: [fullLook9, fullLook10], title: "Вау-образ", span: "col-span-1 row-span-1" },
-  { id: 9, category: "brows-lashes", video: "/videos/brows-showcase.mp4", title: "Процесс работы — брови", span: "col-span-1 row-span-1" },
-  { id: 15, category: "brows-lashes", carousel: [brows1, brows2], title: "Оформление бровей", span: "col-span-1 row-span-1" },
+  {
+    id: 9,
+    category: "brows-lashes",
+    video: "/videos/brows-showcase.mp4",
+    title: "Процесс работы — брови",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    id: 15,
+    category: "brows-lashes",
+    carousel: [brows1, brows2],
+    title: "Оформление бровей",
+    span: "col-span-1 row-span-1",
+  },
   { id: 16, category: "brows-lashes", image: brows3, title: "Коррекция бровей", span: "col-span-1 row-span-1" },
-  { id: 10, category: "hair", video: "/videos/hair-showcase-1.mp4", title: "Процесс укладки", span: "col-span-1 row-span-1" },
-  { id: 11, category: "hair", video: "/videos/hair-showcase-2.mp4", title: "Укладка — результат", span: "col-span-1 row-span-1" },
-  { id: 12, category: "full", video: "/videos/full-look-2.mp4", title: "Макияж и укладка", span: "col-span-1 row-span-1" },
+  {
+    id: 10,
+    category: "hair",
+    video: "/videos/hair-showcase-1.mp4",
+    title: "Процесс укладки",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    id: 11,
+    category: "hair",
+    video: "/videos/hair-showcase-2.mp4",
+    title: "Укладка — результат",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    id: 12,
+    category: "full",
+    video: "/videos/full-look-2.mp4",
+    title: "Макияж и укладка",
+    span: "col-span-1 row-span-1",
+  },
 ];
 
-const CarouselCard = ({ images, title, onClick }: { images: string[]; title: string; onClick: (img: string) => void }) => {
+const CarouselCard = ({
+  images,
+  title,
+  onClick,
+}: {
+  images: string[];
+  title: string;
+  onClick: (img: string) => void;
+}) => {
   const [current, setCurrent] = useState(0);
   const touchStartX = React.useRef<number | null>(null);
   const touchDeltaX = React.useRef(0);
   const swiped = React.useRef(false);
 
-  const prev = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
-  }, [images.length]);
+  const prev = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation();
+      setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
+    },
+    [images.length],
+  );
 
-  const next = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
-  }, [images.length]);
+  const next = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation();
+      setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+    },
+    [images.length],
+  );
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -137,7 +198,10 @@ const CarouselCard = ({ images, title, onClick }: { images: string[]; title: str
         {images.map((_, idx) => (
           <button
             key={idx}
-            onClick={(e) => { e.stopPropagation(); setCurrent(idx); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrent(idx);
+            }}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === current ? "bg-background w-4" : "bg-background/60"}`}
           />
         ))}
@@ -151,9 +215,7 @@ export const Portfolio = () => {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const filteredItems =
-    activeCategory === "all"
-      ? portfolioItems
-      : portfolioItems.filter((item) => item.category === activeCategory);
+    activeCategory === "all" ? portfolioItems : portfolioItems.filter((item) => item.category === activeCategory);
 
   return (
     <section id="portfolio" className="py-24 md:py-32">
@@ -188,11 +250,7 @@ export const Portfolio = () => {
           {filteredItems.map((item, i) => (
             <FadeIn key={item.id} delay={i * 60}>
               {item.carousel ? (
-                <CarouselCard
-                  images={item.carousel}
-                  title={item.title}
-                  onClick={(img) => setLightboxImage(img)}
-                />
+                <CarouselCard images={item.carousel} title={item.title} onClick={(img) => setLightboxImage(img)} />
               ) : (
                 <div
                   className="image-hover-zoom cursor-pointer break-inside-avoid"
@@ -208,12 +266,7 @@ export const Portfolio = () => {
                       playsInline
                     />
                   ) : (
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-auto object-cover"
-                      loading="lazy"
-                    />
+                    <img src={item.image} alt={item.title} className="w-full h-auto object-cover" loading="lazy" />
                   )}
                   <div className="absolute inset-0 bg-foreground/0 hover:bg-foreground/10 transition-colors duration-500 rounded-[16px] flex items-end p-6 opacity-0 hover:opacity-100">
                     <p className="text-primary-foreground font-serif text-lg">{item.title}</p>
@@ -230,11 +283,7 @@ export const Portfolio = () => {
           className="fixed inset-0 z-50 bg-foreground/90 flex items-center justify-center p-4 cursor-pointer"
           onClick={() => setLightboxImage(null)}
         >
-          <img
-            src={lightboxImage}
-            alt="Просмотр"
-            className="max-w-full max-h-[90vh] object-contain rounded-lg"
-          />
+          <img src={lightboxImage} alt="Просмотр" className="max-w-full max-h-[90vh] object-contain rounded-lg" />
         </div>
       )}
     </section>
