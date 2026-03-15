@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-
-const DIKIDI_URL = "https://dikidi.ru/1924129?p=0.pi&utm_source=ig&utm_medium=social&utm_content=link_in_bio";
+import { BookingDialog } from "@/components/BookingDialog";
 
 const navItems = [
   { label: "Главная", href: "#hero" },
@@ -15,6 +14,7 @@ const navItems = [
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -46,14 +46,12 @@ export const Header = () => {
               {item.label}
             </a>
           ))}
-          <a
-            href={DIKIDI_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => setBookingOpen(true)}
             className="nav-link bg-primary text-primary-foreground px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
           >
             Записаться
-          </a>
+          </button>
         </div>
 
         {/* Mobile menu button */}
@@ -80,17 +78,16 @@ export const Header = () => {
                 {item.label}
               </a>
             ))}
-            <a
-              href={DIKIDI_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-link bg-primary text-primary-foreground px-5 py-3 rounded-full text-center mt-2"
+            <button
+              onClick={() => { setMenuOpen(false); setBookingOpen(true); }}
+              className="nav-link bg-primary text-primary-foreground px-5 py-3 rounded-full text-center mt-2 w-full"
             >
               Записаться
-            </a>
+            </button>
           </div>
         </div>
       )}
+      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </header>
   );
 };
