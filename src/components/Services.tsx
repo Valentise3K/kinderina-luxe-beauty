@@ -2,11 +2,13 @@ import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 import { BookingDialog } from "@/components/BookingDialog";
+import { Clock } from "lucide-react";
 
 interface Service {
   title: string;
   description?: string;
   price: string;
+  duration: string;
 }
 
 interface ServiceGroup {
@@ -20,9 +22,9 @@ const serviceGroups: ServiceGroup[] = [
   {
     title: "Макияж и причёски",
     services: [
-      { title: "Макияж", description: "Свадебный, вечерний, лёгкий, на фотосессию", price: "3 000 ₽" },
-      { title: "Причёска / укладка", description: "Свадебная, лёгкая укладка, на фотосессию", price: "3 000 ₽" },
-      { title: "Полный образ", description: "Макияж + причёска", price: "5 500 ₽" },
+      { title: "Макияж", description: "Свадебный, вечерний, лёгкий, на фотосессию", price: "3 000 ₽", duration: "1 ч" },
+      { title: "Причёска / укладка", description: "Свадебная, лёгкая укладка, на фотосессию", price: "3 000 ₽", duration: "1 ч" },
+      { title: "Полный образ", description: "Макияж + причёска", price: "5 500 ₽", duration: "2 ч" },
     ],
     notes: [
       "Выезд в пределах города — 1 500 ₽",
@@ -33,26 +35,26 @@ const serviceGroups: ServiceGroup[] = [
   {
     title: "Брови",
     services: [
-      { title: "Окрашивание бровей", price: "800 ₽" },
-      { title: "Коррекция бровей", price: "800 ₽" },
-      { title: "Коррекция и окрашивание бровей", price: "1 200 ₽" },
-      { title: "Долговременная укладка и коррекция бровей", price: "1 400 ₽" },
-      { title: "Долговременная укладка, коррекция и окрашивание бровей", price: "1 600 ₽" },
-      { title: "Удаление пушка над губой", price: "200 ₽" },
+      { title: "Окрашивание бровей", price: "800 ₽", duration: "30 мин" },
+      { title: "Коррекция бровей", price: "800 ₽", duration: "30 мин" },
+      { title: "Коррекция и окрашивание бровей", price: "1 200 ₽", duration: "45 мин" },
+      { title: "Долговременная укладка и коррекция бровей", price: "1 400 ₽", duration: "1 ч" },
+      { title: "Долговременная укладка, коррекция и окрашивание бровей", price: "1 600 ₽", duration: "1 ч 15 мин" },
+      { title: "Удаление пушка над губой", price: "200 ₽", duration: "10 мин" },
     ],
   },
   {
     title: "Ресницы",
     services: [
-      { title: "Ламинирование ресниц", price: "1 500 ₽" },
+      { title: "Ламинирование ресниц", price: "1 500 ₽", duration: "1 ч" },
     ],
   },
   {
     title: "Комплексы",
     subtitle: "Выгоднее, чем по отдельности",
     services: [
-      { title: "Комплекс №1", description: "Ламинирование ресниц + коррекция с окрашиванием бровей", price: "2 300 ₽" },
-      { title: "Комплекс №2", description: "Ламинирование ресниц + долговременная укладка и коррекция с окрашиванием бровей", price: "2 600 ₽" },
+      { title: "Комплекс №1", description: "Ламинирование ресниц + коррекция с окрашиванием бровей", price: "2 300 ₽", duration: "1 ч 30 мин" },
+      { title: "Комплекс №2", description: "Ламинирование ресниц + долговременная укладка и коррекция с окрашиванием бровей", price: "2 600 ₽", duration: "1 ч 45 мин" },
     ],
   },
 ];
@@ -107,7 +109,11 @@ export const Services = () => {
                           {service.price}
                         </span>
                       </div>
-                      <div className="flex justify-end mt-3">
+                      <div className="flex items-center justify-between mt-2.5">
+                        <div className="flex items-center gap-1.5 text-muted-foreground">
+                          <Clock className="w-3.5 h-3.5" />
+                          <span className="text-xs">{service.duration}</span>
+                        </div>
                         <Button
                           size="sm"
                           variant="outline"
