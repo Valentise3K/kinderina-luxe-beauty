@@ -16,8 +16,8 @@ export const Hero = () => {
           className="w-full h-full object-cover object-[center_10%] md:object-[center_15%]"
         />
         {/* Multi-layer premium overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/20 via-40% to-background/95 to-85%" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/40 md:from-background/80 md:via-background/30 md:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 via-40% to-background/98 to-80%" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/30 to-background/50 md:from-background/85 md:via-background/40 md:to-transparent" />
         {/* Warm glow layer */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_center,_transparent_40%,_hsl(var(--primary)/0.06)_100%)]" />
       </div>
