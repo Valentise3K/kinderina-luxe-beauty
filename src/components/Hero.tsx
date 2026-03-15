@@ -28,7 +28,7 @@ export const Hero = () => {
           {/* Subtitle */}
           <FadeIn>
             <p className="text-[10px] md:text-[13px] uppercase tracking-[0.2em] md:tracking-[0.15em] font-semibold text-foreground/85 mb-4 md:mb-6">
-              Визажист&ensp;·&ensp;Стилист&ensp;·&ensp;Brow-мастер
+              Makeup Artist&ensp;·&ensp;Hair Stylist&ensp;·&ensp;Brow Artist
             </p>
           </FadeIn>
 
