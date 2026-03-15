@@ -285,8 +285,8 @@ export const Portfolio = () => {
                   ) : (
                     <img src={item.image} alt={item.title} className="w-full h-auto object-cover" loading="lazy" />
                   )}
-                  <div className="absolute inset-0 bg-foreground/0 hover:bg-foreground/10 transition-colors duration-500 rounded-[16px] flex items-end p-6 opacity-0 hover:opacity-100">
-                    <p className="text-primary-foreground font-serif text-lg">{item.title}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent hover:from-foreground/70 transition-all duration-500 rounded-[16px] flex items-end p-6 opacity-0 hover:opacity-100">
+                    <p className="text-white font-serif text-lg drop-shadow-md">{item.title}</p>
                   </div>
                 </div>
               )}
