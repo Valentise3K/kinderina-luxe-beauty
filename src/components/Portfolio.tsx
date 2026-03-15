@@ -215,9 +215,9 @@ const CarouselCard = ({
         className="w-full h-auto object-cover transition-all duration-500 group-hover:scale-105"
         loading="lazy"
       />
-      {/* Hover overlay - pointer-events-none so it doesn't block buttons */}
-      <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent group-hover:from-foreground/70 transition-all duration-500 flex items-end p-6 opacity-0 group-hover:opacity-100 pointer-events-none">
-        <p className="text-white font-serif text-lg drop-shadow-md">{title}</p>
+      {/* Title overlay — always visible on mobile, hover on desktop */}
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent transition-all duration-500 flex items-end p-5 md:p-6 md:opacity-0 md:group-hover:opacity-100 pointer-events-none">
+        <p className="text-white font-serif text-base md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{title}</p>
       </div>
       {/* Nav arrows - z-10 to stay above overlay */}
       <button
@@ -297,7 +297,7 @@ export const Portfolio = () => {
                 <CarouselCard images={item.carousel} title={item.title} onClick={(img) => setLightboxImage(img)} />
               ) : (
                 <div
-                  className="image-hover-zoom cursor-pointer break-inside-avoid"
+                  className="relative image-hover-zoom cursor-pointer break-inside-avoid group"
                   onClick={() => item.image && setLightboxImage(item.image)}
                 >
                   {item.video ? (
@@ -312,8 +312,8 @@ export const Portfolio = () => {
                   ) : (
                     <img src={item.image} alt={item.title} className="w-full h-auto object-cover" loading="lazy" />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent hover:from-foreground/70 transition-all duration-500 rounded-[16px] flex items-end p-6 opacity-0 hover:opacity-100">
-                    <p className="text-white font-serif text-lg drop-shadow-md">{item.title}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent transition-all duration-500 rounded-[16px] flex items-end p-5 md:p-6 md:opacity-0 md:group-hover:opacity-100">
+                    <p className="text-white font-serif text-base md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{item.title}</p>
                   </div>
                 </div>
               )}
