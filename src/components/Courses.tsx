@@ -311,7 +311,8 @@ export const Courses = () => {
                   Записаться на курс
                 </Button>
               </div>
-            </>
+              </div>
+            </div>
           )}
         </DialogContent>
       </Dialog>
