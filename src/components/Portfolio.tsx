@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -55,6 +55,9 @@ const portfolioItems: PortfolioItem[] = [
 
 const CarouselCard = ({ images, title, onClick }: { images: string[]; title: string; onClick: (img: string) => void }) => {
   const [current, setCurrent] = useState(0);
+  const touchStartX = React.useRef<number | null>(null);
+  const touchDeltaX = React.useRef(0);
+  const swiped = React.useRef(false);
 
   const prev = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
@@ -66,8 +69,46 @@ const CarouselCard = ({ images, title, onClick }: { images: string[]; title: str
     setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
   }, [images.length]);
 
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchDeltaX.current = 0;
+    swiped.current = false;
+  }, []);
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
+  }, []);
+
+  const handleTouchEnd = useCallback(() => {
+    const threshold = 40;
+    if (Math.abs(touchDeltaX.current) > threshold) {
+      swiped.current = true;
+      if (touchDeltaX.current < 0) {
+        setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+      } else {
+        setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
+      }
+    }
+    touchStartX.current = null;
+    touchDeltaX.current = 0;
+  }, [images.length]);
+
+  const handleClick = useCallback(() => {
+    if (!swiped.current) {
+      onClick(images[current]);
+    }
+    swiped.current = false;
+  }, [onClick, images, current]);
+
   return (
-    <div className="relative group cursor-pointer break-inside-avoid rounded-[16px] overflow-hidden" onClick={() => onClick(images[current])}>
+    <div
+      className="relative group cursor-pointer break-inside-avoid rounded-[16px] overflow-hidden touch-pan-y"
+      onClick={handleClick}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <img
         src={images[current]}
         alt={title}
