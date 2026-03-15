@@ -27,7 +27,7 @@ export const Hero = () => {
         <div className="max-w-2xl mb-12 md:mb-0">
           {/* Subtitle */}
           <FadeIn>
-            <p className="text-[10px] md:text-[13px] uppercase tracking-[0.2em] md:tracking-[0.15em] font-medium text-muted-foreground/80 mb-4 md:mb-6">
+            <p className="text-[10px] md:text-[13px] uppercase tracking-[0.2em] md:tracking-[0.15em] font-semibold text-foreground/70 mb-4 md:mb-6">
               Визажист&ensp;·&ensp;Стилист&ensp;·&ensp;Brow-мастер
             </p>
           </FadeIn>
@@ -41,7 +41,7 @@ export const Hero = () => {
 
           {/* Description */}
           <FadeIn delay={240}>
-            <p className="text-[15px] md:text-lg text-muted-foreground/90 leading-relaxed max-w-sm md:max-w-lg mb-10 md:mb-12 font-light">
+            <p className="text-[15px] md:text-lg text-foreground/70 leading-relaxed max-w-sm md:max-w-lg mb-10 md:mb-12 font-light">
               Макияж, укладки и&nbsp;брови с&nbsp;акцентом
               <br className="hidden sm:inline" /> на&nbsp;естественную красоту
             </p>
