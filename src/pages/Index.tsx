@@ -8,7 +8,7 @@ import { Courses } from "@/components/Courses";
 import { Reviews } from "@/components/Reviews";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
-import { MobileBookingCTA } from "@/components/MobileBookingCTA";
+// import { MobileBookingCTA } from "@/components/MobileBookingCTA";
 
 const Index = () => {
   return (
