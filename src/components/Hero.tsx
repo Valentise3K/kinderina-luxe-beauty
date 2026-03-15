@@ -6,7 +6,7 @@ const DIKIDI_URL = "https://dikidi.ru/1924129?p=0.pi&utm_source=ig&utm_medium=so
 
 export const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-svh flex items-center overflow-hidden">
+    <section id="hero" className="relative min-h-svh flex flex-col overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
@@ -14,12 +14,11 @@ export const Hero = () => {
           alt="Kinderina — визажист и стилист"
           className="w-full h-full object-cover object-[center_15%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
       </div>
 
       {/* Content */}
-      <div className="container relative mx-auto px-6 py-32 md:py-40">
+      <div className="container relative mx-auto px-6 flex flex-col flex-1 justify-center pb-8 pt-32 md:py-40">
         <div className="max-w-2xl">
           <FadeIn>
             <p className="nav-link text-muted-foreground mb-6">
@@ -46,10 +45,10 @@ export const Hero = () => {
                   Записаться
                 </a>
               </Button>
-              <Button variant="premium-outline" size="xl" asChild>
+              <Button variant="premium-outline" size="xl" className="bg-background/80 backdrop-blur-sm" asChild>
                 <a href="#portfolio">Посмотреть портфолио</a>
               </Button>
-              <Button variant="ghost" size="xl" asChild>
+              <Button variant="ghost" size="xl" className="bg-background/60 backdrop-blur-sm" asChild>
                 <a href="#courses">Курсы</a>
               </Button>
             </div>
