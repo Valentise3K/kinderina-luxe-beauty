@@ -14,6 +14,8 @@ export const Hero = () => {
           src={heroImage}
           alt="Kinderina — визажист и стилист"
           className="w-full h-full object-cover object-[center_10%] md:object-[center_15%]"
+          fetchPriority="high"
+          decoding="async"
         />
         {/* Multi-layer premium overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 via-40% to-background/98 to-80%" />
