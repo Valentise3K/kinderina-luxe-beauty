@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import portfolioBridal from "@/assets/portfolio-bridal.jpg";
+
 import brows1 from "@/assets/brows-1.jpg";
 import brows2 from "@/assets/brows-2.jpg";
 import brows3 from "@/assets/brows-3.jpg";
