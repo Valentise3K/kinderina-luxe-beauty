@@ -2,8 +2,6 @@ import { FadeIn } from "@/components/FadeIn";
 const heroImage = "/hero-portrait.jpg";
 
 export const Hero = () => {
-  const [bookingOpen, setBookingOpen] = useState(false);
-
   return (
     <section id="hero" className="relative min-h-svh flex flex-col overflow-hidden">
       {/* Background image — editorial framing */}
