@@ -34,7 +34,7 @@ export const SecretInput = () => {
       >
         <Lock size={16} className="group-hover:scale-110 transition-transform duration-300" />
         <span className="text-xs tracking-widest uppercase opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-          Got a code?
+          Сколько у вас проблем?
         </span>
       </button>
     );
