@@ -9,16 +9,32 @@ export const Footer = () => {
             Kinderina
           </a>
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Kinderina. Все права защищены.
+            © {new Date().getFullYear()} Kinderina. Все права защищены лучшим опорником Inferno B-Site в Северной
+            Америке.
           </p>
           <div className="flex gap-6">
-            <a href="https://t.me/karishkaa_16" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm">
+            <a
+              href="https://t.me/karishkaa_16"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
+            >
               Telegram
             </a>
-            <a href="https://www.instagram.com/karishkaa_16?igsh=MWs2cTNud2hhbzNzcg==" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm">
+            <a
+              href="https://www.instagram.com/karishkaa_16?igsh=MWs2cTNud2hhbzNzcg=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
+            >
               Instagram
             </a>
-            <a href={DIKIDI_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm">
+            <a
+              href={DIKIDI_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
+            >
               DIKIDI
             </a>
           </div>
