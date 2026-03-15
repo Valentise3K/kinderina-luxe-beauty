@@ -216,7 +216,9 @@ export const Portfolio = () => {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const filteredItems =
-    activeCategory === "all" ? portfolioItems : portfolioItems.filter((item) => item.category === activeCategory);
+    activeCategory === "all"
+      ? portfolioItems.filter((item) => item.category !== "before-after")
+      : portfolioItems.filter((item) => item.category === activeCategory);
 
   return (
     <section id="portfolio" className="py-24 md:py-32">
