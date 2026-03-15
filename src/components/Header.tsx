@@ -78,14 +78,12 @@ export const Header = () => {
                 {item.label}
               </a>
             ))}
-            <a
-              href={DIKIDI_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-link bg-primary text-primary-foreground px-5 py-3 rounded-full text-center mt-2"
+            <button
+              onClick={() => { setMenuOpen(false); setBookingOpen(true); }}
+              className="nav-link bg-primary text-primary-foreground px-5 py-3 rounded-full text-center mt-2 w-full"
             >
               Записаться
-            </a>
+            </button>
           </div>
         </div>
       )}
