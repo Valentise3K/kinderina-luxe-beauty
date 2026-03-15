@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import courseMakeup from "@/assets/course-makeup.jpg";
 import courseHair from "@/assets/course-hair.jpg";
-
-const DIKIDI_URL = "https://dikidi.ru/1924129?p=0.pi&utm_source=ig&utm_medium=social&utm_content=link_in_bio";
 
 const courses = [
   {
