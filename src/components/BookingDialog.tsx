@@ -7,8 +7,8 @@ import {
 } from "@/components/ui/dialog";
 
 const DIKIDI_URL = "https://dikidi.ru/1924129?p=0.pi&utm_source=ig&utm_medium=social&utm_content=link_in_bio";
-const TELEGRAM_URL = "https://t.me/kinderina";
-const INSTAGRAM_URL = "https://www.instagram.com/kinderina";
+const TELEGRAM_URL = "https://t.me/karishkaa_16";
+const INSTAGRAM_URL = "https://www.instagram.com/karishkaa_16?igsh=MWs2cTNud2hhbzNzcg==";
 
 const bookingOptions = [
   {
