@@ -201,17 +201,19 @@ export const Courses = () => {
 
       {/* ── Details popup ── */}
       <Dialog open={!!detailsCourse} onOpenChange={(open) => !open && setDetailsCourse(null)}>
-        <DialogContent className="sm:max-w-md max-h-[85vh] overflow-y-auto rounded-3xl border-border/50 bg-background/95 backdrop-blur-xl p-0 gap-0 shadow-2xl">
+        <DialogContent className="sm:max-w-md max-h-[85vh] rounded-3xl border-border/50 bg-background/95 backdrop-blur-xl p-0 gap-0 shadow-2xl overflow-hidden flex flex-col">
           {detailsCourse && (
-            <>
+            <div className="flex flex-col overflow-hidden">
               {/* Hero image */}
-              <div className="aspect-[16/9] overflow-hidden rounded-t-3xl">
+              <div className="aspect-[16/9] overflow-hidden rounded-t-3xl shrink-0 min-h-0">
                 <img
                   src={detailsCourse.image}
                   alt={detailsCourse.title}
                   className="w-full h-full object-cover"
                 />
               </div>
+
+              <div className="overflow-y-auto flex-1">
 
               <div className="px-6 pt-6 pb-2">
                 <DialogHeader className="text-left">
@@ -301,7 +303,8 @@ export const Courses = () => {
                   Записаться на курс
                 </Button>
               </div>
-            </>
+              </div>
+            </div>
           )}
         </DialogContent>
       </Dialog>
