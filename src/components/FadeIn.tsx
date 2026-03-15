@@ -7,12 +7,11 @@ interface FadeInProps {
 }
 
 export const FadeIn = forwardRef<HTMLDivElement, FadeInProps>(
-  ({ children, className = "", delay = 0 }, forwardedRef) => {
+  ({ children, className = "", delay = 0 }, _ref) => {
     const innerRef = useRef<HTMLDivElement>(null);
-    const ref = (forwardedRef as React.RefObject<HTMLDivElement>) || innerRef;
 
     useEffect(() => {
-      const el = (ref as React.RefObject<HTMLDivElement>).current;
+      const el = innerRef.current;
       if (!el) return;
 
       const observer = new IntersectionObserver(
@@ -30,11 +29,11 @@ export const FadeIn = forwardRef<HTMLDivElement, FadeInProps>(
 
       observer.observe(el);
       return () => observer.disconnect();
-    }, [delay, ref]);
+    }, [delay]);
 
     return (
       <div
-        ref={ref}
+        ref={innerRef}
         className={className}
         style={{
           opacity: 0,
