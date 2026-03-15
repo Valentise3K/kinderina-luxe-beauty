@@ -205,7 +205,7 @@ export const Courses = () => {
           {detailsCourse && (
             <>
               {/* Hero image */}
-              <div className="aspect-[16/9] overflow-hidden rounded-t-3xl">
+              <div className="aspect-[16/9] overflow-hidden rounded-t-3xl shrink-0">
                 <img
                   src={detailsCourse.image}
                   alt={detailsCourse.title}
