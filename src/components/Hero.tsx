@@ -41,7 +41,7 @@ export const Hero = () => {
 
           {/* Description */}
           <FadeIn delay={240}>
-            <p className="text-[15px] md:text-lg text-muted-foreground/90 leading-relaxed max-w-sm md:max-w-lg mb-10 md:mb-12 font-light">
+            <p className="text-[15px] md:text-lg text-foreground/70 leading-relaxed max-w-sm md:max-w-lg mb-10 md:mb-12 font-light">
               Макияж, укладки и&nbsp;брови с&nbsp;акцентом
               <br className="hidden sm:inline" /> на&nbsp;естественную красоту
             </p>
