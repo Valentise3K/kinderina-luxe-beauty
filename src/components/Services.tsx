@@ -167,7 +167,6 @@ export const Services = () => {
         </FadeIn>
       </div>
 
-      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </section>
   );
 };
