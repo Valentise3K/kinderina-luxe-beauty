@@ -11,31 +11,35 @@ const contactLinks = [
     primary: true,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.5">
-        <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round"/>
+        <path
+          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
   {
     title: "Telegram",
     subtitle: "Написать в Telegram",
-    href: "https://t.me/kinderina",
+    href: "t.me/karishkaa_16",
     primary: false,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.5">
-        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
   {
     title: "Instagram",
     subtitle: "Написать в Instagram",
-    href: "https://instagram.com/kinderina",
+    href: "https://www.instagram.com/karishkaa_16?igsh=MWs2cTNud2hhbzNzcg==",
     primary: false,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.5">
-        <rect x="2" y="2" width="20" height="20" rx="5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="12" cy="12" r="5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+        <rect x="2" y="2" width="20" height="20" rx="5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="12" cy="12" r="5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
       </svg>
     ),
   },
@@ -65,17 +69,17 @@ export const Contact = () => {
                     link.primary ? "bg-primary/5" : "bg-card"
                   }`}
                 >
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 ${
-                    link.primary
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-secondary text-foreground group-hover:bg-primary group-hover:text-primary-foreground"
-                  }`}>
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 ${
+                      link.primary
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-secondary text-foreground group-hover:bg-primary group-hover:text-primary-foreground"
+                    }`}
+                  >
                     {link.icon}
                   </div>
                   <div>
-                    <h3 className="font-serif text-lg font-medium text-foreground">
-                      {link.title}
-                    </h3>
+                    <h3 className="font-serif text-lg font-medium text-foreground">{link.title}</h3>
                     <p className="text-sm text-muted-foreground">{link.subtitle}</p>
                   </div>
                   <svg
@@ -85,7 +89,7 @@ export const Contact = () => {
                     stroke="currentColor"
                     strokeWidth="1.5"
                   >
-                    <path d="M5 12h14m-7-7l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M5 12h14m-7-7l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </a>
               </FadeIn>
