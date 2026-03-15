@@ -68,8 +68,14 @@ export const Hero = () => {
                   Портфолио
                 </a>
                 <a
+                  href="#services"
+                  className="inline-flex items-center justify-center h-11 sm:h-12 px-6 sm:px-7 rounded-full border border-foreground/12 bg-background/70 backdrop-blur-md text-foreground text-[13px] sm:text-[14px] font-medium tracking-[0.02em] transition-all duration-400 hover:border-primary/40 hover:bg-background/90 active:scale-[0.97]"
+                >
+                  Услуги
+                </a>
+                <a
                   href="#courses"
-                  className="inline-flex items-center justify-center h-11 sm:h-12 px-6 sm:px-7 rounded-full text-foreground/70 text-[13px] sm:text-[14px] font-medium tracking-[0.02em] transition-all duration-400 hover:text-foreground hover:bg-foreground/[0.04] active:scale-[0.97]"
+                  className="inline-flex items-center justify-center h-11 sm:h-12 px-6 sm:px-7 rounded-full border border-foreground/12 bg-background/70 backdrop-blur-md text-foreground text-[13px] sm:text-[14px] font-medium tracking-[0.02em] transition-all duration-400 hover:border-primary/40 hover:bg-background/90 active:scale-[0.97]"
                 >
                   Курсы
                 </a>
