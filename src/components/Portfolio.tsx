@@ -189,8 +189,8 @@ const CarouselCard = ({
         loading="lazy"
       />
       {/* Hover overlay - pointer-events-none so it doesn't block buttons */}
-      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-500 flex items-end p-6 opacity-0 group-hover:opacity-100 pointer-events-none">
-        <p className="text-primary-foreground font-serif text-lg">{title}</p>
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent group-hover:from-foreground/70 transition-all duration-500 flex items-end p-6 opacity-0 group-hover:opacity-100 pointer-events-none">
+        <p className="text-white font-serif text-lg drop-shadow-md">{title}</p>
       </div>
       {/* Nav arrows - z-10 to stay above overlay */}
       <button
