@@ -160,7 +160,7 @@ export const Services = () => {
 
         <FadeIn delay={400}>
           <div className="text-center mt-14">
-            <Button variant="premium" size="lg" onClick={() => setBookingOpen(true)}>
+            <Button variant="premium" size="lg" onClick={scrollToContact}>
               Записаться
             </Button>
           </div>
