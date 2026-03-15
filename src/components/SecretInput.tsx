@@ -29,10 +29,13 @@ export const SecretInput = () => {
           setOpen(true);
           setTimeout(() => inputRef.current?.focus(), 100);
         }}
-        className="text-muted-foreground/30 hover:text-muted-foreground/50 transition-colors duration-500"
+        className="flex items-center gap-2 text-muted-foreground/50 hover:text-muted-foreground/80 transition-colors duration-500 group"
         aria-label="Secret"
       >
-        <Lock size={14} />
+        <Lock size={16} className="group-hover:scale-110 transition-transform duration-300" />
+        <span className="text-xs tracking-widest uppercase opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+          Got a code?
+        </span>
       </button>
     );
   }
