@@ -23,7 +23,12 @@ const serviceGroups: ServiceGroup[] = [
     title: "Макияж и причёски",
     services: [
       { title: "Макияж", description: "Свадебный, вечерний, лёгкий, на фотосессию", price: "3 000 ₽", duration: "1 ч" },
-      { title: "Причёска / укладка", description: "Свадебная, лёгкая укладка, на фотосессию", price: "3 000 ₽", duration: "1 ч" },
+      {
+        title: "Причёска / укладка",
+        description: "Свадебная, лёгкая укладка, на фотосессию",
+        price: "3 000 ₽",
+        duration: "1 ч",
+      },
       { title: "Полный образ", description: "Макияж + причёска", price: "5 500 ₽", duration: "2 ч" },
     ],
     notes: [
@@ -37,7 +42,7 @@ const serviceGroups: ServiceGroup[] = [
     services: [
       { title: "Окрашивание бровей", price: "800 ₽", duration: "30 мин" },
       { title: "Коррекция бровей", price: "800 ₽", duration: "30 мин" },
-      { title: "Коррекция и окрашивание бровей", price: "1 200 ₽", duration: "45 мин" },
+      { title: "Коррекция и окрашивание бровей", price: "1 200 ₽", duration: "1 ч" },
       { title: "Долговременная укладка и коррекция бровей", price: "1 400 ₽", duration: "1 ч" },
       { title: "Долговременная укладка, коррекция и окрашивание бровей", price: "1 600 ₽", duration: "1 ч 15 мин" },
       { title: "Удаление пушка над губой", price: "200 ₽", duration: "10 мин" },
@@ -45,16 +50,24 @@ const serviceGroups: ServiceGroup[] = [
   },
   {
     title: "Ресницы",
-    services: [
-      { title: "Ламинирование ресниц", price: "1 500 ₽", duration: "1 ч" },
-    ],
+    services: [{ title: "Ламинирование ресниц", price: "1 500 ₽", duration: "1 ч" }],
   },
   {
     title: "Комплексы",
     subtitle: "Выгоднее, чем по отдельности",
     services: [
-      { title: "Комплекс №1", description: "Ламинирование ресниц + коррекция с окрашиванием бровей", price: "2 300 ₽", duration: "1 ч 30 мин" },
-      { title: "Комплекс №2", description: "Ламинирование ресниц + долговременная укладка и коррекция с окрашиванием бровей", price: "2 600 ₽", duration: "1 ч 45 мин" },
+      {
+        title: "Комплекс №1",
+        description: "Ламинирование ресниц + коррекция с окрашиванием бровей",
+        price: "2 300 ₽",
+        duration: "2 ч",
+      },
+      {
+        title: "Комплекс №2",
+        description: "Ламинирование ресниц + долговременная укладка и коррекция с окрашиванием бровей",
+        price: "2 600 ₽",
+        duration: "2 ч",
+      },
     ],
   },
 ];
@@ -78,9 +91,7 @@ export const Services = () => {
             <div key={group.title}>
               <FadeIn delay={gi * 60}>
                 <div className="text-center mb-6">
-                  <h3 className="font-serif text-2xl md:text-3xl font-light text-foreground">
-                    {group.title}
-                  </h3>
+                  <h3 className="font-serif text-2xl md:text-3xl font-light text-foreground">{group.title}</h3>
                   {group.subtitle && (
                     <p className="text-xs text-muted-foreground mt-1.5 tracking-wide">{group.subtitle}</p>
                   )}
@@ -100,9 +111,7 @@ export const Services = () => {
                             {service.title}
                           </h4>
                           {service.description && (
-                            <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                              {service.description}
-                            </p>
+                            <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{service.description}</p>
                           )}
                         </div>
                         <span className="text-primary font-semibold tabular-nums text-sm md:text-base shrink-0 pt-0.5">
