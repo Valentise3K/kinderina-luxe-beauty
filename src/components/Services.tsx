@@ -71,7 +71,9 @@ const serviceGroups: ServiceGroup[] = [
 ];
 
 export const Services = () => {
-  const [bookingOpen, setBookingOpen] = useState(false);
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section id="services" className="py-24 md:py-32">
