@@ -35,6 +35,8 @@ const courses = [
 ];
 
 export const Courses = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   return (
     <section id="courses" className="py-24 md:py-32 bg-secondary">
       <div className="container mx-auto px-6">
@@ -81,10 +83,8 @@ export const Courses = () => {
                     </ul>
                   </div>
 
-                  <Button variant="premium" size="lg" asChild className="w-full">
-                    <a href={DIKIDI_URL} target="_blank" rel="noopener noreferrer">
-                      Записаться на курс
-                    </a>
+                  <Button variant="premium" size="lg" className="w-full" onClick={() => setDialogOpen(true)}>
+                    Записаться на курс
                   </Button>
                 </div>
               </div>
@@ -92,6 +92,51 @@ export const Courses = () => {
           ))}
         </div>
       </div>
+
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-serif text-xl text-center">Записаться на курс</DialogTitle>
+          </DialogHeader>
+          <p className="text-sm text-muted-foreground text-center mb-4">Выберите удобный способ связи</p>
+          <div className="grid gap-3">
+            <a
+              href="https://t.me/karishkaa_16"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-4 rounded-xl border border-border hover:bg-secondary transition-colors duration-200"
+            >
+              <div className="w-10 h-10 rounded-full bg-[hsl(200,80%,50%)] flex items-center justify-center shrink-0">
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-medium text-foreground">Telegram</p>
+                <p className="text-xs text-muted-foreground">Написать в Telegram</p>
+              </div>
+            </a>
+            <a
+              href="https://www.instagram.com/karishkaa_16?igsh=MWs2cTNud2hhbzNzcg=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-4 rounded-xl border border-border hover:bg-secondary transition-colors duration-200"
+            >
+              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[hsl(37,97%,50%)] via-[hsl(330,70%,50%)] to-[hsl(270,70%,55%)] flex items-center justify-center shrink-0">
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="1.5">
+                  <rect x="2" y="2" width="20" height="20" rx="5" strokeLinecap="round" strokeLinejoin="round" />
+                  <circle cx="12" cy="12" r="5" strokeLinecap="round" strokeLinejoin="round" />
+                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-medium text-foreground">Instagram</p>
+                <p className="text-xs text-muted-foreground">Написать в Instagram</p>
+              </div>
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
