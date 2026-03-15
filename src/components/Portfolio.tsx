@@ -5,6 +5,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import brows1 from "@/assets/brows-1.jpg";
 import brows2 from "@/assets/brows-2.jpg";
 import brows3 from "@/assets/brows-3.jpg";
+import browsLashes1 from "@/assets/brows-lashes-1.jpg";
+import browsLashes2 from "@/assets/brows-lashes-2.jpg";
+import lashes1 from "@/assets/lashes-1.jpg";
 import hair1 from "@/assets/hair-1.jpg";
 import hair2 from "@/assets/hair-2.jpg";
 import hair3 from "@/assets/hair-3.jpg";
@@ -64,6 +67,14 @@ const portfolioItems: PortfolioItem[] = [
     span: "col-span-1 row-span-1",
   },
   { id: 16, category: "brows-lashes", image: brows3, title: "Коррекция бровей", span: "col-span-1 row-span-1" },
+  {
+    id: 18,
+    category: "brows-lashes",
+    carousel: [browsLashes1, browsLashes2],
+    title: "Брови и ресницы — нежный образ",
+    span: "col-span-1 row-span-1",
+  },
+  { id: 19, category: "brows-lashes", image: lashes1, title: "Ламинирование ресниц", span: "col-span-1 row-span-1" },
   {
     id: 14,
     category: "before-after",
