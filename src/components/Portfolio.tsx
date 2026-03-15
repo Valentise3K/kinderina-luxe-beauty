@@ -201,6 +201,7 @@ const CarouselCard = ({
         {images.map((_, idx) => (
           <button
             key={idx}
+            aria-label={`Фото ${idx + 1} из ${images.length}`}
             onClick={(e) => {
               e.stopPropagation();
               setCurrent(idx);
