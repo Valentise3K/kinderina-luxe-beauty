@@ -41,6 +41,9 @@ export const Footer = () => {
             </a>
           </div>
         </div>
+        <div className="flex justify-center mt-8">
+          <SecretInput />
+        </div>
       </div>
     </footer>
   );
