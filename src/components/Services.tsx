@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 import { BookingDialog } from "@/components/BookingDialog";
+import { Clock } from "lucide-react";
 
 interface Service {
   title: string;
