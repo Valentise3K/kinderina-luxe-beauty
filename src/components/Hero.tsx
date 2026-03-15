@@ -60,25 +60,20 @@ export const Hero = () => {
               </a>
 
               {/* Secondary CTAs */}
-              <div className="flex gap-2.5 sm:gap-3">
-                <a
-                  href="#portfolio"
-                  className="inline-flex items-center justify-center h-11 sm:h-12 px-6 sm:px-7 rounded-full border border-foreground/12 bg-background/70 backdrop-blur-md text-foreground text-[13px] sm:text-[14px] font-medium tracking-[0.02em] transition-all duration-400 hover:border-primary/40 hover:bg-background/90 active:scale-[0.97]"
-                >
-                  Портфолио
-                </a>
-                <a
-                  href="#services"
-                  className="inline-flex items-center justify-center h-11 sm:h-12 px-6 sm:px-7 rounded-full border border-foreground/12 bg-background/70 backdrop-blur-md text-foreground text-[13px] sm:text-[14px] font-medium tracking-[0.02em] transition-all duration-400 hover:border-primary/40 hover:bg-background/90 active:scale-[0.97]"
-                >
-                  Услуги
-                </a>
-                <a
-                  href="#courses"
-                  className="inline-flex items-center justify-center h-11 sm:h-12 px-6 sm:px-7 rounded-full border border-foreground/12 bg-background/70 backdrop-blur-md text-foreground text-[13px] sm:text-[14px] font-medium tracking-[0.02em] transition-all duration-400 hover:border-primary/40 hover:bg-background/90 active:scale-[0.97]"
-                >
-                  Курсы
-                </a>
+              <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-3">
+                {[
+                  { href: "#portfolio", label: "Портфолио" },
+                  { href: "#services", label: "Услуги" },
+                  { href: "#courses", label: "Курсы" },
+                ].map(({ href, label }) => (
+                  <a
+                    key={href}
+                    href={href}
+                    className="inline-flex items-center justify-center h-11 sm:h-12 px-4 sm:px-7 rounded-full border border-foreground/12 bg-background/70 backdrop-blur-md text-foreground text-[13px] sm:text-[14px] font-medium tracking-[0.02em] transition-all duration-400 hover:border-primary/40 hover:bg-background/90 active:scale-[0.97]"
+                  >
+                    {label}
+                  </a>
+                ))}
               </div>
             </div>
           </FadeIn>
