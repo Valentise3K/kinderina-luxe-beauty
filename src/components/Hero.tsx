@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { BookingDialog } from "@/components/BookingDialog";
-import heroImage from "@/assets/hero-portrait.jpg";
+const heroImage = "/hero-portrait.jpg";
 
 export const Hero = () => {
   const [bookingOpen, setBookingOpen] = useState(false);
