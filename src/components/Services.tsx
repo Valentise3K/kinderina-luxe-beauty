@@ -109,7 +109,11 @@ export const Services = () => {
                           {service.price}
                         </span>
                       </div>
-                      <div className="flex justify-end mt-3">
+                      <div className="flex items-center justify-between mt-2.5">
+                        <div className="flex items-center gap-1.5 text-muted-foreground">
+                          <Clock className="w-3.5 h-3.5" />
+                          <span className="text-xs">{service.duration}</span>
+                        </div>
                         <Button
                           size="sm"
                           variant="outline"
