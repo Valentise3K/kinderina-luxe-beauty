@@ -129,7 +129,7 @@ export const Services = () => {
                           className="rounded-full text-xs px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:opacity-100"
                           onClick={(e) => {
                             e.stopPropagation();
-                            setBookingOpen(true);
+                            scrollToContact();
                           }}
                         >
                           Записаться
