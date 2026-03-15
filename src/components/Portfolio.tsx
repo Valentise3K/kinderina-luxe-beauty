@@ -184,12 +184,14 @@ const CarouselCard = ({
       {/* Nav arrows - z-10 to stay above overlay */}
       <button
         onClick={prev}
+        aria-label="Предыдущее фото"
         className="absolute z-10 left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-foreground shadow-sm"
       >
         <ChevronLeft className="w-4 h-4" />
       </button>
       <button
         onClick={next}
+        aria-label="Следующее фото"
         className="absolute z-10 right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-foreground shadow-sm"
       >
         <ChevronRight className="w-4 h-4" />
