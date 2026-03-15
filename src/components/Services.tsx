@@ -103,7 +103,7 @@ export const Services = () => {
                   <FadeIn key={si} delay={gi * 60 + si * 60}>
                     <div
                       className="group p-4 md:p-5 rounded-2xl bg-card border border-border/50 hover:border-primary/20 transition-colors duration-300 cursor-pointer"
-                      onClick={() => setBookingOpen(true)}
+                      onClick={scrollToContact}
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1 min-w-0">
