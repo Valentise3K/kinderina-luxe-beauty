@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
-import { BookingDialog } from "@/components/BookingDialog";
 const heroImage = "/hero-portrait.jpg";
 
 export const Hero = () => {
