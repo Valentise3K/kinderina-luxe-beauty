@@ -24,6 +24,7 @@ const categories = [
   { id: "brows-lashes", label: "Брови и ресницы" },
   { id: "hair", label: "Волосы" },
   { id: "full", label: "Полный образ" },
+  { id: "before-after", label: "До-После" },
 ];
 
 type PortfolioItem = {
