@@ -40,7 +40,7 @@ type PortfolioItem = {
 const portfolioItems: PortfolioItem[] = [
   { id: 2, category: "hair", carousel: [hair1, hair2, hair3], title: "Элегантная укладка", span: "col-span-1 row-span-1" },
   { id: 3, category: "full", carousel: [fullLook1, fullLook2], title: "Полный образ", span: "col-span-1 row-span-1" },
-  { id: 4, category: "bridal", image: portfolioBridal, title: "Свадебный образ", span: "col-span-1 row-span-1" },
+  
   { id: 7, category: "full", carousel: [fullLook3, fullLook4, fullLook5], title: "Вечерний образ", span: "col-span-1 row-span-1" },
   { id: 13, category: "full", carousel: [fullLook6, fullLook7, fullLook8], title: "Нежный образ", span: "col-span-1 row-span-1" },
   { id: 14, category: "full", video: "/videos/full-look-3.mp4", title: "Макияж — процесс", span: "col-span-1 row-span-1" },
