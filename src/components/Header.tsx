@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-
-const DIKIDI_URL = "https://dikidi.ru/1924129?p=0.pi&utm_source=ig&utm_medium=social&utm_content=link_in_bio";
+import { BookingDialog } from "@/components/BookingDialog";
 
 const navItems = [
   { label: "Главная", href: "#hero" },
