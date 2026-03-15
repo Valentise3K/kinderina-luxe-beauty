@@ -87,6 +87,7 @@ export const Header = () => {
           </div>
         </div>
       )}
+      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </header>
   );
 };
