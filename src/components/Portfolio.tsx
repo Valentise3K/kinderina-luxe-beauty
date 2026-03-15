@@ -68,6 +68,14 @@ const portfolioItems: PortfolioItem[] = [
   },
   { id: 16, category: "brows-lashes", image: brows3, title: "Коррекция бровей", span: "col-span-1 row-span-1" },
   {
+    id: 18,
+    category: "brows-lashes",
+    carousel: [browsLashes1, browsLashes2],
+    title: "Брови и ресницы — нежный образ",
+    span: "col-span-1 row-span-1",
+  },
+  { id: 19, category: "brows-lashes", image: lashes1, title: "Ламинирование ресниц", span: "col-span-1 row-span-1" },
+  {
     id: 14,
     category: "before-after",
     video: "/videos/full-look-3.mp4",
