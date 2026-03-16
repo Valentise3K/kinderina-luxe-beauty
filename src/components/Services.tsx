@@ -73,68 +73,83 @@ export const Services = () => {
   const [bookingOpen, setBookingOpen] = useState(false);
 
   return (
-    <section id="services" className="py-20 md:py-32">
+    <section id="services" className="py-24 md:py-36" style={{ backgroundColor: '#F8F7F5' }}>
       <div className="container mx-auto px-6">
         <FadeIn>
-          <div className="text-center mb-14">
+          <div className="text-center mb-16 md:mb-20">
             <p className="nav-link text-primary-text mb-4">Услуги</p>
             <h2 className="section-heading mb-4">Услуги и цены</h2>
             <span className="section-heading-accent" />
           </div>
         </FadeIn>
 
-        <div className="max-w-3xl mx-auto space-y-12">
+        <div className="max-w-3xl mx-auto space-y-16 md:space-y-20">
           {serviceGroups.map((group, gi) => (
             <div key={group.title}>
               <FadeIn delay={gi * 60}>
-                <div className="text-center mb-5">
+                <div className="text-center mb-8">
                   <h3 className="font-serif text-2xl md:text-3xl font-light text-foreground">{group.title}</h3>
                   {group.subtitle && (
-                    <p className="text-xs text-muted-foreground mt-1.5 tracking-wide">{group.subtitle}</p>
+                    <p className="text-xs text-muted-foreground mt-2 tracking-wide">{group.subtitle}</p>
                   )}
+                  <span className="block w-8 h-px bg-primary-text/30 mx-auto mt-4" />
                 </div>
               </FadeIn>
 
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {group.services.map((service, si) => (
                   <FadeIn key={si} delay={gi * 60 + si * 50}>
                     <div
-                      className={`group p-4 rounded-2xl border transition-colors duration-300 cursor-pointer ${
-                        service.popular
-                          ? "bg-primary/[0.03] border-primary/25 hover:border-primary/40"
-                          : "bg-card border-border/50 hover:border-primary/20"
-                      }`}
+                      className="bg-white p-5 md:p-6 rounded-[18px] border border-border/40 transition-all duration-400 cursor-pointer hover:-translate-y-1"
+                      style={{
+                        boxShadow: '0 2px 12px rgba(0,0,0,0.04), 0 0 0 1px rgba(178,121,52,0.04)',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.08), 0 0 0 1px rgba(178,121,52,0.12)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.04), 0 0 0 1px rgba(178,121,52,0.04)';
+                      }}
                       onClick={() => setBookingOpen(true)}
                     >
-                      <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-start justify-between gap-4">
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-baseline gap-2 flex-wrap">
+                          <div className="flex items-center gap-2.5 flex-wrap">
                             <h4 className="font-medium text-foreground text-base md:text-lg leading-snug">
                               {service.title}
                             </h4>
                             {service.popular && (
-                               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary-text text-[10px] font-semibold uppercase tracking-wider shrink-0 relative top-[-1px]">
-                                <Star className="w-2.5 h-2.5 fill-primary" />
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider shrink-0"
+                                style={{ backgroundColor: 'rgba(178,121,52,0.12)', color: '#B27934' }}>
+                                <Star className="w-2.5 h-2.5" style={{ fill: '#B27934' }} />
                                 Хит
                               </span>
                             )}
                           </div>
                           {service.description && (
-                            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{service.description}</p>
+                            <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{service.description}</p>
                           )}
                         </div>
-                         <span className="text-primary-text font-semibold tabular-nums text-sm md:text-base shrink-0 pt-0.5">
+                        <span className="font-semibold tabular-nums text-base md:text-lg shrink-0 pt-0.5"
+                          style={{ color: '#B27934' }}>
                           {service.price}
                         </span>
                       </div>
-                      <div className="flex items-center justify-between mt-2">
+
+                      <div className="flex items-center justify-between mt-4">
                         <div className="flex items-center gap-1.5 text-muted-foreground">
                           <Clock className="w-3.5 h-3.5" />
                           <span className="text-xs">{service.duration}</span>
                         </div>
-                         <span className="text-xs text-primary-text font-medium">
+                        <button
+                          className="text-xs font-medium px-4 py-1.5 text-white transition-colors duration-200"
+                          style={{ backgroundColor: '#B27934', borderRadius: '11px' }}
+                          onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#9A6729'; }}
+                          onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#B27934'; }}
+                          onClick={(e) => { e.stopPropagation(); setBookingOpen(true); }}
+                        >
                           Записаться →
-                        </span>
+                        </button>
                       </div>
                     </div>
                   </FadeIn>
@@ -143,11 +158,11 @@ export const Services = () => {
 
               {group.notes && group.notes.length > 0 && (
                 <FadeIn delay={gi * 60 + group.services.length * 50}>
-                  <div className="mt-3 p-4 rounded-2xl bg-secondary/50 border border-border/30">
+                  <div className="mt-4 p-5 rounded-[18px] bg-white/60 border border-border/30">
                     <div className="space-y-1.5">
                       {group.notes.map((note, ni) => (
                         <p key={ni} className="text-xs text-muted-foreground flex items-center gap-2">
-                          <span className="w-1 h-1 rounded-full bg-primary/60 shrink-0" />
+                          <span className="w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: 'rgba(178,121,52,0.5)' }} />
                           {note}
                         </p>
                       ))}
@@ -160,7 +175,7 @@ export const Services = () => {
         </div>
 
         <FadeIn delay={400}>
-          <div className="text-center mt-12">
+          <div className="text-center mt-16">
             <Button variant="premium" size="lg" onClick={() => setBookingOpen(true)}>
               Записаться онлайн
             </Button>
