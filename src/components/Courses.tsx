@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
-import { Clock, Users, Sparkles } from "lucide-react";
+import { Clock, Users, ChevronRight } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -65,11 +65,11 @@ const courses: Course[] = [
       "Собираем новую косметичку — решаем, чего не хватает и нужно докупить",
     ],
     skills: [
-      "Подготовка и уход за кожей перед макияжем",
-      "Подбор тона и текстур под тип кожи",
-      "Техники дневного и вечернего макияжа",
-      "Коррекция формы бровей",
-      "Работа с тенями и растушёвка",
+      "Подготовка и уход за кожей",
+      "Подбор тона и текстур",
+      "Дневной и вечерний макияж",
+      "Коррекция бровей",
+      "Работа с тенями",
     ],
     programs: [
       {
@@ -101,9 +101,9 @@ const courses: Course[] = [
     ],
     skills: [
       "Разбор средств для волос",
-      "Анализ волос",
+      "Анализ структуры волос",
       "Создание объёма",
-      "Подробная инструкция и создание желаемой причёски / укладки",
+      "Укладки и причёски",
     ],
     programs: [
       {
@@ -148,40 +148,48 @@ export const Courses = () => {
                 </div>
 
                 <div className="p-6 md:p-8 flex-1 flex flex-col">
-                  {/* Title & description */}
                   <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-2">
                     {course.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-5 line-clamp-3">
                     {course.description}
                   </p>
 
-                  {/* For whom */}
-                  <div className="rounded-2xl border border-border/40 bg-secondary/50 px-4 py-3 mb-5">
-                    <p className="text-xs font-medium text-foreground/80 mb-0.5">Для кого</p>
-                    <p className="text-sm text-muted-foreground">{course.forWhom}</p>
+                  {/* Highlights row */}
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {course.highlights.map((h) => (
+                      <span key={h} className="text-xs tracking-wide text-muted-foreground bg-secondary rounded-full px-3 py-1.5">
+                        {h}
+                      </span>
+                    ))}
                   </div>
 
-                  {/* Skills */}
-                  <div className="mb-5">
-                    <p className="text-sm font-medium text-foreground mb-2.5">Вы научитесь</p>
-                    <ul className="space-y-1.5">
-                      {course.skills.map((skill) => (
-                        <li key={skill} className="text-sm text-muted-foreground flex gap-2.5 items-start">
-                          <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
-                          {skill}
-                        </li>
-                      ))}
-                    </ul>
+                  {/* Skills as compact chips */}
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {course.skills.map((skill) => (
+                      <span key={skill} className="text-[11px] text-foreground/60 border border-border/50 rounded-full px-2.5 py-1">
+                        {skill}
+                      </span>
+                    ))}
                   </div>
 
                   {/* Buttons */}
-                  <div className="flex flex-col gap-2.5 mt-auto">
-                    <Button variant="premium-outline" size="lg" className="w-full" onClick={() => setDetailsCourse(course)}>
-                      Подробнее о курсе
+                  <div className="flex gap-3 mt-auto">
+                    <Button
+                      variant="premium-outline"
+                      size="lg"
+                      className="flex-1"
+                      onClick={() => setDetailsCourse(course)}
+                    >
+                      Подробнее
                     </Button>
-                    <Button variant="premium" size="lg" className="w-full" onClick={() => setBookingOpen(true)}>
-                      Записаться на курс
+                    <Button
+                      variant="premium"
+                      size="lg"
+                      className="flex-1"
+                      onClick={() => setBookingOpen(true)}
+                    >
+                      Записаться
                     </Button>
                   </div>
                 </div>
@@ -193,84 +201,93 @@ export const Courses = () => {
 
       {/* ── Details modal ── */}
       <Dialog open={!!detailsCourse} onOpenChange={(open) => !open && setDetailsCourse(null)}>
-        <DialogContent className="sm:max-w-md max-h-[85vh] rounded-3xl border-border/50 bg-background/95 backdrop-blur-xl p-0 gap-0 shadow-2xl overflow-hidden flex flex-col">
+        <DialogContent className="sm:max-w-[440px] max-h-[85vh] rounded-3xl border-border/50 bg-background backdrop-blur-xl p-0 gap-0 shadow-2xl overflow-hidden flex flex-col">
           {detailsCourse && (
             <div className="flex flex-col overflow-hidden">
-              {/* Image */}
-              <div className="aspect-[2.2/1] overflow-hidden rounded-t-3xl shrink-0">
+              {/* Image with gradient overlay */}
+              <div className="relative aspect-[2.4/1] overflow-hidden shrink-0">
                 <img src={detailsCourse.image} alt={detailsCourse.title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
 
               <div className="overflow-y-auto flex-1">
-                <div className="px-5 pt-5 pb-2">
+                <div className="px-6 pt-5 pb-3">
                   <DialogHeader className="text-left">
-                    <DialogTitle className="font-serif text-xl font-medium tracking-[-0.02em] text-foreground">
+                    <DialogTitle className="font-serif text-2xl font-medium tracking-[-0.02em] text-foreground">
                       {detailsCourse.title}
                     </DialogTitle>
-                    <DialogDescription className="text-sm text-muted-foreground mt-1.5 leading-relaxed">
+                    <DialogDescription className="text-[13px] text-muted-foreground mt-2 leading-relaxed">
                       {detailsCourse.description}
                     </DialogDescription>
                   </DialogHeader>
 
-                  {/* Quick markers */}
-                  <div className="flex flex-wrap gap-3 mt-3">
-                    <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <Users className="w-3.5 h-3.5" /> Индивидуально
+                  {/* Quick markers as pills */}
+                  <div className="flex gap-2 mt-4">
+                    <span className="inline-flex items-center gap-1.5 text-xs text-foreground/70 bg-secondary rounded-full px-3 py-1.5">
+                      <Users className="w-3 h-3" /> Индивидуально
                     </span>
-                    <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <Clock className="w-3.5 h-3.5" /> 1–2 дня
+                    <span className="inline-flex items-center gap-1.5 text-xs text-foreground/70 bg-secondary rounded-full px-3 py-1.5">
+                      <Clock className="w-3 h-3" /> 1–2 дня
                     </span>
                   </div>
                 </div>
 
-                <div className="px-5 pb-5 space-y-5">
-                  {/* Includes */}
-                  <div>
-                    <p className="text-sm font-medium text-foreground mb-2 flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-primary-text" />
+                <div className="px-6 pb-6">
+                  {/* Divider */}
+                  <div className="h-px bg-border/40 mb-5" />
+
+                  {/* What's included — numbered list for cleaner look */}
+                  <div className="mb-6">
+                    <p className="text-[13px] font-medium text-foreground/80 uppercase tracking-widest mb-3">
                       Из чего состоит
                     </p>
-                    <ul className="space-y-2">
-                      {detailsCourse.includes.map((item) => (
-                        <li key={item} className="text-sm text-muted-foreground flex gap-2.5 items-start leading-relaxed">
-                          <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
-                          {item}
-                        </li>
+                    <div className="space-y-3">
+                      {detailsCourse.includes.map((item, idx) => (
+                        <div key={item} className="flex gap-3 items-start">
+                          <span className="w-5 h-5 rounded-full bg-secondary text-[10px] font-medium text-foreground/50 flex items-center justify-center shrink-0 mt-0.5">
+                            {idx + 1}
+                          </span>
+                          <p className="text-[13px] text-muted-foreground leading-relaxed">{item}</p>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
 
-                  {/* Programs */}
-                  <div className="space-y-3">
-                    {detailsCourse.programs.map((program) => (
-                      <div key={program.title} className="bg-secondary rounded-2xl p-4">
-                        <p className="text-sm font-medium text-foreground mb-2">{program.title}</p>
-                        <ul className="space-y-1.5">
-                          {program.items.map((item) => (
-                            <li key={item} className="text-sm text-muted-foreground flex gap-2 items-start">
-                              <span className="w-0.5 h-0.5 rounded-full bg-primary mt-2 shrink-0" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                        {program.note && (
-                          <p className="text-xs text-muted-foreground/70 italic mt-2.5 leading-relaxed">
-                            {program.note}
-                          </p>
-                        )}
-                      </div>
-                    ))}
+                  {/* Programs — cleaner cards */}
+                  <div className="mb-6">
+                    <p className="text-[13px] font-medium text-foreground/80 uppercase tracking-widest mb-3">
+                      Программа
+                    </p>
+                    <div className="space-y-2.5">
+                      {detailsCourse.programs.map((program) => (
+                        <div key={program.title} className="border border-border/40 rounded-2xl p-4">
+                          <p className="text-sm font-medium text-foreground mb-2">{program.title}</p>
+                          <ul className="space-y-1">
+                            {program.items.map((item) => (
+                              <li key={item} className="text-[13px] text-muted-foreground flex gap-2 items-start">
+                                <ChevronRight className="w-3 h-3 text-primary-text mt-0.5 shrink-0" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                          {program.note && (
+                            <p className="text-xs text-muted-foreground/60 italic mt-2 leading-relaxed">
+                              {program.note}
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Pricing */}
-                  <div>
-                    <p className="text-sm font-medium text-foreground mb-2 flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-primary-text" />
+                  {/* Pricing — horizontal layout */}
+                  <div className="mb-6">
+                    <p className="text-[13px] font-medium text-foreground/80 uppercase tracking-widest mb-3">
                       Стоимость
                     </p>
                     <div className="grid grid-cols-2 gap-2.5">
                       {detailsCourse.pricing.map((option) => (
-                        <div key={option.label} className="bg-secondary rounded-2xl p-3 text-center">
+                        <div key={option.label} className="border border-border/40 rounded-2xl p-3.5 text-center">
                           <p className="text-xs text-muted-foreground mb-1">{option.label}</p>
                           <p className="text-lg font-serif font-medium text-foreground">{option.price}</p>
                         </div>
