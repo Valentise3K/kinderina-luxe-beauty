@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
-import { Clock, Users, Sparkles } from "lucide-react";
+import { Clock, Sparkles, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -38,38 +38,67 @@ const contactOptions = [
   },
 ];
 
+interface PricingOption {
+  label: string;
+  price: string;
+}
+
+interface CourseProgram {
+  title: string;
+  items: string[];
+  note?: string;
+}
+
 interface Course {
   image: string;
   title: string;
-  tagline: string;
+  description: string;
   forWhom: string;
-  highlights: string[];
-  includes: string[];
-  programs: { title: string; items: string[] }[];
-  pricing: { label: string; price: string }[];
+  topics: string[];
+  detailedDescription?: string;
+  programs?: CourseProgram[];
+  pricing?: PricingOption[];
+  includes?: string[];
 }
 
 const courses: Course[] = [
   {
     image: courseMakeup,
     title: "Макияж для себя",
-    tagline: "Уверенность в себе каждый день",
-    forWhom: "Хочу делать красивый макияж сама",
-    highlights: ["Индивидуально", "1–2 дня", "от 5 000 ₽"],
+    description: "Это про уверенность в себе каждый день",
+    forWhom: "Для тех, кто хочет научиться подчёркивать свою красоту каждый день",
+    topics: [
+      "Подготовка и уход за кожей перед макияжем",
+      "Подбор тона и текстур под тип кожи",
+      "Техники дневного и вечернего макияжа",
+      "Коррекция формы бровей",
+      "Работа с тенями и растушёвка",
+    ],
+    detailedDescription:
+      "Идеальный нюд на каждый день, вечерний макияж на свидание, яркий макияж на вечеринку — это то, что сможет сделать каждая девушка самостоятельно после прохождения курса.",
     includes: [
-      "Разбор косметички и подбор средств",
-      "Анализ кожи и подготовка к макияжу",
-      "Нюдовый и вечерний макияж на практике",
-      "Список рекомендаций и средств",
+      "Обсуждение макияжа, с которым комфортно и чему хочется научиться",
+      "Разбор личной косметички — решаем, какую косметику оставляем, а с какой придётся попрощаться",
+      "Анализ кожи, чтобы понимать как лучше подготовить кожу перед макияжем и какие тональные крема подойдут",
+      "Учимся делать лёгкий нюдовый макияж на каждый день, а далее делаем его более ярким",
+      "Собираем новую косметичку — решаем, чего не хватает и нужно докупить",
     ],
     programs: [
       {
-        title: "1 день",
-        items: ["Разбор косметички", "Повседневный макияж", "Вечерний макияж на выбор"],
+        title: "Однодневный курс",
+        items: [
+          "Разбор косметички",
+          "Лёгкий повседневный макияж",
+          "Любой вечерний макияж: графичная стрелка / растушёванная стрелка / смоки",
+        ],
       },
       {
-        title: "2 дня",
-        items: ["Всё из однодневного", "+1 вечерний макияж"],
+        title: "Двухдневный курс",
+        items: [
+          "Всё, что в однодневном курсе",
+          "Ещё один вечерний макияж",
+        ],
+        note: "Например, в первый день делаем смоки, а во второй день учимся рисовать стрелочку",
       },
     ],
     pricing: [
@@ -80,28 +109,44 @@ const courses: Course[] = [
   {
     image: courseHair,
     title: "Укладки для себя",
-    tagline: "Красивые причёски каждый день",
-    forWhom: "Хочу делать укладки самостоятельно",
-    highlights: ["Индивидуально", "1–2 дня", "от 5 000 ₽"],
-    includes: [
+    description: "Научитесь создавать красивые причёски и укладки самостоятельно",
+    forWhom: "Для тех, кто хочет делать красивые укладки и причёски каждый день",
+    topics: [
       "Разбор средств для волос",
-      "Анализ типа и структуры волос",
-      "Создание объёма и прикорневой укладки",
-      "Причёска или укладка на выбор",
+      "Анализ волос",
+      "Создание объёма",
+      "Подробная инструкция и создание желаемой причёски / укладки",
+    ],
+    detailedDescription:
+      "Красивые локоны на свидание, объёмная укладка на каждый день, эффектная причёска на мероприятие — всё это вы сможете делать самостоятельно после прохождения курса.",
+    includes: [
+      "Разбор уже существующих средств для волос — решаем, что оставить и что докупить",
+      "Анализ волос — определяем тип, структуру и подбираем подходящий уход",
+      "Создание объёма — учимся делать укладку с красивым прикорневым объёмом",
+      "Подробная инструкция и создание желаемой причёски / укладки",
     ],
     programs: [
       {
-        title: "1 день",
-        items: ["Анализ волос и средств", "Объём", "1 причёска/укладка"],
+        title: "Однодневный курс",
+        items: [
+          "Разбор средств для волос",
+          "Анализ волос",
+          "Создание объёма",
+          "1 причёска / укладка на выбор",
+        ],
       },
       {
-        title: "2 дня",
-        items: ["Всё из однодневного", "+1 причёска/укладка"],
+        title: "Двухдневный курс",
+        items: [
+          "Всё, что в однодневном курсе",
+          "+1 причёска / укладка на выбор",
+        ],
+        note: "Например, в первый день делаем локоны, а во второй — собранную причёску",
       },
     ],
     pricing: [
-      { label: "1 день", price: "5 000 ₽" },
-      { label: "2 дня", price: "7 500 ₽" },
+      { label: "1 день (1 причёска/укладка)", price: "5 000 ₽" },
+      { label: "2 дня (+1 причёска/укладка)", price: "7 500 ₽" },
     ],
   },
 ];
@@ -111,53 +156,69 @@ export const Courses = () => {
   const [detailsCourse, setDetailsCourse] = useState<Course | null>(null);
 
   return (
-    <section id="courses" className="py-20 md:py-32 bg-secondary">
+    <section id="courses" className="py-24 md:py-32 bg-secondary">
       <div className="container mx-auto px-6">
         <FadeIn>
-          <div className="text-center mb-14">
+          <div className="text-center mb-16">
             <p className="nav-link text-primary mb-4">Обучение</p>
             <h2 className="section-heading mb-4">Курсы</h2>
             <span className="section-heading-accent" />
           </div>
         </FadeIn>
 
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid lg:grid-cols-2 gap-8">
           {courses.map((course, i) => (
             <FadeIn key={course.title} delay={i * 120}>
               <div className="card-premium bg-card overflow-hidden h-full flex flex-col">
                 <div className="aspect-[16/10] overflow-hidden">
-                  <img src={course.image} alt={course.title} className="w-full h-full object-cover" loading="lazy" />
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
-                <div className="p-6 md:p-8 flex-1 flex flex-col">
-                  <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-1">
+                <div className="p-8 flex-1 flex flex-col">
+                  <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-3">
                     {course.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-4">{course.tagline}</p>
+                  <p className="text-muted-foreground mb-4">{course.description}</p>
 
-                  {/* Quick markers */}
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {course.highlights.map((h) => (
-                      <span key={h} className="text-[11px] font-medium uppercase tracking-wider text-foreground/70 px-3 py-1.5 rounded-full bg-secondary border border-border/40">
-                        {h}
-                      </span>
-                    ))}
+                  <div className="bg-secondary rounded-[16px] p-4 mb-6">
+                    <p className="text-sm font-medium text-foreground mb-1">Для кого</p>
+                    <p className="text-sm text-muted-foreground">{course.forWhom}</p>
                   </div>
 
-                  {/* Key includes */}
-                  <ul className="space-y-2 mb-6 flex-1">
-                    {course.includes.slice(0, 3).map((item) => (
-                      <li key={item} className="text-sm text-muted-foreground flex gap-2.5 items-start">
-                        <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="mb-8 flex-1">
+                    <p className="text-sm font-medium text-foreground mb-3">Вы научитесь</p>
+                    <ul className="space-y-2">
+                      {course.topics.map((topic) => (
+                        <li key={topic} className="text-sm text-muted-foreground flex gap-3 items-start">
+                          <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
+                          {topic}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                  <div className="flex flex-col gap-2.5">
-                    <Button variant="premium-outline" size="lg" className="w-full" onClick={() => setDetailsCourse(course)}>
-                      Подробнее
-                    </Button>
-                    <Button variant="premium" size="lg" className="w-full" onClick={() => setBookingOpen(true)}>
+                  {/* Two buttons: Details (if available) + Book */}
+                  <div className="flex flex-col gap-3">
+                    {(course.detailedDescription || course.programs || course.pricing || course.includes) && (
+                      <Button
+                        variant="premium-outline"
+                        size="lg"
+                        className="w-full"
+                        onClick={() => setDetailsCourse(course)}
+                      >
+                        Подробнее о курсе
+                      </Button>
+                    )}
+                    <Button
+                      variant="premium"
+                      size="lg"
+                      className="w-full"
+                      onClick={() => setBookingOpen(true)}
+                    >
                       Записаться на курс
                     </Button>
                   </div>
@@ -168,100 +229,110 @@ export const Courses = () => {
         </div>
       </div>
 
-      {/* ── Compact details modal ── */}
+      {/* ── Details popup ── */}
       <Dialog open={!!detailsCourse} onOpenChange={(open) => !open && setDetailsCourse(null)}>
         <DialogContent className="sm:max-w-md max-h-[85vh] rounded-3xl border-border/50 bg-background/95 backdrop-blur-xl p-0 gap-0 shadow-2xl overflow-hidden flex flex-col">
           {detailsCourse && (
             <div className="flex flex-col overflow-hidden">
-              {/* Compact hero image */}
-              <div className="aspect-[2/1] overflow-hidden rounded-t-3xl shrink-0">
-                <img src={detailsCourse.image} alt={detailsCourse.title} className="w-full h-full object-cover" />
+              {/* Hero image */}
+              <div className="aspect-[16/9] overflow-hidden rounded-t-3xl shrink-0 min-h-0">
+                <img
+                  src={detailsCourse.image}
+                  alt={detailsCourse.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               <div className="overflow-y-auto flex-1">
-                <div className="px-5 pt-5 pb-2">
-                  <DialogHeader className="text-left">
-                    <DialogTitle className="font-serif text-xl font-medium tracking-[-0.02em] text-foreground">
-                      {detailsCourse.title}
-                    </DialogTitle>
-                    <DialogDescription className="text-sm text-muted-foreground mt-1">
-                      {detailsCourse.tagline}
-                    </DialogDescription>
-                  </DialogHeader>
 
-                  {/* Quick markers */}
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <Users className="w-3.5 h-3.5" /> Индивидуально
-                    </span>
-                    <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <Clock className="w-3.5 h-3.5" /> 1–2 дня
-                    </span>
-                  </div>
-                </div>
+              <div className="px-6 pt-6 pb-2">
+                <DialogHeader className="text-left">
+                  <DialogTitle className="font-serif text-2xl font-medium tracking-[-0.02em] text-foreground">
+                    {detailsCourse.title}
+                  </DialogTitle>
+                  <DialogDescription className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                    {detailsCourse.detailedDescription || detailsCourse.description}
+                  </DialogDescription>
+                </DialogHeader>
+              </div>
 
-                <div className="px-5 pb-5 space-y-5">
-                  {/* Includes */}
+              <div className="px-6 pb-6 space-y-6">
+                {/* What's included */}
+                {detailsCourse.includes && (
                   <div>
-                    <p className="text-sm font-medium text-foreground mb-2 flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-primary" />
-                      Что входит
+                    <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-primary" />
+                      Из чего состоит
                     </p>
-                    <ul className="space-y-1.5">
+                    <ul className="space-y-2.5">
                       {detailsCourse.includes.map((item) => (
-                        <li key={item} className="text-sm text-muted-foreground flex gap-2.5 items-start">
+                        <li key={item} className="text-sm text-muted-foreground flex gap-3 items-start">
                           <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
                           {item}
                         </li>
                       ))}
                     </ul>
                   </div>
+                )}
 
-                  {/* Programs */}
-                  <div className="grid grid-cols-2 gap-2.5">
+                {/* Programs */}
+                {detailsCourse.programs && (
+                  <div className="space-y-3">
                     {detailsCourse.programs.map((program) => (
-                      <div key={program.title} className="bg-secondary rounded-2xl p-4">
-                        <p className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wider">{program.title}</p>
-                        <ul className="space-y-1">
+                      <div key={program.title} className="bg-secondary rounded-[16px] p-5">
+                        <p className="text-sm font-medium text-foreground mb-3">{program.title}</p>
+                        <ul className="space-y-2">
                           {program.items.map((item) => (
-                            <li key={item} className="text-xs text-muted-foreground flex gap-2 items-start">
-                              <span className="w-0.5 h-0.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                            <li key={item} className="text-sm text-muted-foreground flex gap-3 items-start">
+                              <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
                               {item}
                             </li>
                           ))}
                         </ul>
+                        {program.note && (
+                          <p className="text-xs text-muted-foreground/70 italic mt-3">
+                            {program.note}
+                          </p>
+                        )}
                       </div>
                     ))}
                   </div>
+                )}
 
-                  {/* Pricing */}
+                {/* Pricing */}
+                {detailsCourse.pricing && (
                   <div>
-                    <p className="text-sm font-medium text-foreground mb-2 flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-primary" />
+                    <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-primary" />
                       Стоимость
                     </p>
-                    <div className="grid grid-cols-2 gap-2.5">
+                    <div className="grid grid-cols-2 gap-3">
                       {detailsCourse.pricing.map((option) => (
-                        <div key={option.label} className="bg-secondary rounded-2xl p-3 text-center">
-                          <p className="text-xs text-muted-foreground mb-0.5">{option.label}</p>
+                        <div
+                          key={option.label}
+                          className="bg-secondary rounded-[16px] p-4 text-center"
+                        >
+                          <p className="text-xs text-muted-foreground mb-1">{option.label}</p>
                           <p className="text-lg font-serif font-medium text-foreground">{option.price}</p>
                         </div>
                       ))}
                     </div>
                   </div>
+                )}
 
-                  <Button
-                    variant="premium"
-                    size="lg"
-                    className="w-full"
-                    onClick={() => {
-                      setDetailsCourse(null);
-                      setTimeout(() => setBookingOpen(true), 200);
-                    }}
-                  >
-                    Записаться на курс
-                  </Button>
-                </div>
+                {/* Book CTA inside details popup */}
+                <Button
+                  variant="premium"
+                  size="lg"
+                  className="w-full"
+                  onClick={() => {
+                    setDetailsCourse(null);
+                    setTimeout(() => setBookingOpen(true), 200);
+                  }}
+                >
+                  Записаться на курс
+                </Button>
+              </div>
               </div>
             </div>
           )}
@@ -279,6 +350,7 @@ export const Courses = () => {
               Выберите удобный способ связи
             </DialogDescription>
           </DialogHeader>
+
           <div className="px-5 pb-6 pt-3 space-y-2">
             {contactOptions.map((option) => (
               <a
