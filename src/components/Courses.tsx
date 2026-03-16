@@ -227,7 +227,7 @@ export const Courses = () => {
                   {/* Includes */}
                   <div>
                     <p className="text-sm font-medium text-foreground mb-2 flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-primary" />
+                      <Sparkles className="w-3.5 h-3.5 text-primary-text" />
                       Из чего состоит
                     </p>
                     <ul className="space-y-2">
