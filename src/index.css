@@ -17,9 +17,7 @@
 
     --primary: 33 80% 82%;
     --primary-foreground: 0 0% 15%;
-    --primary-text: 33 55% 45%;
-
-    --secondary: 30 33% 96%;
+    --primary-text: 32, 47%, 82% --secondary: 30 33% 96%;
     --secondary-foreground: 0 0% 10%;
 
     --muted: 30 33% 96%;
@@ -46,11 +44,12 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    --font-serif: 'Cormorant Garamond', Georgia, serif;
-    --font-sans: 'Manrope', system-ui, sans-serif;
+    --font-serif: "Cormorant Garamond", Georgia, serif;
+    --font-sans: "Manrope", system-ui, sans-serif;
 
-    --shadow-premium: 0 0 0 1px rgba(244, 215, 174, 0.2), 0 10px 30px -10px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
-    --shadow-premium-hover: 0 0 0 1px rgba(244, 215, 174, 0.3), 0 30px 60px -20px rgba(0,0,0,0.08);
+    --shadow-premium:
+      0 0 0 1px rgba(244, 215, 174, 0.2), 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+    --shadow-premium-hover: 0 0 0 1px rgba(244, 215, 174, 0.3), 0 30px 60px -20px rgba(0, 0, 0, 0.08);
     --ease-premium: cubic-bezier(0.2, 0, 0, 1);
   }
 }
@@ -65,7 +64,12 @@
     font-family: var(--font-sans);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-serif);
   }
 
@@ -77,7 +81,9 @@
 @layer components {
   .card-premium {
     box-shadow: var(--shadow-premium);
-    transition: transform 0.4s var(--ease-premium), box-shadow 0.4s ease;
+    transition:
+      transform 0.4s var(--ease-premium),
+      box-shadow 0.4s ease;
     border-radius: var(--radius);
   }
 
@@ -119,7 +125,14 @@
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-4px); }
-  75% { transform: translateX(4px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
 }
