@@ -41,6 +41,7 @@ const contactOptions = [
 interface Course {
   image: string;
   title: string;
+  shortDescription: string;
   description: string;
   forWhom: string;
   highlights: string[];
@@ -54,6 +55,7 @@ const courses: Course[] = [
   {
     image: courseMakeup,
     title: "Макияж для себя",
+    shortDescription: "Это про уверенность в себе каждый день",
     description: "Идеальный нюд на каждый день, вечерний макияж на свидание, яркий макияж на вечеринку — всё это вы сможете делать самостоятельно после прохождения курса.",
     forWhom: "Для тех, кто хочет научиться подчёркивать свою красоту каждый день",
     highlights: ["Индивидуально", "1–2 дня", "от 5 000 ₽"],
@@ -90,6 +92,7 @@ const courses: Course[] = [
   {
     image: courseHair,
     title: "Укладки для себя",
+    shortDescription: "Научитесь создавать красивые причёски и укладки самостоятельно",
     description: "Красивые локоны на свидание, объёмная укладка на каждый день, эффектная причёска на мероприятие — всё это вы сможете делать самостоятельно после прохождения курса.",
     forWhom: "Для тех, кто хочет делать красивые укладки и причёски каждый день",
     highlights: ["Индивидуально", "1–2 дня", "от 5 000 ₽"],
@@ -151,45 +154,46 @@ export const Courses = () => {
                   <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-2">
                     {course.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-5 line-clamp-3">
-                    {course.description}
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                    {course.shortDescription}
                   </p>
 
-                  {/* Highlights row */}
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {course.highlights.map((h) => (
-                      <span key={h} className="text-xs tracking-wide text-muted-foreground bg-secondary rounded-full px-3 py-1.5">
-                        {h}
-                      </span>
-                    ))}
+                  {/* Для кого */}
+                  <div className="bg-secondary/80 rounded-2xl p-4 mb-5">
+                    <p className="text-sm font-medium text-foreground mb-1">Для кого</p>
+                    <p className="text-[13px] text-muted-foreground leading-relaxed">{course.forWhom}</p>
                   </div>
 
-                  {/* Skills as compact chips */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {course.skills.map((skill) => (
-                      <span key={skill} className="text-[11px] text-foreground/60 border border-border/50 rounded-full px-2.5 py-1">
-                        {skill}
-                      </span>
-                    ))}
+                  {/* Вы научитесь */}
+                  <div className="mb-6">
+                    <p className="text-sm font-medium text-foreground mb-3">Вы научитесь</p>
+                    <ul className="space-y-2">
+                      {course.skills.map((skill) => (
+                        <li key={skill} className="text-[13px] text-muted-foreground flex gap-2.5 items-start">
+                          <span className="text-primary-text mt-0.5 shrink-0">›</span>
+                          {skill}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  {/* Buttons */}
-                  <div className="flex gap-3 mt-auto">
+                  {/* Buttons — stacked full-width like in screenshot */}
+                  <div className="flex flex-col gap-2.5 mt-auto">
                     <Button
                       variant="premium-outline"
                       size="lg"
-                      className="flex-1"
+                      className="w-full"
                       onClick={() => setDetailsCourse(course)}
                     >
-                      Подробнее
+                      Подробнее о курсе
                     </Button>
                     <Button
                       variant="premium"
                       size="lg"
-                      className="flex-1"
+                      className="w-full"
                       onClick={() => setBookingOpen(true)}
                     >
-                      Записаться
+                      Записаться на курс
                     </Button>
                   </div>
                 </div>
@@ -220,6 +224,12 @@ export const Courses = () => {
                       {detailsCourse.description}
                     </DialogDescription>
                   </DialogHeader>
+
+                  {/* Для кого */}
+                  <div className="bg-secondary/80 rounded-2xl p-4 mt-4">
+                    <p className="text-sm font-medium text-foreground mb-1">Для кого</p>
+                    <p className="text-[13px] text-muted-foreground leading-relaxed">{detailsCourse.forWhom}</p>
+                  </div>
 
                   {/* Quick markers as pills */}
                   <div className="flex gap-2 mt-4">
