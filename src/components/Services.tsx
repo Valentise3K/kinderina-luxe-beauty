@@ -108,12 +108,12 @@ export const Services = () => {
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-baseline gap-2 flex-wrap">
                             <h4 className="font-medium text-foreground text-base md:text-lg leading-snug">
                               {service.title}
                             </h4>
                             {service.popular && (
-                               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary-text text-[10px] font-semibold uppercase tracking-wider shrink-0">
+                               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary-text text-[10px] font-semibold uppercase tracking-wider shrink-0 relative top-[-1px]">
                                 <Star className="w-2.5 h-2.5 fill-primary" />
                                 Хит
                               </span>
