@@ -15,7 +15,8 @@ export const Hero = () => {
           alt="Kinderina — визажист и стилист, Воронеж"
           className="w-full h-full object-cover object-[center_10%] md:object-[center_15%]"
           fetchPriority="high"
-          decoding="async"
+          width={1080}
+          height={1350}
         />
         {/* Reduced overlays for more contrast */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 via-40% to-background/95 to-80%" />
