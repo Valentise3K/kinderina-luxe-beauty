@@ -12,7 +12,6 @@ export const Footer = () => {
           </a>
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Kinderina. Все права защищены.
-            </p>
           </p>
           <div className="flex gap-6">
             <a

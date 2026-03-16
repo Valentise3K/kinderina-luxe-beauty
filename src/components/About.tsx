@@ -36,6 +36,7 @@ export const About = () => {
             <div className="image-hover-zoom aspect-[3/4] max-w-md mx-auto lg:mx-0">
               <img
                 src={aboutImage}
+                alt="Kinderina — профессиональный визажист"
                 loading="lazy"
                 className="w-full h-full object-cover"
               />
