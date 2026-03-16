@@ -132,7 +132,7 @@ export const Services = () => {
                           <Clock className="w-3.5 h-3.5" />
                           <span className="text-xs">{service.duration}</span>
                         </div>
-                         <span className="text-xs text-primary-text font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                         <span className="text-xs text-primary-text font-medium">
                           Записаться →
                         </span>
                       </div>
