@@ -51,7 +51,7 @@ export const Contact = () => {
       <div className="container mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
-            <p className="nav-link text-primary mb-4">Контакты</p>
+            <p className="nav-link text-primary-text mb-4">Контакты</p>
             <h2 className="section-heading mb-4">Свяжитесь со мной</h2>
             <span className="section-heading-accent" />
           </div>

@@ -265,7 +265,7 @@ export const Courses = () => {
                   {/* Pricing */}
                   <div>
                     <p className="text-sm font-medium text-foreground mb-2 flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-primary" />
+                      <Clock className="w-3.5 h-3.5 text-primary-text" />
                       Стоимость
                     </p>
                     <div className="grid grid-cols-2 gap-2.5">

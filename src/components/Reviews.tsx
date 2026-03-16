@@ -59,10 +59,10 @@ export const Reviews = () => {
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex gap-0.5">
                     {Array.from({ length: review.stars }).map((_, j) => (
-                      <Star key={j} size={13} className="fill-primary text-primary" />
+                      <Star key={j} size={13} className="fill-primary text-primary-text" />
                     ))}
                   </div>
-                  <span className="text-[10px] font-medium uppercase tracking-wider text-primary/70 bg-primary/10 px-2.5 py-1 rounded-full">
+                  <span className="text-[10px] font-medium uppercase tracking-wider text-primary-text bg-primary/10 px-2.5 py-1 rounded-full">
                     {review.service}
                   </span>
                 </div>

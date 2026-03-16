@@ -98,7 +98,7 @@ export const BeforeAfter = () => {
       <div className="container mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
-            <p className="nav-link text-primary mb-4">Результаты</p>
+            <p className="nav-link text-primary-text mb-4">Результаты</p>
             <h2 className="section-heading mb-4">До и после</h2>
             <span className="section-heading-accent" />
           </div>
