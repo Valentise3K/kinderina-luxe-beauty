@@ -2,13 +2,14 @@ import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 import { BookingDialog } from "@/components/BookingDialog";
-import { Clock } from "lucide-react";
+import { Clock, Star } from "lucide-react";
 
 interface Service {
   title: string;
   description?: string;
   price: string;
   duration: string;
+  popular?: boolean;
 }
 
 interface ServiceGroup {
@@ -22,14 +23,9 @@ const serviceGroups: ServiceGroup[] = [
   {
     title: "Макияж и причёски",
     services: [
-      { title: "Макияж", description: "Свадебный, вечерний, лёгкий, на фотосессию", price: "3 000 ₽", duration: "1 ч" },
-      {
-        title: "Причёска / укладка",
-        description: "Свадебная, лёгкая укладка, на фотосессию",
-        price: "3 000 ₽",
-        duration: "1 ч",
-      },
-      { title: "Полный образ", description: "Макияж + причёска", price: "5 500 ₽", duration: "2 ч" },
+      { title: "Макияж", description: "Свадебный, вечерний, лёгкий, на фотосессию", price: "3 000 ₽", duration: "1 ч", popular: true },
+      { title: "Причёска / укладка", description: "Свадебная, лёгкая укладка, на фотосессию", price: "3 000 ₽", duration: "1 ч" },
+      { title: "Полный образ", description: "Макияж + причёска", price: "5 500 ₽", duration: "2 ч", popular: true },
     ],
     notes: [
       "Выезд в пределах города — 1 500 ₽",
@@ -42,9 +38,9 @@ const serviceGroups: ServiceGroup[] = [
     services: [
       { title: "Окрашивание бровей", price: "800 ₽", duration: "30 мин" },
       { title: "Коррекция бровей", price: "800 ₽", duration: "30 мин" },
-      { title: "Коррекция и окрашивание бровей", price: "1 200 ₽", duration: "1 ч" },
-      { title: "Долговременная укладка и коррекция бровей", price: "1 400 ₽", duration: "1 ч" },
-      { title: "Долговременная укладка, коррекция и окрашивание бровей", price: "1 600 ₽", duration: "1 ч 15 мин" },
+      { title: "Коррекция + окрашивание", price: "1 200 ₽", duration: "1 ч", popular: true },
+      { title: "ДУ + коррекция", description: "Долговременная укладка", price: "1 400 ₽", duration: "1 ч" },
+      { title: "ДУ + коррекция + окрашивание", price: "1 600 ₽", duration: "1 ч 15 мин" },
       { title: "Удаление пушка над губой", price: "200 ₽", duration: "10 мин" },
     ],
   },
@@ -61,10 +57,11 @@ const serviceGroups: ServiceGroup[] = [
         description: "Ламинирование ресниц + коррекция с окрашиванием бровей",
         price: "2 300 ₽",
         duration: "2 ч",
+        popular: true,
       },
       {
         title: "Комплекс №2",
-        description: "Ламинирование ресниц + долговременная укладка и коррекция с окрашиванием бровей",
+        description: "Ламинирование ресниц + ДУ с коррекцией и окрашиванием бровей",
         price: "2 600 ₽",
         duration: "2 ч",
       },
@@ -76,21 +73,21 @@ export const Services = () => {
   const [bookingOpen, setBookingOpen] = useState(false);
 
   return (
-    <section id="services" className="py-24 md:py-32">
+    <section id="services" className="py-20 md:py-32">
       <div className="container mx-auto px-6">
         <FadeIn>
-          <div className="text-center mb-16">
+          <div className="text-center mb-14">
             <p className="nav-link text-primary mb-4">Услуги</p>
             <h2 className="section-heading mb-4">Услуги и цены</h2>
             <span className="section-heading-accent" />
           </div>
         </FadeIn>
 
-        <div className="max-w-3xl mx-auto space-y-14">
+        <div className="max-w-3xl mx-auto space-y-12">
           {serviceGroups.map((group, gi) => (
             <div key={group.title}>
               <FadeIn delay={gi * 60}>
-                <div className="text-center mb-6">
+                <div className="text-center mb-5">
                   <h3 className="font-serif text-2xl md:text-3xl font-light text-foreground">{group.title}</h3>
                   {group.subtitle && (
                     <p className="text-xs text-muted-foreground mt-1.5 tracking-wide">{group.subtitle}</p>
@@ -98,42 +95,46 @@ export const Services = () => {
                 </div>
               </FadeIn>
 
-              <div className="space-y-2.5">
+              <div className="space-y-2">
                 {group.services.map((service, si) => (
-                  <FadeIn key={si} delay={gi * 60 + si * 60}>
+                  <FadeIn key={si} delay={gi * 60 + si * 50}>
                     <div
-                      className="group p-4 md:p-5 rounded-2xl bg-card border border-border/50 hover:border-primary/20 transition-colors duration-300 cursor-pointer"
+                      className={`group p-4 rounded-2xl border transition-colors duration-300 cursor-pointer ${
+                        service.popular
+                          ? "bg-primary/[0.03] border-primary/25 hover:border-primary/40"
+                          : "bg-card border-border/50 hover:border-primary/20"
+                      }`}
                       onClick={() => setBookingOpen(true)}
                     >
-                      <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-start justify-between gap-3">
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-foreground text-base md:text-lg leading-snug">
-                            {service.title}
-                          </h4>
+                          <div className="flex items-center gap-2">
+                            <h4 className="font-medium text-foreground text-base md:text-lg leading-snug">
+                              {service.title}
+                            </h4>
+                            {service.popular && (
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary text-[10px] font-semibold uppercase tracking-wider shrink-0">
+                                <Star className="w-2.5 h-2.5 fill-primary" />
+                                Хит
+                              </span>
+                            )}
+                          </div>
                           {service.description && (
-                            <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{service.description}</p>
+                            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{service.description}</p>
                           )}
                         </div>
                         <span className="text-primary font-semibold tabular-nums text-sm md:text-base shrink-0 pt-0.5">
                           {service.price}
                         </span>
                       </div>
-                      <div className="flex items-center justify-between mt-2.5">
+                      <div className="flex items-center justify-between mt-2">
                         <div className="flex items-center gap-1.5 text-muted-foreground">
                           <Clock className="w-3.5 h-3.5" />
                           <span className="text-xs">{service.duration}</span>
                         </div>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="rounded-full text-xs px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:opacity-100"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setBookingOpen(true);
-                          }}
-                        >
-                          Записаться
-                        </Button>
+                        <span className="text-xs text-primary/70 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          Записаться →
+                        </span>
                       </div>
                     </div>
                   </FadeIn>
@@ -141,8 +142,8 @@ export const Services = () => {
               </div>
 
               {group.notes && group.notes.length > 0 && (
-                <FadeIn delay={gi * 60 + group.services.length * 60}>
-                  <div className="mt-4 p-4 rounded-2xl bg-secondary/50 border border-border/30">
+                <FadeIn delay={gi * 60 + group.services.length * 50}>
+                  <div className="mt-3 p-4 rounded-2xl bg-secondary/50 border border-border/30">
                     <div className="space-y-1.5">
                       {group.notes.map((note, ni) => (
                         <p key={ni} className="text-xs text-muted-foreground flex items-center gap-2">
@@ -159,9 +160,9 @@ export const Services = () => {
         </div>
 
         <FadeIn delay={400}>
-          <div className="text-center mt-14">
+          <div className="text-center mt-12">
             <Button variant="premium" size="lg" onClick={() => setBookingOpen(true)}>
-              Записаться
+              Записаться онлайн
             </Button>
           </div>
         </FadeIn>

@@ -8,60 +8,58 @@ export const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-svh flex flex-col overflow-hidden">
-      {/* Background image — editorial framing */}
+      {/* Background image */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Kinderina — визажист и стилист"
+          alt="Kinderina — визажист и стилист, Воронеж"
           className="w-full h-full object-cover object-[center_10%] md:object-[center_15%]"
           fetchPriority="high"
           decoding="async"
         />
-        {/* Multi-layer premium overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 via-40% to-background/98 to-80%" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/30 to-background/50 md:from-background/85 md:via-background/40 md:to-transparent" />
-        {/* Warm glow layer */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_center,_transparent_40%,_hsl(var(--primary)/0.06)_100%)]" />
+        {/* Reduced overlays for more contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 via-40% to-background/95 to-80%" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-transparent md:from-background/70 md:via-background/30 md:to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="container relative mx-auto px-8 md:px-6 flex flex-col flex-1 justify-end md:justify-center pb-[env(safe-area-inset-bottom)] pt-32 md:py-40">
-        <div className="max-w-2xl mb-12 md:mb-0">
+      <div className="container relative mx-auto px-6 flex flex-col flex-1 justify-end md:justify-center pb-[env(safe-area-inset-bottom)] pt-32 md:py-40">
+        <div className="max-w-2xl mb-10 md:mb-0">
           {/* Subtitle */}
           <FadeIn>
-            <p className="text-[9px] sm:text-[10px] md:text-[13px] uppercase tracking-[0.15em] md:tracking-[0.15em] font-semibold text-foreground/85 mb-4 md:mb-6 whitespace-nowrap">
-              Makeup&ensp;·&ensp;Hair&ensp;·&ensp;Brows&ensp;·&ensp;Voronezh
+            <p className="text-[10px] md:text-[13px] uppercase tracking-[0.15em] font-semibold text-foreground/90 mb-3 md:mb-5">
+              Визажист · Стилист · Воронеж
             </p>
           </FadeIn>
 
           {/* Main title */}
           <FadeIn delay={120}>
-            <h1 className="font-serif text-[3.5rem] sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-[-0.05em] text-foreground leading-[0.9] mb-5 md:mb-6">
+            <h1 className="font-serif text-[3.5rem] sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-[-0.05em] text-foreground leading-[0.9] mb-4 md:mb-5">
               Kinderina
             </h1>
           </FadeIn>
 
-          {/* Description */}
+          {/* Description — more specific */}
           <FadeIn delay={240}>
-            <p className="text-[15px] md:text-lg text-foreground/80 leading-relaxed max-w-sm md:max-w-lg mb-10 md:mb-12 font-normal">
-              Макияж, укладки, брови и&nbsp;ресницы с&nbsp;акцентом
-              <br className="hidden sm:inline" /> на&nbsp;естественную красоту
+            <p className="text-[15px] md:text-lg text-foreground/85 leading-relaxed max-w-sm md:max-w-md mb-8 md:mb-10">
+              Макияж, причёски, оформление бровей
+              <br className="hidden sm:inline" /> и&nbsp;ресниц в&nbsp;Воронеже
             </p>
           </FadeIn>
 
-          {/* CTA Buttons */}
+          {/* CTA — clear hierarchy */}
           <FadeIn delay={360}>
-            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 sm:items-center">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               {/* Primary CTA */}
               <button
                 onClick={() => setBookingOpen(true)}
-                className="group relative inline-flex items-center justify-center h-[52px] sm:h-14 px-10 rounded-full bg-primary text-primary-foreground text-[14px] sm:text-[15px] font-medium tracking-[0.04em] transition-all duration-500 hover:shadow-[0_8px_30px_-4px_hsl(var(--primary)/0.45)] hover:scale-[1.02] active:scale-[0.98]"
+                className="group relative inline-flex items-center justify-center h-[52px] sm:h-14 px-10 rounded-full bg-primary text-primary-foreground text-[14px] sm:text-[15px] font-semibold tracking-[0.04em] transition-all duration-500 hover:shadow-[0_8px_30px_-4px_hsl(var(--primary)/0.45)] hover:scale-[1.02] active:scale-[0.98]"
               >
-                Записаться
+                Записаться онлайн
               </button>
 
-              {/* Secondary CTAs */}
-              <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-3">
+              {/* Secondary — subtle text anchors */}
+              <div className="flex gap-5 sm:gap-6 pl-1">
                 {[
                   { href: "#portfolio", label: "Портфолио" },
                   { href: "#services", label: "Услуги" },
@@ -70,7 +68,7 @@ export const Hero = () => {
                   <a
                     key={href}
                     href={href}
-                    className="inline-flex items-center justify-center h-11 sm:h-12 px-4 sm:px-7 rounded-full border border-foreground/12 bg-background/70 backdrop-blur-md text-foreground text-[13px] sm:text-[14px] font-medium tracking-[0.02em] transition-all duration-400 hover:border-primary/40 hover:bg-background/90 active:scale-[0.97]"
+                    className="text-[13px] sm:text-[14px] text-foreground/60 hover:text-foreground font-medium transition-colors duration-300"
                   >
                     {label}
                   </a>
