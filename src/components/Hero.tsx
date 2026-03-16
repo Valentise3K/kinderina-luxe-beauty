@@ -59,7 +59,7 @@ export const Hero = () => {
               </button>
 
               {/* Secondary — pill buttons */}
-              <div className="flex gap-2.5 sm:gap-3">
+              <div className="flex gap-2.5 mt-1">
                 {[
                   { href: "#portfolio", label: "Портфолио" },
                   { href: "#services", label: "Услуги" },
@@ -68,7 +68,7 @@ export const Hero = () => {
                   <a
                     key={href}
                     href={href}
-                    className="inline-flex items-center justify-center px-[16px] sm:px-[18px] py-[8px] sm:py-[10px] rounded-[20px] bg-[hsl(30_20%_93%)] text-foreground/70 text-[12px] sm:text-[13px] font-semibold tracking-[0.04em] transition-all duration-300 hover:bg-[hsl(32_55%_45%)] hover:text-white hover:shadow-md active:scale-95"
+                    className="inline-flex items-center justify-center w-[100px] sm:w-[110px] py-[9px] rounded-[20px] bg-[hsl(30_20%_93%)] text-foreground/70 text-[12px] sm:text-[13px] font-semibold tracking-[0.04em] transition-all duration-300 hover:bg-[hsl(32_55%_45%)] hover:text-white hover:shadow-md active:scale-95"
                   >
                     {label}
                   </a>
