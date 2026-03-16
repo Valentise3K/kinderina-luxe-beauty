@@ -58,8 +58,8 @@ export const Hero = () => {
                 Записаться онлайн
               </button>
 
-              {/* Secondary — subtle text anchors */}
-              <div className="flex gap-5 sm:gap-6 pl-1">
+              {/* Secondary — pill buttons */}
+              <div className="flex gap-2.5 sm:gap-3">
                 {[
                   { href: "#portfolio", label: "Портфолио" },
                   { href: "#services", label: "Услуги" },
@@ -68,7 +68,7 @@ export const Hero = () => {
                   <a
                     key={href}
                     href={href}
-                    className="text-[13px] sm:text-[14px] text-foreground/60 hover:text-foreground font-medium transition-colors duration-300"
+                    className="inline-flex items-center justify-center px-[16px] sm:px-[18px] py-[8px] sm:py-[10px] rounded-[20px] bg-[hsl(30_20%_93%)] text-foreground/70 text-[12px] sm:text-[13px] font-semibold tracking-[0.04em] transition-all duration-300 hover:bg-[hsl(32_55%_45%)] hover:text-white hover:shadow-md active:scale-95"
                   >
                     {label}
                   </a>
