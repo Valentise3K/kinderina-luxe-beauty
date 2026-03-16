@@ -132,7 +132,7 @@ export const Courses = () => {
       <div className="container mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-14">
-            <p className="nav-link text-primary mb-4">Обучение</p>
+            <p className="nav-link text-primary-text mb-4">Обучение</p>
             <h2 className="section-heading mb-4">Курсы</h2>
             <span className="section-heading-accent" />
           </div>
