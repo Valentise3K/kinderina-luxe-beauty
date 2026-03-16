@@ -155,14 +155,8 @@ export const Courses = () => {
                     {course.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                    {course.shortDescription}
+                    {course.description}
                   </p>
-
-                  {/* Для кого */}
-                  <div className="bg-secondary/80 rounded-2xl p-4 mb-5">
-                    <p className="text-sm font-medium text-foreground mb-1">Для кого</p>
-                    <p className="text-[13px] text-muted-foreground leading-relaxed">{course.forWhom}</p>
-                  </div>
 
                   {/* Вы научитесь */}
                   <div className="mb-6">
