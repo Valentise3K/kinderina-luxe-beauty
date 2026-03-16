@@ -123,7 +123,7 @@ export const Services = () => {
                             <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{service.description}</p>
                           )}
                         </div>
-                        <span className="text-primary font-semibold tabular-nums text-sm md:text-base shrink-0 pt-0.5">
+                         <span className="text-primary-text font-semibold tabular-nums text-sm md:text-base shrink-0 pt-0.5">
                           {service.price}
                         </span>
                       </div>
