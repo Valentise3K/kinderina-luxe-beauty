@@ -132,7 +132,7 @@ export const Courses = () => {
       <div className="container mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-14">
-            <p className="nav-link text-primary mb-4">Обучение</p>
+            <p className="nav-link text-primary-text mb-4">Обучение</p>
             <h2 className="section-heading mb-4">Курсы</h2>
             <span className="section-heading-accent" />
           </div>
@@ -227,7 +227,7 @@ export const Courses = () => {
                   {/* Includes */}
                   <div>
                     <p className="text-sm font-medium text-foreground mb-2 flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-primary" />
+                      <Sparkles className="w-3.5 h-3.5 text-primary-text" />
                       Из чего состоит
                     </p>
                     <ul className="space-y-2">
@@ -265,7 +265,7 @@ export const Courses = () => {
                   {/* Pricing */}
                   <div>
                     <p className="text-sm font-medium text-foreground mb-2 flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-primary" />
+                      <Clock className="w-3.5 h-3.5 text-primary-text" />
                       Стоимость
                     </p>
                     <div className="grid grid-cols-2 gap-2.5">

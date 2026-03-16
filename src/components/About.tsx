@@ -45,7 +45,7 @@ export const About = () => {
           {/* Text */}
           <div>
             <FadeIn>
-              <p className="nav-link text-primary mb-4">О мастере</p>
+              <p className="nav-link text-primary-text mb-4">О мастере</p>
               <h2 className="section-heading mb-6 text-balance">Карина — ваш мастер красоты</h2>
             </FadeIn>
 

@@ -77,7 +77,7 @@ export const Services = () => {
       <div className="container mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-14">
-            <p className="nav-link text-primary mb-4">Услуги</p>
+            <p className="nav-link text-primary-text mb-4">Услуги</p>
             <h2 className="section-heading mb-4">Услуги и цены</h2>
             <span className="section-heading-accent" />
           </div>
@@ -113,7 +113,7 @@ export const Services = () => {
                               {service.title}
                             </h4>
                             {service.popular && (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary text-[10px] font-semibold uppercase tracking-wider shrink-0">
+                               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary-text text-[10px] font-semibold uppercase tracking-wider shrink-0">
                                 <Star className="w-2.5 h-2.5 fill-primary" />
                                 Хит
                               </span>
@@ -123,7 +123,7 @@ export const Services = () => {
                             <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{service.description}</p>
                           )}
                         </div>
-                        <span className="text-primary font-semibold tabular-nums text-sm md:text-base shrink-0 pt-0.5">
+                         <span className="text-primary-text font-semibold tabular-nums text-sm md:text-base shrink-0 pt-0.5">
                           {service.price}
                         </span>
                       </div>
@@ -132,7 +132,7 @@ export const Services = () => {
                           <Clock className="w-3.5 h-3.5" />
                           <span className="text-xs">{service.duration}</span>
                         </div>
-                        <span className="text-xs text-primary/70 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                         <span className="text-xs text-primary-text font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           Записаться →
                         </span>
                       </div>
