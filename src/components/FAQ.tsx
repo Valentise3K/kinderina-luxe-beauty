@@ -35,7 +35,7 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section className="py-20 md:py-28 bg-secondary">
+    <section id="faq" className="py-20 md:py-28 bg-secondary">
       <div className="container mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-14">
