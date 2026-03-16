@@ -10,7 +10,6 @@ const navItems = [
   { label: "Отзывы", href: "#reviews" },
   { label: "FAQ", href: "#faq" },
   { label: "Контакты", href: "#contact" },
-  { label: "Контакты", href: "#contact" },
 ];
 
 export const Header = () => {
