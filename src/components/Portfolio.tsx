@@ -209,17 +209,26 @@ const CarouselCard = ({
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <img
-        src={images[current]}
-        alt={title}
-        className="w-full h-auto object-cover transition-all duration-500 group-hover:scale-105"
-        loading="lazy"
-      />
+      {/* Crossfade layer: all images stacked, only current is visible */}
+      <div className="relative w-full">
+        {images.map((img, idx) => (
+          <img
+            key={idx}
+            src={img}
+            alt={title}
+            className={`w-full h-auto object-cover transition-opacity duration-700 ease-in-out group-hover:scale-105 ${
+              idx === 0 ? "relative" : "absolute inset-0"
+            } ${idx === current ? "opacity-100" : "opacity-0"}`}
+            style={idx !== 0 ? { transition: "opacity 0.7s ease-in-out, transform 0.5s var(--ease-premium)" } : { transition: "opacity 0.7s ease-in-out, transform 0.5s var(--ease-premium)" }}
+            loading="lazy"
+          />
+        ))}
+      </div>
       {/* Title overlay — always visible on mobile, hover on desktop */}
       <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent transition-all duration-500 flex items-end p-5 md:p-6 md:opacity-0 md:group-hover:opacity-100 pointer-events-none">
         <p className="text-white font-serif text-base md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{title}</p>
       </div>
-      {/* Nav arrows - z-10 to stay above overlay */}
+      {/* Nav arrows */}
       <button
         onClick={prev}
         aria-label="Предыдущее фото"
