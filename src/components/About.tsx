@@ -37,6 +37,7 @@ export const About = () => {
               <img
                 src={aboutImage}
                 alt="Kinderina — профессиональный визажист"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
