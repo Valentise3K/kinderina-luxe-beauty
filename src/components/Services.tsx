@@ -23,8 +23,19 @@ const serviceGroups: ServiceGroup[] = [
   {
     title: "Макияж и причёски",
     services: [
-      { title: "Макияж", description: "Свадебный, вечерний, лёгкий, на фотосессию", price: "3 000 ₽", duration: "1 ч", popular: true },
-      { title: "Причёска / укладка", description: "Свадебная, лёгкая укладка, на фотосессию", price: "3 000 ₽", duration: "1 ч" },
+      {
+        title: "Макияж",
+        description: "Свадебный, вечерний, лёгкий, на фотосессию",
+        price: "3 000 ₽",
+        duration: "1 ч",
+        popular: true,
+      },
+      {
+        title: "Причёска / укладка",
+        description: "Свадебная, лёгкая укладка, на фотосессию",
+        price: "3 000 ₽",
+        duration: "1 ч",
+      },
       { title: "Полный образ", description: "Макияж + причёска", price: "5 500 ₽", duration: "2 ч", popular: true },
     ],
     notes: [
@@ -40,7 +51,7 @@ const serviceGroups: ServiceGroup[] = [
       { title: "Коррекция бровей", price: "800 ₽", duration: "30 мин" },
       { title: "Коррекция + окрашивание", price: "1 200 ₽", duration: "1 ч", popular: true },
       { title: "ДУ + коррекция", description: "Долговременная укладка", price: "1 400 ₽", duration: "1 ч" },
-      { title: "ДУ + коррекция + окрашивание", price: "1 600 ₽", duration: "1 ч 15 мин" },
+      { title: "ДУ + коррекция + окрашивание", price: "1 600 ₽", duration: "1 ч 15 мин", popular: true },
       { title: "Удаление пушка над губой", price: "200 ₽", duration: "10 мин" },
     ],
   },
@@ -113,7 +124,7 @@ export const Services = () => {
                               {service.title}
                             </h4>
                             {service.popular && (
-                               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary-text text-[10px] font-semibold uppercase tracking-wider shrink-0 relative top-[-1px]">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary-text text-[10px] font-semibold uppercase tracking-wider shrink-0 relative top-[-1px]">
                                 <Star className="w-2.5 h-2.5 fill-primary" />
                                 Хит
                               </span>
@@ -123,7 +134,7 @@ export const Services = () => {
                             <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{service.description}</p>
                           )}
                         </div>
-                         <span className="text-primary-text font-semibold tabular-nums text-sm md:text-base shrink-0 pt-0.5">
+                        <span className="text-primary-text font-semibold tabular-nums text-sm md:text-base shrink-0 pt-0.5">
                           {service.price}
                         </span>
                       </div>
@@ -132,9 +143,9 @@ export const Services = () => {
                           <Clock className="w-3.5 h-3.5" />
                           <span className="text-xs">{service.duration}</span>
                         </div>
-                         <span className="text-[11px] text-primary-foreground bg-primary/80 hover:bg-primary px-3 py-1 rounded-full font-medium transition-colors duration-200">
-                          Записаться
-                         </span>
+                        <span className="text-xs text-primary-text font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          Записаться →
+                        </span>
                       </div>
                     </div>
                   </FadeIn>
