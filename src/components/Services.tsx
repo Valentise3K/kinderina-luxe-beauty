@@ -77,7 +77,7 @@ export const Services = () => {
       <div className="container mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-14">
-            <p className="nav-link text-primary mb-4">Услуги</p>
+            <p className="nav-link text-primary-text mb-4">Услуги</p>
             <h2 className="section-heading mb-4">Услуги и цены</h2>
             <span className="section-heading-accent" />
           </div>
