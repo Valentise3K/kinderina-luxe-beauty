@@ -46,7 +46,7 @@ export const Reviews = () => {
       <div className="container mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-14">
-            <p className="nav-link text-primary mb-4">Отзывы</p>
+            <p className="nav-link text-primary-text mb-4">Отзывы</p>
             <h2 className="section-heading mb-4">Что говорят клиенты</h2>
             <span className="section-heading-accent" />
           </div>
