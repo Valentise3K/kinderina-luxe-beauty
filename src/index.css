@@ -18,6 +18,9 @@
     --primary: 33 80% 82%;
     --primary-foreground: 0 0% 15%;
     --primary-text: 32, 49%, 65%;
+    --pill-bg: 30 15% 93%;
+    --pill-active: 32 55% 46%;
+    --pill-active-foreground: 0 0% 100%;
     --secondary: 30 33% 96%;
     --secondary-foreground: 0 0% 10%;
 

@@ -282,15 +282,15 @@ export const Portfolio = () => {
         </FadeIn>
 
         <FadeIn delay={100}>
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div className="flex flex-wrap justify-center gap-2.5 mb-12">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`nav-link px-5 py-2.5 rounded-full transition-all duration-300 ${
+                className={`text-[13px] uppercase tracking-[0.08em] font-medium px-[18px] py-[10px] rounded-[20px] transition-all duration-300 ease-[var(--ease-premium)] ${
                   activeCategory === cat.id
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80"
+                    ? "bg-[hsl(var(--pill-active))] text-[hsl(var(--pill-active-foreground))] shadow-md shadow-[hsl(var(--pill-active)/0.2)]"
+                    : "bg-[hsl(var(--pill-bg))] text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--pill-bg))] hover:shadow-sm active:scale-[0.97]"
                 }`}
               >
                 {cat.label}
