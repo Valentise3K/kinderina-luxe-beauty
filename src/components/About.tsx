@@ -2,8 +2,8 @@ import { FadeIn } from "@/components/FadeIn";
 import aboutImage from "@/assets/about-portrait.jpg";
 
 const stats = [
-  { value: "500+", label: "Довольных клиентов" },
-  { value: "3 года", label: "Опыт работы" },
+  { value: "100+", label: "Довольных клиентов" },
+  { value: "2 года", label: "Опыт работы" },
   { value: "Премиум", label: "Косметика" },
 ];
 
@@ -14,7 +14,7 @@ const trustPoints = [
   },
   {
     title: "Премиальные материалы",
-    description: "Работаю только с профессиональной косметикой: MAC, Charlotte Tilbury, Dyson",
+    description: "Работаю только с профессиональной косметикой: SHIK, CATRICE, INFLUENCE BEAUTY",
   },
   {
     title: "Стойкий результат",
@@ -51,7 +51,8 @@ export const About = () => {
 
             <FadeIn delay={100}>
               <p className="text-foreground/80 leading-relaxed mb-8 text-[15px] md:text-base">
-                Создаю образы, которые подчёркивают индивидуальность. В каждой услуге ценю аккуратность, эстетику и&nbsp;комфорт клиента. Работаю в&nbsp;Воронеже — в&nbsp;салоне и&nbsp;с&nbsp;выездом.
+                Создаю образы, которые подчёркивают индивидуальность. В каждой услуге ценю аккуратность, эстетику
+                и&nbsp;комфорт клиента. Работаю в&nbsp;Воронеже — в&nbsp;салоне и&nbsp;с&nbsp;выездом.
               </p>
             </FadeIn>
 
