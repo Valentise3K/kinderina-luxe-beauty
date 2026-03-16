@@ -108,24 +108,24 @@ export const Services = () => {
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <h4 className="font-medium text-foreground text-base md:text-lg leading-snug">
-                              {service.title}
-                            </h4>
-                            {service.popular && (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary text-[10px] font-semibold uppercase tracking-wider shrink-0">
-                                <Star className="w-2.5 h-2.5 fill-primary" />
-                                Хит
-                              </span>
-                            )}
-                          </div>
+                          <h4 className="font-medium text-foreground text-base md:text-lg leading-snug">
+                            {service.title}
+                          </h4>
                           {service.description && (
                             <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{service.description}</p>
                           )}
                         </div>
-                        <span className="text-primary font-semibold tabular-nums text-sm md:text-base shrink-0 pt-0.5">
-                          {service.price}
-                        </span>
+                        <div className="flex items-center gap-2 shrink-0 pt-0.5">
+                          {service.popular && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary text-[10px] font-semibold uppercase tracking-wider">
+                              <Star className="w-2.5 h-2.5 fill-primary" />
+                              Хит
+                            </span>
+                          )}
+                          <span className="text-primary font-semibold tabular-nums text-sm md:text-base">
+                            {service.price}
+                          </span>
+                        </div>
                       </div>
                       <div className="flex items-center justify-between mt-2">
                         <div className="flex items-center gap-1.5 text-muted-foreground">
