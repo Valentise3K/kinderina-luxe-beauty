@@ -41,6 +41,7 @@ const contactOptions = [
 interface Course {
   image: string;
   title: string;
+  shortDescription: string;
   description: string;
   forWhom: string;
   highlights: string[];
