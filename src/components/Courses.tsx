@@ -2,13 +2,7 @@ import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 import { Clock, Users, ChevronRight } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import courseMakeup from "@/assets/course-makeup.jpg";
 import courseHair from "@/assets/course-hair.jpg";
 
@@ -56,7 +50,8 @@ const courses: Course[] = [
     image: courseMakeup,
     title: "Макияж для себя",
     shortDescription: "Это про уверенность в себе каждый день",
-    description: "Идеальный нюд на каждый день, вечерний макияж на свидание, яркий макияж на вечеринку — всё это вы сможете делать самостоятельно после прохождения курса.",
+    description:
+      "Идеальный нюд на каждый день, вечерний макияж на свидание, яркий макияж на вечеринку — всё это вы сможете делать самостоятельно после прохождения курса.",
     forWhom: "Для тех, кто хочет научиться подчёркивать свою красоту каждый день",
     highlights: ["Индивидуально", "1–2 дня", "от 5 000 ₽"],
     includes: [
@@ -76,7 +71,11 @@ const courses: Course[] = [
     programs: [
       {
         title: "Однодневный курс",
-        items: ["Разбор косметички", "Лёгкий повседневный макияж", "Любой вечерний макияж: графичная стрелка / растушёванная стрелка / смоки"],
+        items: [
+          "Разбор косметички",
+          "Лёгкий повседневный макияж",
+          "Любой вечерний макияж: графичная стрелка / растушёванная стрелка / смоки",
+        ],
       },
       {
         title: "Двухдневный курс",
@@ -93,7 +92,8 @@ const courses: Course[] = [
     image: courseHair,
     title: "Укладки для себя",
     shortDescription: "Научитесь создавать красивые причёски и укладки самостоятельно",
-    description: "Красивые локоны на свидание, объёмная укладка на каждый день, эффектная причёска на мероприятие — всё это вы сможете делать самостоятельно после прохождения курса.",
+    description:
+      "Красивые локоны на свидание, объёмная укладка на каждый день, эффектная причёска на мероприятие — всё это вы сможете делать самостоятельно после прохождения курса.",
     forWhom: "Для тех, кто хочет делать красивые укладки и причёски каждый день",
     highlights: ["Индивидуально", "1–2 дня", "от 5 000 ₽"],
     includes: [
@@ -102,12 +102,7 @@ const courses: Course[] = [
       "Создание объёма — учимся делать укладку с красивым прикорневым объёмом",
       "Подробная инструкция и создание желаемой причёски / укладки",
     ],
-    skills: [
-      "Разбор средств для волос",
-      "Анализ структуры волос",
-      "Создание объёма",
-      "Укладки и причёски",
-    ],
+    skills: ["Разбор средств для волос", "Анализ структуры волос", "Создание объёма", "Укладки и причёски"],
     programs: [
       {
         title: "Однодневный курс",
@@ -151,16 +146,12 @@ export const Courses = () => {
                 </div>
 
                 <div className="p-6 md:p-8 flex-1 flex flex-col">
-                  <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-2">
-                    {course.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                    {course.description}
-                  </p>
+                  <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-2">{course.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-5">{course.description}</p>
 
                   {/* Вы научитесь */}
                   <div className="mb-6">
-                    <p className="text-sm font-medium text-foreground mb-3">Вы научитесь</p>
+                    <p className="text-sm font-medium text-foreground mb-3">Вас ждёт</p>
                     <ul className="space-y-2">
                       {course.skills.map((skill) => (
                         <li key={skill} className="text-[13px] text-muted-foreground flex gap-2.5 items-start">
@@ -181,12 +172,7 @@ export const Courses = () => {
                     >
                       Подробнее о курсе
                     </Button>
-                    <Button
-                      variant="premium"
-                      size="lg"
-                      className="w-full"
-                      onClick={() => setBookingOpen(true)}
-                    >
+                    <Button variant="premium" size="lg" className="w-full" onClick={() => setBookingOpen(true)}>
                       Записаться на курс
                     </Button>
                   </div>
@@ -345,7 +331,13 @@ export const Courses = () => {
                   <p className="text-sm font-medium text-foreground">{option.label}</p>
                   <p className="text-xs text-muted-foreground">{option.description}</p>
                 </div>
-                <svg className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary/60 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <svg
+                  className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary/60 transition-colors duration-300"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </a>
