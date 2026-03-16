@@ -225,6 +225,12 @@ export const Courses = () => {
                     </DialogDescription>
                   </DialogHeader>
 
+                  {/* Для кого */}
+                  <div className="bg-secondary/80 rounded-2xl p-4 mt-4">
+                    <p className="text-sm font-medium text-foreground mb-1">Для кого</p>
+                    <p className="text-[13px] text-muted-foreground leading-relaxed">{detailsCourse.forWhom}</p>
+                  </div>
+
                   {/* Quick markers as pills */}
                   <div className="flex gap-2 mt-4">
                     <span className="inline-flex items-center gap-1.5 text-xs text-foreground/70 bg-secondary rounded-full px-3 py-1.5">
