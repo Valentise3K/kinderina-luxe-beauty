@@ -149,9 +149,12 @@ const CarouselCard = ({
   onClick: (img: string) => void;
 }) => {
   const [current, setCurrent] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const touchStartX = React.useRef<number | null>(null);
-  const touchDeltaX = React.useRef(0);
+  const touchStartTime = React.useRef<number>(0);
   const swiped = React.useRef(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
   const prev = useCallback(
     (e: React.MouseEvent) => {
@@ -171,28 +174,37 @@ const CarouselCard = ({
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
-    touchDeltaX.current = 0;
+    touchStartTime.current = Date.now();
     swiped.current = false;
+    setIsDragging(true);
+    setDragOffset(0);
   }, []);
 
   const handleTouchMove = useCallback((e: React.TouchEvent) => {
     if (touchStartX.current === null) return;
-    touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
+    const delta = e.touches[0].clientX - touchStartX.current;
+    setDragOffset(delta);
   }, []);
 
   const handleTouchEnd = useCallback(() => {
-    const threshold = 40;
-    if (Math.abs(touchDeltaX.current) > threshold) {
+    const containerWidth = containerRef.current?.offsetWidth || 300;
+    const velocity = Math.abs(dragOffset) / (Date.now() - touchStartTime.current);
+    const threshold = containerWidth * 0.2;
+    const isSwipe = Math.abs(dragOffset) > threshold || velocity > 0.5;
+
+    if (isSwipe && Math.abs(dragOffset) > 10) {
       swiped.current = true;
-      if (touchDeltaX.current < 0) {
+      if (dragOffset < 0) {
         setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
       } else {
         setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
       }
     }
+
+    setIsDragging(false);
+    setDragOffset(0);
     touchStartX.current = null;
-    touchDeltaX.current = 0;
-  }, [images.length]);
+  }, [dragOffset, images.length]);
 
   const handleClick = useCallback(() => {
     if (!swiped.current) {
@@ -201,30 +213,65 @@ const CarouselCard = ({
     swiped.current = false;
   }, [onClick, images, current]);
 
+  // Calculate which indices to render (prev, current, next) for the sliding effect
+  const prevIdx = current === 0 ? images.length - 1 : current - 1;
+  const nextIdx = current === images.length - 1 ? 0 : current + 1;
+
   return (
     <div
+      ref={containerRef}
       className="relative group cursor-pointer break-inside-avoid rounded-[16px] overflow-hidden touch-pan-y"
       onClick={handleClick}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Crossfade layer: all images stacked, only current is visible */}
-      <div className="relative w-full">
-        {images.map((img, idx) => (
+      <div className="relative w-full overflow-hidden">
+        {/* First image sets the aspect ratio */}
+        <img src={images[0]} alt={title} className="w-full h-auto invisible" loading="lazy" />
+
+        {/* Sliding track */}
+        <div
+          className="absolute inset-0"
+          style={{
+            transform: `translateX(${dragOffset}px)`,
+            transition: isDragging ? 'none' : 'transform 0.35s cubic-bezier(0.25, 1, 0.5, 1)',
+          }}
+        >
           <img
-            key={idx}
-            src={img}
+            src={images[current]}
             alt={title}
-            className={`w-full h-auto object-cover transition-opacity duration-700 ease-in-out group-hover:scale-105 ${
-              idx === 0 ? "relative" : "absolute inset-0"
-            } ${idx === current ? "opacity-100" : "opacity-0"}`}
-            style={idx !== 0 ? { transition: "opacity 0.7s ease-in-out, transform 0.5s var(--ease-premium)" } : { transition: "opacity 0.7s ease-in-out, transform 0.5s var(--ease-premium)" }}
+            className="absolute inset-0 w-full h-full object-cover"
             loading="lazy"
           />
-        ))}
+        </div>
+
+        {/* Previous image (visible when dragging right) */}
+        {isDragging && dragOffset > 0 && (
+          <div
+            className="absolute inset-0"
+            style={{
+              transform: `translateX(${dragOffset - (containerRef.current?.offsetWidth || 300)}px)`,
+            }}
+          >
+            <img src={images[prevIdx]} alt={title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+          </div>
+        )}
+
+        {/* Next image (visible when dragging left) */}
+        {isDragging && dragOffset < 0 && (
+          <div
+            className="absolute inset-0"
+            style={{
+              transform: `translateX(${dragOffset + (containerRef.current?.offsetWidth || 300)}px)`,
+            }}
+          >
+            <img src={images[nextIdx]} alt={title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+          </div>
+        )}
       </div>
-      {/* Title overlay — always visible on mobile, hover on desktop */}
+
+      {/* Title overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent transition-all duration-500 flex items-end p-5 md:p-6 md:opacity-0 md:group-hover:opacity-100 pointer-events-none">
         <p className="text-white font-serif text-base md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{title}</p>
       </div>
