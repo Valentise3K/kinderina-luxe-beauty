@@ -18,9 +18,9 @@ const menuVariants = {
     height: 0,
     opacity: 0,
     transition: {
-      height: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
-      opacity: { duration: 0.2, ease: "easeOut" },
-      staggerChildren: 0.02,
+      height: { duration: 0.28, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] },
+      opacity: { duration: 0.18 },
+      staggerChildren: 0.015,
       staggerDirection: -1,
       when: "afterChildren",
     },
@@ -29,20 +29,20 @@ const menuVariants = {
     height: "auto",
     opacity: 1,
     transition: {
-      height: { duration: 0.35, ease: [0.4, 0, 0.2, 1] },
-      opacity: { duration: 0.25, delay: 0.05 },
-      staggerChildren: 0.04,
-      delayChildren: 0.08,
+      height: { duration: 0.32, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] },
+      opacity: { duration: 0.2, delay: 0.04 },
+      staggerChildren: 0.035,
+      delayChildren: 0.06,
     },
   },
 };
 
 const itemVariants = {
-  closed: { opacity: 0, x: -12 },
+  closed: { opacity: 0, y: 6 },
   open: {
     opacity: 1,
-    x: 0,
-    transition: { duration: 0.25, ease: [0.2, 0, 0, 1] as [number, number, number, number] },
+    y: 0,
+    transition: { duration: 0.22, ease: "easeOut" },
   },
 };
 
