@@ -259,9 +259,10 @@ const CarouselCard = React.forwardRef<HTMLDivElement, {
       </div>
     </div>
   );
-};
+});
+CarouselCard.displayName = "CarouselCard";
 
-export const Portfolio = () => {
+export const Portfolio = React.forwardRef<HTMLElement>((_, _ref) => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
