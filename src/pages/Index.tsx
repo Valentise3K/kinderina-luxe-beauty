@@ -8,7 +8,6 @@ const Services = lazy(() => import("@/components/Services").then(m => ({ default
 const Courses = lazy(() => import("@/components/Courses").then(m => ({ default: m.Courses })));
 const Reviews = lazy(() => import("@/components/Reviews").then(m => ({ default: m.Reviews })));
 
-const SpecialOffers = lazy(() => import("@/components/SpecialOffers").then(m => ({ default: m.SpecialOffers })));
 const FAQ = lazy(() => import("@/components/FAQ").then(m => ({ default: m.FAQ })));
 const Contact = lazy(() => import("@/components/Contact").then(m => ({ default: m.Contact })));
 const Footer = lazy(() => import("@/components/Footer").then(m => ({ default: m.Footer })));
@@ -24,8 +23,8 @@ const Index = () => {
           <Portfolio />
           <Services />
           <Courses />
-          <SpecialOffers />
           <Reviews />
+          
           <FAQ />
           <Contact />
         </Suspense>
