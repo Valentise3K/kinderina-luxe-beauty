@@ -301,7 +301,7 @@ export const Portfolio = () => {
 
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
           {filteredItems.map((item, i) => (
-            <FadeIn key={item.id} delay={i * 30}>
+            <FadeIn key={item.id} delay={i * 15}>
               {item.carousel ? (
                 <CarouselCard images={item.carousel} title={item.title} onClick={(img) => setLightboxImage(img)} />
               ) : (

@@ -38,7 +38,7 @@ export const FadeIn = forwardRef<HTMLDivElement, FadeInProps>(
         style={{
           opacity: 0,
           transform: "translateY(12px)",
-          transition: `opacity 0.6s cubic-bezier(0.2, 0, 0, 1) ${delay}ms, transform 0.6s cubic-bezier(0.2, 0, 0, 1) ${delay}ms`,
+          transition: `opacity 0.35s cubic-bezier(0.2, 0, 0, 1) ${delay}ms, transform 0.35s cubic-bezier(0.2, 0, 0, 1) ${delay}ms`,
         }}
       >
         {children}
