@@ -67,7 +67,7 @@ export const Header = () => {
 
       {/* Mobile menu overlay */}
       {menuOpen && (
-        <div className="lg:hidden fixed inset-0 top-0 z-[-1]" onClick={() => setMenuOpen(false)} />
+        <div className="lg:hidden fixed inset-0 top-0 z-40" onClick={() => setMenuOpen(false)} />
       )}
 
       {/* Mobile menu */}
