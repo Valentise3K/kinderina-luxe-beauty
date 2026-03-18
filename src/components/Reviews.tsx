@@ -41,7 +41,7 @@ const reviews = [
   },
 ];
 
-export const Reviews = () => {
+export const Reviews = React.forwardRef<HTMLElement>((_, _ref) => {
   return (
     <section id="reviews" className="py-20 md:py-32">
       <div className="container mx-auto px-6">
