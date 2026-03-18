@@ -19,8 +19,8 @@ export const Locations = () => {
             <h2 className="section-heading mb-4">Где проходит приём</h2>
             <span className="section-heading-accent" />
             <p className="mt-6 text-muted-foreground text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-              Мастер принимает клиентов в студии Base Studio в двух филиалах
-              в&nbsp;Воронеже. При записи можно выбрать удобный адрес.
+              Принимаю клиентов в студии Base Studio в двух филиалах в&nbsp;Воронеже. При записи можно выбрать удобный
+              адрес.
             </p>
           </div>
         </FadeIn>
@@ -34,12 +34,8 @@ export const Locations = () => {
               >
                 <MapPin className="w-5 h-5 text-primary-text mt-0.5 shrink-0" />
                 <div>
-                  <p className="font-semibold text-foreground text-base">
-                    {b.name}
-                  </p>
-                  <p className="text-muted-foreground text-sm mt-0.5 leading-snug">
-                    {b.address}
-                  </p>
+                  <p className="font-semibold text-foreground text-base">{b.name}</p>
+                  <p className="text-muted-foreground text-sm mt-0.5 leading-snug">{b.address}</p>
                 </div>
               </div>
             ))}
