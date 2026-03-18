@@ -42,7 +42,7 @@ const itemVariants = {
   open: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.25, ease: [0.2, 0, 0, 1] },
+    transition: { duration: 0.25, ease: [0.2, 0, 0, 1] as [number, number, number, number] },
   },
 };
 
