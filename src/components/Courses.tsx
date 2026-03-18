@@ -121,7 +121,7 @@ const courses: Course[] = [
   },
 ];
 
-export const Courses = () => {
+export const Courses = React.forwardRef<HTMLElement>((_, _ref) => {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [detailsCourse, setDetailsCourse] = useState<Course | null>(null);
 
