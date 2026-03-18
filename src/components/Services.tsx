@@ -80,7 +80,7 @@ const serviceGroups: ServiceGroup[] = [
   },
 ];
 
-export const Services = () => {
+export const Services = React.forwardRef<HTMLElement>((_, _ref) => {
   const [bookingOpen, setBookingOpen] = useState(false);
 
   return (
