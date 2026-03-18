@@ -34,7 +34,7 @@ const faqs = [
   },
 ];
 
-export const FAQ = () => {
+export const FAQ = React.forwardRef<HTMLElement>((_, _ref) => {
   return (
     <section id="faq" className="py-20 md:py-28 bg-secondary">
       <div className="container mx-auto px-6">
