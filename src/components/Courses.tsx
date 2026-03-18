@@ -347,6 +347,6 @@ export const Courses = () => {
       </Dialog>
     </section>
   );
-;
+};
 
 export default Courses;

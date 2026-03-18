@@ -182,6 +182,6 @@ export const Services = () => {
       <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </section>
   );
-;
+};
 
 export default Services;

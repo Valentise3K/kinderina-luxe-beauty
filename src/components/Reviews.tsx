@@ -80,6 +80,6 @@ export const Reviews = () => {
       </div>
     </section>
   );
-;
+};
 
 export default Reviews;
