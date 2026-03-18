@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 import { Clock, Users, ChevronRight } from "lucide-react";
@@ -121,7 +121,7 @@ const courses: Course[] = [
   },
 ];
 
-export const Courses = () => {
+export const Courses = React.forwardRef<HTMLElement>((_, _ref) => {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [detailsCourse, setDetailsCourse] = useState<Course | null>(null);
 
@@ -347,6 +347,7 @@ export const Courses = () => {
       </Dialog>
     </section>
   );
-};
+});
+Courses.displayName = "Courses";
 
 export default Courses;

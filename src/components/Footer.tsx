@@ -1,8 +1,9 @@
+import React from "react";
 import { SecretInput } from "./SecretInput";
 
 const DIKIDI_URL = "https://dikidi.ru/1924129?p=0.pi&utm_source=ig&utm_medium=social&utm_content=link_in_bio";
 
-export const Footer = () => {
+export const Footer = React.forwardRef<HTMLElement>((_, _ref) => {
   return (
     <footer className="py-12 border-t border-border/50">
       <div className="container mx-auto px-6">
@@ -46,6 +47,7 @@ export const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+Footer.displayName = "Footer";
 
 export default Footer;
