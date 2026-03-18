@@ -139,15 +139,15 @@ const portfolioItems: PortfolioItem[] = [
   },
 ];
 
-const CarouselCard = ({
-  images,
-  title,
-  onClick,
-}: {
+const CarouselCard = React.forwardRef<HTMLDivElement, {
   images: string[];
   title: string;
   onClick: (img: string) => void;
-}) => {
+}>(({
+  images,
+  title,
+  onClick,
+}, _ref) => {
   const [current, setCurrent] = useState(0);
   const touchStartX = React.useRef<number | null>(null);
   const touchDeltaX = React.useRef(0);
@@ -259,9 +259,10 @@ const CarouselCard = ({
       </div>
     </div>
   );
-};
+});
+CarouselCard.displayName = "CarouselCard";
 
-export const Portfolio = () => {
+export const Portfolio = React.forwardRef<HTMLElement>((_, _ref) => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
@@ -341,6 +342,7 @@ export const Portfolio = () => {
       )}
     </section>
   );
-};
+});
+Portfolio.displayName = "Portfolio";
 
 export default Portfolio;
