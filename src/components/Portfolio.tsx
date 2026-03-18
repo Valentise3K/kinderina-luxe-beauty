@@ -341,4 +341,6 @@ export const Portfolio = () => {
       )}
     </section>
   );
-};
+;
+
+export default Portfolio;
