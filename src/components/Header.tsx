@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { BookingDialog } from "@/components/BookingDialog";
 
 const navItems = [
@@ -11,6 +12,39 @@ const navItems = [
   { label: "FAQ", href: "#faq" },
   { label: "Контакты", href: "#contact" },
 ];
+
+const menuVariants = {
+  closed: {
+    height: 0,
+    opacity: 0,
+    transition: {
+      height: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+      opacity: { duration: 0.2, ease: "easeOut" },
+      staggerChildren: 0.02,
+      staggerDirection: -1,
+      when: "afterChildren",
+    },
+  },
+  open: {
+    height: "auto",
+    opacity: 1,
+    transition: {
+      height: { duration: 0.35, ease: [0.4, 0, 0.2, 1] },
+      opacity: { duration: 0.25, delay: 0.05 },
+      staggerChildren: 0.04,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  closed: { opacity: 0, x: -12 },
+  open: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.25, ease: [0.2, 0, 0, 1] as [number, number, number, number] },
+  },
+};
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -30,20 +64,15 @@ export const Header = () => {
 
     const handleOutsideClick = (event: MouseEvent | TouchEvent) => {
       const target = event.target as Node;
-
       if (
         menuRef.current?.contains(target) ||
         menuToggleRef.current?.contains(target)
-      ) {
-        return;
-      }
-
+      ) return;
       setMenuOpen(false);
     };
 
     document.addEventListener("mousedown", handleOutsideClick);
     document.addEventListener("touchstart", handleOutsideClick);
-
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
       document.removeEventListener("touchstart", handleOutsideClick);
@@ -89,33 +118,66 @@ export const Header = () => {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Меню"
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          <AnimatePresence mode="wait" initial={false}>
+            {menuOpen ? (
+              <motion.span
+                key="close"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <X size={24} />
+              </motion.span>
+            ) : (
+              <motion.span
+                key="menu"
+                initial={{ rotate: 90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Menu size={24} />
+              </motion.span>
+            )}
+          </AnimatePresence>
         </button>
       </nav>
 
       {/* Mobile menu */}
-      {menuOpen && (
-        <div ref={menuRef} className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border/50">
-          <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="nav-link text-foreground/70 hover:text-foreground py-2"
-                onClick={() => setMenuOpen(false)}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            ref={menuRef}
+            variants={menuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border/50 overflow-hidden"
+          >
+            <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
+              {navItems.map((item) => (
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  variants={itemVariants}
+                  className="nav-link text-foreground/70 hover:text-foreground py-2"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label}
+                </motion.a>
+              ))}
+              <motion.button
+                variants={itemVariants}
+                onClick={() => { setMenuOpen(false); setBookingOpen(true); }}
+                className="nav-link bg-primary text-primary-foreground px-5 py-3 rounded-full text-center mt-2 w-full"
               >
-                {item.label}
-              </a>
-            ))}
-            <button
-              onClick={() => { setMenuOpen(false); setBookingOpen(true); }}
-              className="nav-link bg-primary text-primary-foreground px-5 py-3 rounded-full text-center mt-2 w-full"
-            >
-              Записаться
-            </button>
-          </div>
-        </div>
-      )}
+                Записаться
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </header>
   );
