@@ -347,6 +347,7 @@ export const Courses = React.forwardRef<HTMLElement>((_, _ref) => {
       </Dialog>
     </section>
   );
-};
+});
+Courses.displayName = "Courses";
 
 export default Courses;
