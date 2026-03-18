@@ -139,15 +139,15 @@ const portfolioItems: PortfolioItem[] = [
   },
 ];
 
-const CarouselCard = ({
-  images,
-  title,
-  onClick,
-}: {
+const CarouselCard = React.forwardRef<HTMLDivElement, {
   images: string[];
   title: string;
   onClick: (img: string) => void;
-}) => {
+}>(({
+  images,
+  title,
+  onClick,
+}, _ref) => {
   const [current, setCurrent] = useState(0);
   const touchStartX = React.useRef<number | null>(null);
   const touchDeltaX = React.useRef(0);
