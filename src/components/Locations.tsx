@@ -47,25 +47,9 @@ export const Locations = () => {
         </FadeIn>
 
         <FadeIn delay={200}>
-          <div className="max-w-3xl mx-auto">
-            <p className="text-center text-sm text-muted-foreground mb-4">
-              Выберите удобную локацию при записи
-            </p>
-            <div className="rounded-2xl overflow-hidden border border-border/50 shadow-sm">
-              <iframe
-                src={YANDEX_MAP_SRC}
-                width="100%"
-                className="h-[280px] md:h-[380px]"
-                frameBorder="0"
-                allowFullScreen
-                loading="lazy"
-                title="Карта филиалов Base Studio"
-              />
-            </div>
-            <p className="text-center text-xs text-muted-foreground mt-3">
-              Точный филиал можно выбрать во время онлайн-записи
-            </p>
-          </div>
+          <p className="text-center text-xs text-muted-foreground">
+            Точный филиал можно выбрать во время онлайн-записи
+          </p>
         </FadeIn>
       </div>
     </section>
