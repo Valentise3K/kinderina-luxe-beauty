@@ -10,7 +10,7 @@ const branches = [
 const YANDEX_MAP_SRC =
   "https://yandex.ru/map-widget/v1/?um=constructor%3A&ll=39.2,51.67&z=12&pt=39.1893,51.6542,pm2rdl1~39.2070,51.6815,pm2rdl2&lang=ru_RU";
 
-export const Locations = () => {
+export const Locations = React.forwardRef<HTMLElement>((_, _ref) => {
   return (
     <section id="locations" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-6">
