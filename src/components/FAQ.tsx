@@ -67,8 +67,8 @@ export const FAQ = React.forwardRef<HTMLElement>((_, _ref) => {
           </FadeIn>
         </div>
       </div>
-    </section>
   );
-};
+});
+FAQ.displayName = "FAQ";
 
 export default FAQ;

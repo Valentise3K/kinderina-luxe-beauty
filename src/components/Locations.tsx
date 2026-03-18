@@ -51,6 +51,7 @@ export const Locations = React.forwardRef<HTMLElement>((_, _ref) => {
       </div>
     </section>
   );
-};
+});
+Locations.displayName = "Locations";
 
 export default Locations;

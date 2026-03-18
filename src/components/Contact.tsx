@@ -98,8 +98,8 @@ export const Contact = React.forwardRef<HTMLElement>((_, _ref) => {
           </div>
         </div>
       </div>
-    </section>
   );
-};
+});
+Contact.displayName = "Contact";
 
 export default Contact;

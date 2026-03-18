@@ -45,8 +45,8 @@ export const Footer = React.forwardRef<HTMLElement>((_, _ref) => {
           <SecretInput />
         </div>
       </div>
-    </footer>
   );
-};
+});
+Footer.displayName = "Footer";
 
 export default Footer;
