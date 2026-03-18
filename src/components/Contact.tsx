@@ -1,4 +1,3 @@
-import React from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 
@@ -46,7 +45,7 @@ const contactLinks = [
   },
 ];
 
-export const Contact = React.forwardRef<HTMLElement>((_, _ref) => {
+export const Contact = () => {
   return (
     <section id="contact" className="py-24 md:py-32 bg-secondary">
       <div className="container mx-auto px-6">
@@ -100,7 +99,6 @@ export const Contact = React.forwardRef<HTMLElement>((_, _ref) => {
       </div>
     </section>
   );
-});
-Contact.displayName = "Contact";
+};
 
 export default Contact;

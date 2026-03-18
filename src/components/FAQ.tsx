@@ -1,4 +1,3 @@
-import React from "react";
 import { FadeIn } from "@/components/FadeIn";
 import {
   Accordion,
@@ -34,7 +33,7 @@ const faqs = [
   },
 ];
 
-export const FAQ = React.forwardRef<HTMLElement>((_, _ref) => {
+export const FAQ = () => {
   return (
     <section id="faq" className="py-20 md:py-28 bg-secondary">
       <div className="container mx-auto px-6">
@@ -69,7 +68,6 @@ export const FAQ = React.forwardRef<HTMLElement>((_, _ref) => {
       </div>
     </section>
   );
-});
-FAQ.displayName = "FAQ";
+};
 
 export default FAQ;

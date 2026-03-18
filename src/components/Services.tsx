@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 import { BookingDialog } from "@/components/BookingDialog";
@@ -80,7 +80,7 @@ const serviceGroups: ServiceGroup[] = [
   },
 ];
 
-export const Services = React.forwardRef<HTMLElement>((_, _ref) => {
+export const Services = () => {
   const [bookingOpen, setBookingOpen] = useState(false);
 
   return (
@@ -182,7 +182,6 @@ export const Services = React.forwardRef<HTMLElement>((_, _ref) => {
       <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </section>
   );
-});
-Services.displayName = "Services";
+};
 
 export default Services;

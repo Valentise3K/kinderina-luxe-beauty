@@ -1,4 +1,3 @@
-import React from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Star } from "lucide-react";
 
@@ -41,7 +40,7 @@ const reviews = [
   },
 ];
 
-export const Reviews = React.forwardRef<HTMLElement>((_, _ref) => {
+export const Reviews = () => {
   return (
     <section id="reviews" className="py-20 md:py-32">
       <div className="container mx-auto px-6">
@@ -81,7 +80,6 @@ export const Reviews = React.forwardRef<HTMLElement>((_, _ref) => {
       </div>
     </section>
   );
-});
-Reviews.displayName = "Reviews";
+};
 
 export default Reviews;
