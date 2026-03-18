@@ -79,6 +79,7 @@ export const Reviews = React.forwardRef<HTMLElement>((_, _ref) => {
           ))}
         </div>
       </div>
+    </section>
   );
 });
 Reviews.displayName = "Reviews";
