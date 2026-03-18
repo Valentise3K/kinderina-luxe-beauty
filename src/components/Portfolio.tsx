@@ -342,6 +342,7 @@ export const Portfolio = React.forwardRef<HTMLElement>((_, _ref) => {
       )}
     </section>
   );
-};
+});
+Portfolio.displayName = "Portfolio";
 
 export default Portfolio;

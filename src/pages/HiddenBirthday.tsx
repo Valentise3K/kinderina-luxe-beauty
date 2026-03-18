@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
-const HiddenBirthday = () => {
+const HiddenBirthday = React.forwardRef<HTMLDivElement>((_, _ref) => {
   const navigate = useNavigate();
 
   useEffect(() => {
