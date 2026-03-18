@@ -79,6 +79,7 @@ const HiddenBirthday = React.forwardRef<HTMLDivElement>((_, _ref) => {
       </div>
     </div>
   );
-};
+});
+HiddenBirthday.displayName = "HiddenBirthday";
 
 export default HiddenBirthday;
