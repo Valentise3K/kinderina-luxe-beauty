@@ -180,6 +180,7 @@ export const Services = React.forwardRef<HTMLElement>((_, _ref) => {
       </div>
 
       <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
+    </section>
   );
 });
 Services.displayName = "Services";
