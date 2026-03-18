@@ -65,6 +65,11 @@ export const Header = () => {
         </button>
       </nav>
 
+      {/* Mobile menu overlay */}
+      {menuOpen && (
+        <div className="lg:hidden fixed inset-0 top-0 z-[-1]" onClick={() => setMenuOpen(false)} />
+      )}
+
       {/* Mobile menu */}
       {menuOpen && (
         <div className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border/50">
