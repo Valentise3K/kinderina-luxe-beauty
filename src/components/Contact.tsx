@@ -46,7 +46,7 @@ const contactLinks = [
   },
 ];
 
-export const Contact = () => {
+export const Contact = React.forwardRef<HTMLElement>((_, _ref) => {
   return (
     <section id="contact" className="py-24 md:py-32 bg-secondary">
       <div className="container mx-auto px-6">
