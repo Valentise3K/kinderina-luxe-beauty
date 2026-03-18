@@ -9,6 +9,7 @@ const Courses = lazy(() => import("@/components/Courses"));
 const Reviews = lazy(() => import("@/components/Reviews"));
 
 const FAQ = lazy(() => import("@/components/FAQ"));
+const Locations = lazy(() => import("@/components/Locations"));
 const Contact = lazy(() => import("@/components/Contact"));
 const Footer = lazy(() => import("@/components/Footer"));
 
@@ -26,6 +27,7 @@ const Index = () => {
           <Reviews />
           
           <FAQ />
+          <Locations />
           <Contact />
         </Suspense>
       </main>
