@@ -348,3 +348,5 @@ export const Courses = () => {
     </section>
   );
 };
+
+export default Courses;

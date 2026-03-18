@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kinderina-luxe-beauty.lovable.app/sitemap.xml
+Sitemap: https://kinderina.beauty/sitemap.xml
