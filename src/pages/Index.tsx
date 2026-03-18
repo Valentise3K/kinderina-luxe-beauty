@@ -27,6 +27,7 @@ const Index = () => {
           <Reviews />
           
           <FAQ />
+          <Locations />
           <Contact />
         </Suspense>
       </main>
