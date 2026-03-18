@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { BookingDialog } from "@/components/BookingDialog";
 
@@ -16,12 +16,39 @@ export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handleOutsideClick = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node;
+
+      if (
+        menuRef.current?.contains(target) ||
+        menuToggleRef.current?.contains(target)
+      ) {
+        return;
+      }
+
+      setMenuOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, [menuOpen]);
 
   return (
     <header
@@ -57,6 +84,7 @@ export const Header = () => {
 
         {/* Mobile menu button */}
         <button
+          ref={menuToggleRef}
           className="lg:hidden text-foreground p-2"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Меню"
@@ -65,14 +93,9 @@ export const Header = () => {
         </button>
       </nav>
 
-      {/* Mobile menu overlay */}
-      {menuOpen && (
-        <div className="lg:hidden fixed inset-0 top-0 z-40" onClick={() => setMenuOpen(false)} />
-      )}
-
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border/50">
+        <div ref={menuRef} className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border/50">
           <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
             {navItems.map((item) => (
               <a
