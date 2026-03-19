@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { LazyVideo } from "@/components/portfolio/LazyVideo";
+import { LazyImage } from "@/components/portfolio/LazyImage";
 
 import brows1 from "@/assets/brows-1.jpg";
 import brows2 from "@/assets/brows-2.jpg";
