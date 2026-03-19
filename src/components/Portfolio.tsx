@@ -221,8 +221,9 @@ const CarouselCard = React.forwardRef<HTMLDivElement, {
             className={`w-full h-auto object-cover transition-opacity duration-700 ease-in-out group-hover:scale-105 ${
               idx === 0 ? "relative" : "absolute inset-0"
             } ${idx === current ? "opacity-100" : "opacity-0"}`}
-            style={idx !== 0 ? { transition: "opacity 0.7s ease-in-out, transform 0.5s var(--ease-premium)" } : { transition: "opacity 0.7s ease-in-out, transform 0.5s var(--ease-premium)" }}
+            style={{ transition: "opacity 0.7s ease-in-out, transform 0.5s var(--ease-premium)" }}
             loading="lazy"
+            decoding="async"
           />
         ))}
       </div>
