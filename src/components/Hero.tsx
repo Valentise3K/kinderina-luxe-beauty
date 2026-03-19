@@ -12,7 +12,7 @@ export const Hero = () => {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Kinderina — визажист и стилист, Воронеж"
+          alt="Визажист в Воронеже — Kinderina, макияж и укладки"
           className="w-full h-full object-cover object-[center_10%] md:object-[center_15%]"
           fetchPriority="high"
           width={1080}
