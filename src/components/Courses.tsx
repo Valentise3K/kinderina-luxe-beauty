@@ -3,11 +3,9 @@ import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 import { Clock, Users, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { SITE } from "@/config/site";
 import courseMakeup from "@/assets/course-makeup.jpg";
 import courseHair from "@/assets/course-hair.jpg";
-
-const TELEGRAM_URL = "https://t.me/karishkaa_16";
-const INSTAGRAM_URL = "https://www.instagram.com/karishkaa_16?igsh=MWs2cTNud2hhbzNzcg==";
 
 const contactOptions = [
   {

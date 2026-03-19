@@ -1,13 +1,11 @@
 import { FadeIn } from "@/components/FadeIn";
-import { Button } from "@/components/ui/button";
-
-const DIKIDI_URL = "https://dikidi.ru/1924129?p=0.pi&utm_source=ig&utm_medium=social&utm_content=link_in_bio";
+import { SITE } from "@/config/site";
 
 const contactLinks = [
   {
     title: "Онлайн-запись",
     subtitle: "Записаться через DIKIDI",
-    href: DIKIDI_URL,
+    href: SITE.links.dikidi,
     primary: true,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.5">
@@ -22,7 +20,7 @@ const contactLinks = [
   {
     title: "Telegram",
     subtitle: "Написать в Telegram",
-    href: "https://t.me/karishkaa_16",
+    href: SITE.links.telegram,
     primary: false,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.5">
@@ -33,7 +31,7 @@ const contactLinks = [
   {
     title: "Instagram",
     subtitle: "Написать в Instagram",
-    href: "https://www.instagram.com/karishkaa_16?igsh=MWs2cTNud2hhbzNzcg==",
+    href: SITE.links.instagram,
     primary: false,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.5">

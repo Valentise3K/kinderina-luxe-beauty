@@ -1,6 +1,5 @@
 import { SecretInput } from "./SecretInput";
-
-const DIKIDI_URL = "https://dikidi.ru/1924129?p=0.pi&utm_source=ig&utm_medium=social&utm_content=link_in_bio";
+import { SITE } from "@/config/site";
 
 export const Footer = () => {
   return (
@@ -8,14 +7,14 @@ export const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <a href="#hero" className="font-serif text-2xl font-light text-foreground">
-            Kinderina
+            {SITE.brand}
           </a>
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Kinderina. Все права защищены.
+            © {new Date().getFullYear()} {SITE.brand}. Все права защищены.
           </p>
           <div className="flex gap-6">
             <a
-              href="https://t.me/karishkaa_16"
+              href={SITE.links.telegram}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
@@ -23,7 +22,7 @@ export const Footer = () => {
               Telegram
             </a>
             <a
-              href="https://www.instagram.com/karishkaa_16?igsh=MWs2cTNud2hhbzNzcg=="
+              href={SITE.links.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
@@ -31,7 +30,7 @@ export const Footer = () => {
               Instagram
             </a>
             <a
-              href={DIKIDI_URL}
+              href={SITE.links.dikidi}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
