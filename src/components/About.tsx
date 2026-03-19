@@ -47,7 +47,7 @@ export const About = () => {
           <div>
             <FadeIn>
               <p className="nav-link text-primary-text mb-4">О мастере</p>
-              <h2 className="section-heading mb-6 text-balance">Карина — ваш мастер красоты</h2>
+              <h2 className="section-heading mb-6 text-balance">Визажист и бровист в&nbsp;Воронеже</h2>
             </FadeIn>
 
             <FadeIn delay={100}>
