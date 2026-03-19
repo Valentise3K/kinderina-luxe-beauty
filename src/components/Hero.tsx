@@ -43,8 +43,8 @@ export const Hero = () => {
           {/* Description — more specific */}
           <FadeIn delay={240}>
             <p className="text-[15px] md:text-lg text-foreground/85 leading-relaxed max-w-sm md:max-w-md mb-8 md:mb-10">
-              Макияж, причёски, оформление бровей
-              <br className="hidden sm:inline" /> и&nbsp;ресниц в&nbsp;Воронеже
+              Макияж, укладки, оформление бровей
+              <br className="hidden sm:inline" /> и&nbsp;ресниц. Обучение для&nbsp;себя
             </p>
           </FadeIn>
 
