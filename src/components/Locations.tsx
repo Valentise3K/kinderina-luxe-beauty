@@ -1,10 +1,6 @@
 import { MapPin } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
-
-const branches = [
-  { name: "Base Studio", address: "Гродненская 65, Воронеж" },
-  { name: "Base Studio", address: "Ленинский Проспект 108А, Воронеж" },
-];
+import { SITE } from "@/config/site";
 
 const YANDEX_MAP_SRC =
   "https://yandex.ru/map-widget/v1/?um=constructor%3A&ll=39.2,51.67&z=12&pt=39.1893,51.6542,pm2rdl1~39.2070,51.6815,pm2rdl2&lang=ru_RU";
@@ -27,7 +23,7 @@ export const Locations = () => {
 
         <FadeIn delay={100}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-10">
-            {branches.map((b, i) => (
+            {SITE.locations.map((b, i) => (
               <div
                 key={i}
                 className="card-premium bg-card border border-border/50 rounded-2xl px-6 py-5 flex items-start gap-3"
