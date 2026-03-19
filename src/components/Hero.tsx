@@ -29,7 +29,7 @@ export const Hero = () => {
           {/* Subtitle */}
           <FadeIn>
             <p className="text-[10px] md:text-[13px] uppercase tracking-[0.15em] font-semibold text-foreground/90 mb-3 md:mb-5">
-              Визажист · Стилист · Воронеж
+              Визажист · Бровист · Стилист · Воронеж
             </p>
           </FadeIn>
 
