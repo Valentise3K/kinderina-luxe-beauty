@@ -1,8 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { LazyVideo } from "@/components/portfolio/LazyVideo";
-import { LazyImage } from "@/components/portfolio/LazyImage";
 
 import brows1 from "@/assets/brows-1.jpg";
 import brows2 from "@/assets/brows-2.jpg";
@@ -221,9 +219,8 @@ const CarouselCard = React.forwardRef<HTMLDivElement, {
             className={`w-full h-auto object-cover transition-opacity duration-700 ease-in-out group-hover:scale-105 ${
               idx === 0 ? "relative" : "absolute inset-0"
             } ${idx === current ? "opacity-100" : "opacity-0"}`}
-            style={{ transition: "opacity 0.7s ease-in-out, transform 0.5s var(--ease-premium)" }}
+            style={idx !== 0 ? { transition: "opacity 0.7s ease-in-out, transform 0.5s var(--ease-premium)" } : { transition: "opacity 0.7s ease-in-out, transform 0.5s var(--ease-premium)" }}
             loading="lazy"
-            decoding="async"
           />
         ))}
       </div>
@@ -314,9 +311,16 @@ export const Portfolio = React.forwardRef<HTMLElement>((_, _ref) => {
                   onClick={() => item.image && setLightboxImage(item.image)}
                 >
                   {item.video ? (
-                    <LazyVideo src={item.video} title={item.title} />
+                    <video
+                      src={item.video}
+                      className="w-full h-auto object-cover rounded-[16px]"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
                   ) : (
-                    <LazyImage src={item.image!} alt={item.title} className="w-full h-auto object-cover" />
+                    <img src={item.image} alt={item.title} className="w-full h-auto object-cover" loading="lazy" />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent transition-all duration-500 rounded-[16px] flex items-end p-5 md:p-6 md:opacity-0 md:group-hover:opacity-100">
                     <p className="text-white font-serif text-base md:text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{item.title}</p>
