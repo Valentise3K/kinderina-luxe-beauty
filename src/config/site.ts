@@ -1,6 +1,6 @@
 export const SITE = {
   brand: "Kinderina",
-  description: "Визажист · Стилист · Воронеж",
+  description: "Визажист · Бровист · Стилист · Воронеж",
   url: "https://kinderina.beauty",
 
   links: {

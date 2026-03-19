@@ -12,7 +12,7 @@ export const Hero = () => {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Kinderina — визажист и стилист, Воронеж"
+          alt="Визажист в Воронеже — Kinderina, макияж и укладки"
           className="w-full h-full object-cover object-[center_10%] md:object-[center_15%]"
           fetchPriority="high"
           width={1080}
@@ -29,7 +29,7 @@ export const Hero = () => {
           {/* Subtitle */}
           <FadeIn>
             <p className="text-[10px] md:text-[13px] uppercase tracking-[0.15em] font-semibold text-foreground/90 mb-3 md:mb-5">
-              Визажист · Стилист · Воронеж
+              Визажист · Бровист · Стилист · Воронеж
             </p>
           </FadeIn>
 
@@ -43,8 +43,8 @@ export const Hero = () => {
           {/* Description — more specific */}
           <FadeIn delay={240}>
             <p className="text-[15px] md:text-lg text-foreground/85 leading-relaxed max-w-sm md:max-w-md mb-8 md:mb-10">
-              Макияж, причёски, оформление бровей
-              <br className="hidden sm:inline" /> и&nbsp;ресниц в&nbsp;Воронеже
+              Макияж, укладки, оформление бровей
+              <br className="hidden sm:inline" /> и&nbsp;ресниц. Обучение для&nbsp;себя
             </p>
           </FadeIn>
 

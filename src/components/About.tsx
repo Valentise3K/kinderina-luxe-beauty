@@ -47,13 +47,13 @@ export const About = () => {
           <div>
             <FadeIn>
               <p className="nav-link text-primary-text mb-4">О мастере</p>
-              <h2 className="section-heading mb-6 text-balance">Карина — ваш мастер красоты</h2>
+              <h2 className="section-heading mb-6 text-balance">Визажист и бровист в&nbsp;Воронеже</h2>
             </FadeIn>
 
             <FadeIn delay={100}>
               <p className="text-foreground/80 leading-relaxed mb-8 text-[15px] md:text-base">
-                Создаю образы, которые подчёркивают индивидуальность. В каждой услуге ценю аккуратность, эстетику
-                и&nbsp;комфорт клиента. Работаю в&nbsp;Воронеже — в&nbsp;салоне и&nbsp;с&nbsp;выездом.
+                Карина — профессиональный визажист и&nbsp;бровист в&nbsp;Воронеже. Создаю макияж, укладки и&nbsp;оформление бровей,
+                которые подчёркивают индивидуальность. Работаю в&nbsp;студии и&nbsp;с&nbsp;выездом.
               </p>
             </FadeIn>
 
