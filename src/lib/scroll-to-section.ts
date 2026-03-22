@@ -20,6 +20,17 @@ function performScroll(sectionId: string) {
   if (!target) return;
 
   window.scrollTo({ top: getTargetTop(target), behavior: "smooth" });
+
+  // After the smooth scroll finishes (~800ms), silently correct if layout shifted
+  setTimeout(() => {
+    const el = document.getElementById(sectionId);
+    if (!el) return;
+    const diff = Math.abs(getTargetTop(el) - window.scrollY);
+    if (diff > 15) {
+      // Instant correction — no visible jank
+      window.scrollTo({ top: getTargetTop(el), behavior: "instant" as ScrollBehavior });
+    }
+  }, 900);
 }
 
 /**
