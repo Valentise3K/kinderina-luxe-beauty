@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { BookingDialog } from "@/components/BookingDialog";
+import { handleAnchorClick } from "@/lib/scroll-to-section";
 
 const navItems = [
   { label: "Главная", href: "#hero" },
