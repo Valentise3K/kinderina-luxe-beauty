@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { BookingDialog } from "@/components/BookingDialog";
+import { handleAnchorClick } from "@/lib/scroll-to-section";
 const heroImage = "/hero-portrait.jpg";
 
 export const Hero = () => {
