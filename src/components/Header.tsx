@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { BookingDialog } from "@/components/BookingDialog";
+import { handleAnchorClick } from "@/lib/scroll-to-section";
 
 const navItems = [
   { label: "Главная", href: "#hero" },
@@ -88,7 +89,7 @@ export const Header = () => {
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-6 py-4 md:py-5">
-        <a href="#hero" className="font-serif text-2xl md:text-3xl font-light tracking-tight text-foreground">
+        <a href="#hero" onClick={handleAnchorClick} className="font-serif text-2xl md:text-3xl font-light tracking-tight text-foreground">
           Kinderina
         </a>
 
@@ -98,6 +99,7 @@ export const Header = () => {
             <a
               key={item.href}
               href={item.href}
+              onClick={handleAnchorClick}
               className="nav-link text-foreground/70 hover:text-foreground"
             >
               {item.label}
@@ -162,7 +164,7 @@ export const Header = () => {
                   href={item.href}
                   variants={itemVariants}
                   className="nav-link text-foreground/70 hover:text-foreground py-2"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => { handleAnchorClick(e); setMenuOpen(false); }}
                 >
                   {item.label}
                 </motion.a>

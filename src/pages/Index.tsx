@@ -1,7 +1,8 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
+import { scrollToHashOnLoad } from "@/lib/scroll-to-section";
 
 const Portfolio = lazy(() => import("@/components/Portfolio"));
 const Services = lazy(() => import("@/components/Services"));
@@ -14,6 +15,10 @@ const Contact = lazy(() => import("@/components/Contact"));
 const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
+  useEffect(() => {
+    scrollToHashOnLoad();
+  }, []);
+
   return (
     <>
       <Header />
