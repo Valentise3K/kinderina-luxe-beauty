@@ -1,7 +1,18 @@
-const HEADER_HEIGHT = 72;
-const MAX_RETRIES = 5;
-const RETRY_DELAY = 150;
+const FALLBACK_HEADER_HEIGHT = 72;
+const MAX_RETRIES = 40;
+const RETRY_DELAY = 100;
 const SCROLL_DELAY = 100;
+const CORRECTION_DELAYS = [500, 1100, 1800];
+
+function getHeaderOffset() {
+  const header = document.querySelector("header");
+  if (!header) return FALLBACK_HEADER_HEIGHT;
+  return Math.round(header.getBoundingClientRect().height);
+}
+
+function getTargetTop(element: HTMLElement) {
+  return element.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
+}
 
 function smoothScrollWithOffset(sectionId: string) {
   const element = document.getElementById(sectionId);
@@ -11,16 +22,29 @@ function smoothScrollWithOffset(sectionId: string) {
     const target = document.getElementById(sectionId);
     if (!target) return;
 
-    const top = target.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
-    window.scrollTo({ top, behavior: "smooth" });
+    window.scrollTo({ top: getTargetTop(target), behavior: "smooth" });
   }, SCROLL_DELAY);
 
   return true;
 }
 
+function scheduleCorrections(sectionId: string) {
+  CORRECTION_DELAYS.forEach((delay) => {
+    setTimeout(() => {
+      const target = document.getElementById(sectionId);
+      if (!target) return;
+
+      const correctedTop = getTargetTop(target);
+      if (Math.abs(correctedTop - window.scrollY) > 8) {
+        window.scrollTo({ top: correctedTop, behavior: "smooth" });
+      }
+    }, delay);
+  });
+}
+
 /**
  * Scrolls to a section by id with header offset compensation.
- * Retries if the element isn't in the DOM yet (lazy-loaded sections).
+ * Retries until lazy-loaded sections are mounted.
  */
 export function scrollToSection(id: string, attempt = 0) {
   const hasTarget = smoothScrollWithOffset(id);
@@ -32,17 +56,8 @@ export function scrollToSection(id: string, attempt = 0) {
     return;
   }
 
-  // Re-check position after scroll + layout settle (images/lazy content)
   if (attempt === 0) {
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (!el) return;
-
-      const corrected = el.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
-      if (Math.abs(corrected - window.scrollY) > 10) {
-        smoothScrollWithOffset(id);
-      }
-    }, 600);
+    scheduleCorrections(id);
   }
 }
 
@@ -52,6 +67,7 @@ export function scrollToSection(id: string, attempt = 0) {
 export function handleAnchorClick(e: React.MouseEvent<HTMLAnchorElement>) {
   const href = e.currentTarget.getAttribute("href");
   if (!href?.startsWith("#")) return;
+
   e.preventDefault();
   const id = href.slice(1);
   if (id) scrollToSection(id);
@@ -64,8 +80,10 @@ export function scrollToHashOnLoad() {
   const hash = window.location.hash.slice(1);
   if (!hash) return;
 
-  // Wait for lazy content to mount
-  const tryScroll = () => scrollToSection(hash);
+  const tryScroll = () => {
+    scrollToSection(hash);
+    setTimeout(() => scrollToSection(hash), 700);
+  };
 
   if (document.readyState === "complete") {
     setTimeout(tryScroll, 300);
