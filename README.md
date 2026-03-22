@@ -1,47 +1,38 @@
-# Kinderina — Beauty Master Website
+# Kinderina Beauty
 
-Персональный сайт бьюти-мастера в Воронеже.
+Сайт-портфолио и платформа услуг для бьюти-мастера в Воронеже. Визажист, бровист, стилист — портфолио работ, описание услуг, курсы обучения и онлайн-запись.
 
-## Технологии
+## Стек технологий
 
-- React + TypeScript
-- Vite
-- Tailwind CSS
-- shadcn/ui
+- **React 18** + **TypeScript**
+- **Vite** — сборка и dev-сервер
+- **Tailwind CSS** — стилизация
+- **shadcn/ui** — UI-компоненты
+- **Framer Motion** — анимации
+- **React Router** — маршрутизация
 
-## Начало работы
+## Установка
 
-Требуется Node.js ≥ 18 и npm.
-
-```sh
-# 1. Клонируйте репозиторий
-git clone <YOUR_GIT_URL>
-
-# 2. Перейдите в директорию проекта
-cd <YOUR_PROJECT_NAME>
-
-# 3. Установите зависимости
+```bash
 npm install
+```
 
-# 4. Запустите dev-сервер
+## Разработка
+
+```bash
 npm run dev
 ```
 
-## Доступные команды
+Сайт будет доступен по адресу `http://localhost:8080`.
 
-| Команда | Описание |
-|---------|----------|
-| `npm run dev` | Запуск dev-сервера |
-| `npm run build` | Продакшн-сборка |
-| `npm run preview` | Предпросмотр сборки |
-| `npm run lint` | Линтинг кода |
-| `npm test` | Запуск тестов |
+## Сборка
+
+```bash
+npm run build
+```
+
+Готовые файлы появятся в директории `dist/`.
 
 ## Деплой
 
-Откройте [Lovable](https://lovable.dev) → Share → Publish.
-
-## Кастомный домен
-
-Project → Settings → Domains → Connect Domain.
-[Документация](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Проект деплоится через [Lovable](https://lovable.dev). Продакшн-домен: [kinderina.beauty](https://kinderina.beauty).
