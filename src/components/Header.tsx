@@ -99,6 +99,7 @@ export const Header = () => {
             <a
               key={item.href}
               href={item.href}
+              onClick={handleAnchorClick}
               className="nav-link text-foreground/70 hover:text-foreground"
             >
               {item.label}
