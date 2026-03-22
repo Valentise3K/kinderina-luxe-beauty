@@ -15,6 +15,10 @@ const Contact = lazy(() => import("@/components/Contact"));
 const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
+  useEffect(() => {
+    scrollToHashOnLoad();
+  }, []);
+
   return (
     <>
       <Header />

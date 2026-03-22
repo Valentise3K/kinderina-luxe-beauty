@@ -70,6 +70,7 @@ export const Hero = () => {
                   <a
                     key={href}
                     href={href}
+                    onClick={handleAnchorClick}
                     className="inline-flex items-center justify-center flex-1 sm:flex-none sm:w-[110px] py-[9px] rounded-full bg-secondary text-muted-foreground text-[12px] sm:text-[13px] font-semibold tracking-[0.04em] transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-md active:scale-95"
                   >
                     {label}

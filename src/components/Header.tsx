@@ -164,7 +164,7 @@ export const Header = () => {
                   href={item.href}
                   variants={itemVariants}
                   className="nav-link text-foreground/70 hover:text-foreground py-2"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => { handleAnchorClick(e); setMenuOpen(false); }}
                 >
                   {item.label}
                 </motion.a>
