@@ -89,7 +89,7 @@ export const Header = () => {
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-6 py-4 md:py-5">
-        <a href="#hero" className="font-serif text-2xl md:text-3xl font-light tracking-tight text-foreground">
+        <a href="#hero" onClick={handleAnchorClick} className="font-serif text-2xl md:text-3xl font-light tracking-tight text-foreground">
           Kinderina
         </a>
 
