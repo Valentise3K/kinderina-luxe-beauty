@@ -1,8 +1,6 @@
 const FALLBACK_HEADER_HEIGHT = 72;
 const MAX_RETRIES = 40;
 const RETRY_DELAY = 100;
-const SCROLL_DELAY = 100;
-const CORRECTION_DELAYS = [500, 1100, 1800];
 
 function getHeaderOffset() {
   const header = document.querySelector("header");
@@ -14,32 +12,25 @@ function getTargetTop(element: HTMLElement) {
   return element.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
 }
 
-function smoothScrollWithOffset(sectionId: string) {
-  const element = document.getElementById(sectionId);
-  if (!element) return false;
+/**
+ * Single smooth scroll + one silent correction after layout settles.
+ */
+function performScroll(sectionId: string) {
+  const target = document.getElementById(sectionId);
+  if (!target) return;
 
+  window.scrollTo({ top: getTargetTop(target), behavior: "smooth" });
+
+  // After the smooth scroll finishes (~800ms), silently correct if layout shifted
   setTimeout(() => {
-    const target = document.getElementById(sectionId);
-    if (!target) return;
-
-    window.scrollTo({ top: getTargetTop(target), behavior: "smooth" });
-  }, SCROLL_DELAY);
-
-  return true;
-}
-
-function scheduleCorrections(sectionId: string) {
-  CORRECTION_DELAYS.forEach((delay) => {
-    setTimeout(() => {
-      const target = document.getElementById(sectionId);
-      if (!target) return;
-
-      const correctedTop = getTargetTop(target);
-      if (Math.abs(correctedTop - window.scrollY) > 8) {
-        window.scrollTo({ top: correctedTop, behavior: "smooth" });
-      }
-    }, delay);
-  });
+    const el = document.getElementById(sectionId);
+    if (!el) return;
+    const diff = Math.abs(getTargetTop(el) - window.scrollY);
+    if (diff > 15) {
+      // Instant correction — no visible jank
+      window.scrollTo({ top: getTargetTop(el), behavior: "instant" as ScrollBehavior });
+    }
+  }, 900);
 }
 
 /**
@@ -47,18 +38,19 @@ function scheduleCorrections(sectionId: string) {
  * Retries until lazy-loaded sections are mounted.
  */
 export function scrollToSection(id: string, attempt = 0) {
-  const hasTarget = smoothScrollWithOffset(id);
+  const el = document.getElementById(id);
 
-  if (!hasTarget) {
+  if (!el) {
     if (attempt < MAX_RETRIES) {
       setTimeout(() => scrollToSection(id, attempt + 1), RETRY_DELAY);
     }
     return;
   }
 
-  if (attempt === 0) {
-    scheduleCorrections(id);
-  }
+  // Small delay to let React finish current render cycle
+  requestAnimationFrame(() => {
+    performScroll(id);
+  });
 }
 
 /**
@@ -80,14 +72,9 @@ export function scrollToHashOnLoad() {
   const hash = window.location.hash.slice(1);
   if (!hash) return;
 
-  const tryScroll = () => {
-    scrollToSection(hash);
-    setTimeout(() => scrollToSection(hash), 700);
-  };
-
   if (document.readyState === "complete") {
-    setTimeout(tryScroll, 300);
+    setTimeout(() => scrollToSection(hash), 300);
   } else {
-    window.addEventListener("load", () => setTimeout(tryScroll, 300), { once: true });
+    window.addEventListener("load", () => setTimeout(() => scrollToSection(hash), 300), { once: true });
   }
 }
