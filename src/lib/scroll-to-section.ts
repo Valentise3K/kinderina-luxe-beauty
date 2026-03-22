@@ -1,30 +1,46 @@
 const HEADER_HEIGHT = 72;
 const MAX_RETRIES = 5;
 const RETRY_DELAY = 150;
+const SCROLL_DELAY = 100;
+
+function smoothScrollWithOffset(sectionId: string) {
+  const element = document.getElementById(sectionId);
+  if (!element) return false;
+
+  setTimeout(() => {
+    const target = document.getElementById(sectionId);
+    if (!target) return;
+
+    const top = target.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
+    window.scrollTo({ top, behavior: "smooth" });
+  }, SCROLL_DELAY);
+
+  return true;
+}
 
 /**
  * Scrolls to a section by id with header offset compensation.
  * Retries if the element isn't in the DOM yet (lazy-loaded sections).
  */
 export function scrollToSection(id: string, attempt = 0) {
-  const el = document.getElementById(id);
+  const hasTarget = smoothScrollWithOffset(id);
 
-  if (!el) {
+  if (!hasTarget) {
     if (attempt < MAX_RETRIES) {
       setTimeout(() => scrollToSection(id, attempt + 1), RETRY_DELAY);
     }
     return;
   }
 
-  const top = el.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
-  window.scrollTo({ top, behavior: "smooth" });
-
   // Re-check position after scroll + layout settle (images/lazy content)
   if (attempt === 0) {
     setTimeout(() => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
       const corrected = el.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
       if (Math.abs(corrected - window.scrollY) > 10) {
-        window.scrollTo({ top: corrected, behavior: "smooth" });
+        smoothScrollWithOffset(id);
       }
     }, 600);
   }
@@ -50,7 +66,7 @@ export function scrollToHashOnLoad() {
 
   // Wait for lazy content to mount
   const tryScroll = () => scrollToSection(hash);
-  
+
   if (document.readyState === "complete") {
     setTimeout(tryScroll, 300);
   } else {
