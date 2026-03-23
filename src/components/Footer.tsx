@@ -1,12 +1,13 @@
 import { SecretInput } from "./SecretInput";
 import { SITE } from "@/config/site";
+import { handleAnchorClick } from "@/lib/scroll-to-section";
 
 export const Footer = () => {
   return (
     <footer className="py-12 border-t border-border/50">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <a href="#hero" className="font-serif text-2xl font-light text-foreground">
+          <a href="#hero" onClick={handleAnchorClick} className="font-serif text-2xl font-light text-foreground">
             {SITE.brand}
           </a>
           <p className="text-sm text-muted-foreground">
